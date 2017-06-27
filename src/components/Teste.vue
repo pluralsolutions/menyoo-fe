@@ -1,5 +1,8 @@
 <template>
-  <div>Exemplo {{ msg }}</div>
+  <div>
+    <label>Exemplo {{ msg }}</label>
+    <div><img src="../assets/home.png"></div>  
+  </div>
 </template>
 
 <script>

@@ -2,33 +2,32 @@
   <div id="app">
     <user-header></user-header>
     <header>
-      <span class="title">Menyoo!</span>
+      <span class="titulo">Menyoo!</span>
     </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title"><img src="./assets/logo-only.png" alt="Menyoo" height="48"></span>
-      <nav class="mdl-navigation">
-        <router-link class="mdl-navigation__link" to="/" @click.native="hideMenu">Home</router-link>
-        <router-link class="mdl-navigation__link" to="/teste" @click.native="hideMenu">Go to Teste</router-link>
-      </nav>
-    </div>
+    <menudrawer :rotas="routes"></menudrawer>
     <main>
-      <img src="./assets/logo.png" width="80%" alt="Menyoo">
-        <router-view></router-view>
+      <transition name="main">
+      <router-view></router-view>
+      </transition>
     </main>
   </div>
 </template>
 
 <script>
-import UserHeader from '@/components/UserHeader';
+import UserHeader from '@/components/shared/UserHeader';
+import Menudrawer from '@/components/shared/Menu';
+import routes from '@/router/routes';
 
 export default {
   name: 'app',
   components: {
     UserHeader,
+    Menudrawer,
   },
   data() {
     return {
       userPhoto: './static/img/user.jpg',
+      routes,
     };
   },
   methods: {
@@ -54,6 +53,14 @@ body {
   color: #2c3e50;
 }
 
+.main-enter-active, .main-leave-active {
+  transition: opacity .1s
+}
+
+.main-enter, .main-leave-active {
+  opacity: 0
+}
+
 main {
   text-align: center;
   margin-top: 40px;
@@ -67,7 +74,7 @@ header {
   color: #ffffff;
 }
 
-header span {
+.titulo {
   display: block;
   position: relative;
   font-size: 20px;
