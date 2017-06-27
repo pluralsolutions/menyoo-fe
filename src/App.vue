@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <user-header></user-header>
     <header>
-      <span class="titulo">Menyoo!</span>
+      <user-header style="height:50px;"></user-header>
+      <RestauranteHeader style="padding-top:50px;"></RestauranteHeader>
     </header>
     <menudrawer :rotas="routes"></menudrawer>
     <main>
@@ -15,6 +15,7 @@
 
 <script>
 import UserHeader from '@/components/shared/UserHeader';
+import RestauranteHeader from '@/components/shared/RestauranteHeader';
 import Menudrawer from '@/components/shared/Menu';
 import routes from '@/router/routes';
 
@@ -22,20 +23,14 @@ export default {
   name: 'app',
   components: {
     UserHeader,
+    RestauranteHeader,
     Menudrawer,
   },
   data() {
     return {
-      userPhoto: './static/img/user.jpg',
       routes,
+      urlRestaurante: '',
     };
-  },
-  methods: {
-    hideMenu: function hideMenu() {
-      // document.getElementsByClassName('mdl-layout__drawer')[0].classList.remove('is-visible');
-      // document.getElementsByClassName('mdl-layout__obfuscator')[0]
-      // .classList.remove('is-visible');
-    },
   },
 };
 </script>
@@ -51,10 +46,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  width: 100%;
+  margin: auto;
 }
 
 .main-enter-active, .main-leave-active {
-  transition: opacity .1s
+  transition: opacity .2s
 }
 
 .main-enter, .main-leave-active {
@@ -68,21 +65,8 @@ main {
 
 header {
   margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
   background-color: #BE1622;
   color: #ffffff;
-}
-
-.titulo {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
 }
 
 </style>

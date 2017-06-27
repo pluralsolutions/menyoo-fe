@@ -1,48 +1,50 @@
 <template>
-    <div class="user">
+    <div class="user-head">
       <div class="photo-circle">
-        <img :src="img" :alt="'User photo '+name">
+        <img :src="user.urlPhoto" :alt="'User photo '+user.name">
       </div>
-      <span class="user-head">{{name}}</span>
+      <span class="user">{{user.name}}</span>
     </div>
 </template>
 
-<<script>
+<script>
+import User from '../../domain/User';
 
 export default {
   name: 'UserHeader',
   data() {
     return {
-      name: 'Gabriel Toledo',
-      img: 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg',
+      user: new User('Gabriel Toledo',
+        'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
     };
   },
 };
 </script>
 <style>
-.user {
+.user-head {
   display: block;
-  position: relative;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
   font-size: 20px;
   line-height: 1;
   letter-spacing: 1.09em 2em;
   font-weight: 400;
   box-sizing: border-box;
-  padding-top: 1px;
-  padding-left: 6px;
+  padding-top: 2px;
+  padding-left: 20px;
   background-color: #dcdcdc;
 }
 
-.user-head {
+.user {
   position: relative;
-  top: -10px;
-  font-size: 13px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
+  top: -13px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  font-weight: bolder;
   box-sizing: border-box;
-  /*height: 100%;*/
   text-transform: uppercase;
+  color: black;
 }
 
 .photo-circle {
