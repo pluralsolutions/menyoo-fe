@@ -1,6 +1,18 @@
-# menyoo
+# Menyoo
 
 > This is a Simple Proof of Concept (POC) for using Vue making progressive web apps
+
+## Get repo
+
+``` bash
+# clone repository
+git clone https://github.com/plural-solutions/menyoo-fe.git 
+
+# enter directory
+cd menyoo-fe
+
+# follow build setup
+```
 
 ## Build Setup
 
