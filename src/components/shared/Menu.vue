@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <router-link v-for="item in rotasFiltro" :key="item" :to="item.path">
-          <li>{{item.titulo}}</li>
+          <li @onclick="hideMenu">{{item.titulo}}</li>
       </router-link>
     </ul>
   </nav>
@@ -21,6 +21,12 @@ export default {
         return this.rotas.filter(r => (r.exibir) === true);
       }
       return [];
+    },
+  },
+  methods: {
+    hideMenu: function hideMenu() {
+      document.getElementsByClassName('mdl-layout__drawer')[0].classList.remove('is-visible');
+      document.getElementsByClassName('mdl-layout__obfuscator')[0].classList.remove('is-visible');
     },
   },
 };
