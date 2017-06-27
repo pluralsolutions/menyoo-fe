@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'hello',
   data() {
@@ -48,6 +49,6 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #BE1622;
 }
 </style>
