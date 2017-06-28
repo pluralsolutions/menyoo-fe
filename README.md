@@ -1,6 +1,6 @@
-# Menyoo [![build status](https://img.shields.io/travis/plural-solutions/menyoo-fe/master.svg?style=flat-square)](https://travis-ci.org/plural-solutions/menyoo-fe) [![Coverage Status](https://coveralls.io/repos/github/plural-solutions/menyoo-fe/badge.svg?branch=master)](https://coveralls.io/github/plural-solutions/menyoo-fe?branch=master)git 
+# Menyoo [![build status](https://img.shields.io/travis/plural-solutions/menyoo-fe/master.svg?style=flat-square)](https://travis-ci.org/plural-solutions/menyoo-fe) [![Coverage Status](https://coveralls.io/repos/github/plural-solutions/menyoo-fe/badge.svg?branch=master)](https://coveralls.io/github/plural-solutions/menyoo-fe?branch=master)
 
-> This is a Simple Proof of Concept (POC) for using Vue making progressive web apps
+> This is a progressive web apps for front end application for exclusive use of Plural Solutions
 
 ## Get repo
 
