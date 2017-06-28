@@ -1,4 +1,4 @@
-# Menyoo
+# Menyoo [![build status](https://img.shields.io/travis/plural-solutions/menyoo-fe/master.svg?style=flat-square)](https://travis-ci.org/plural-solutions/menyoo-fe)
 
 > This is a Simple Proof of Concept (POC) for using Vue making progressive web apps
 
