@@ -4,7 +4,7 @@
         <img src="../assets/lupa.svg" id="filtro_ico"></img>
         <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
           autocomplete="true" placeholder="Busque seu prato preferido"></input>
-          <br/>
+          <br>
           <div style="border:1px solid black;display:inline-block">{{filtro}}</div>
       <!--</form>-->
       <div class="lista">
