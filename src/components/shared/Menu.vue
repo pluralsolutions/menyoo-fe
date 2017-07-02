@@ -1,8 +1,8 @@
 <template>
-  <nav>
+  <nav class="mdl-layout__drawer">
     <ul>
       <router-link v-for="item in routes" :key="item" :to="item.path">
-          <li @onclick="hideMenu">{{item.titulo}}</li>
+          <li @click="hideMenu">{{item.titulo}}</li>
       </router-link>
     </ul>
   </nav>

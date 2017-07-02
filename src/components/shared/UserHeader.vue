@@ -1,5 +1,6 @@
 <template>
     <div class="user-head">
+      <Burger style="float: right;margin-right: 15px;"></Burger>
       <router-link :to="{name: 'usuario'}" class="nolink">
         <div class="photo-circle">
           <img :src="user.urlPhoto" :alt="'User photo '+user.name">
@@ -11,9 +12,13 @@
 
 <script>
 import User from '../../domain/User';
+import Burger from './Burger';
 
 export default {
   name: 'UserHeader',
+  components: {
+    Burger,
+  },
   data() {
     return {
       user: new User('Gabriel Toledo',
