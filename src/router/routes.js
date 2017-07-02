@@ -1,6 +1,9 @@
 import Hello from '@/components/Hello';
-import Teste from '@/components/Teste';
-import Home from '@/components/Home';
+
+// separa o bundle e faz loading lazy
+const Teste = () => System.import('@/components/Teste');
+const Home = () => System.import('@/components/Home');
+const Usuario = () => System.import('@/components/Usuario');
 
 export default [
   {
@@ -12,16 +15,23 @@ export default [
   },
   {
     path: '/teste',
-    name: 'Teste',
+    name: 'teste',
     titulo: 'Teste',
     exibir: true,
     component: Teste,
   },
   {
-    path: '/Home',
+    path: '/home',
     name: 'Home',
     titulo: 'Home',
     exibir: true,
     component: Home,
+  },
+  {
+    path: '/usuario',
+    name: 'usuario',
+    titulo: 'Usuario',
+    exibir: false,
+    component: Usuario,
   },
 ];

@@ -1,9 +1,11 @@
 <template>
     <div class="user-head">
-      <div class="photo-circle">
-        <img :src="user.urlPhoto" :alt="'User photo '+user.name">
-      </div>
-      <span class="user">{{user.name}}</span>
+      <router-link :to="{name: 'usuario'}" class="nolink">
+        <div class="photo-circle">
+          <img :src="user.urlPhoto" :alt="'User photo '+user.name">
+        </div>
+        <span class="user">{{user.name}}</span>
+      </router-link>
     </div>
 </template>
 
@@ -21,6 +23,9 @@ export default {
 };
 </script>
 <style>
+.user-head a {
+  text-decoration: none;
+}
 .user-head {
   display: block;
   width: 100%;

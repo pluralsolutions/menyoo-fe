@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <router-link v-for="item in rotasFiltro" :key="item" :to="item.path">
+      <router-link v-for="item in routes" :key="item" :to="item.path">
           <li @onclick="hideMenu">{{item.titulo}}</li>
       </router-link>
     </ul>
@@ -15,13 +15,10 @@ export default {
       required: true,
     },
   },
-  computed: {
-    rotasFiltro() {
-      if (this.rotas) {
-        return this.rotas.filter(r => (r.exibir) === true);
-      }
-      return [];
-    },
+  data() {
+    return {
+      routes: this.rotas.filter(r => r.exibir),
+    };
   },
   methods: {
     hideMenu: function hideMenu() {

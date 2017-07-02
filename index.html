@@ -28,9 +28,12 @@
   </head>
   <body>
     <div id="app">
-      Aconteceu algo de errado com os scripts.<br/>
-      Por favor, tente abrir novamente.<br/> 
-      This is your fallback content in case JavaScript fails to load.</div>
+      <div style="vertical-align: middle; height:100%;width:100%;position:relative;top:50%">
+        <img src="static/img/logo.png" width="100%"/><br/>
+        Carregando scripts...<br/><br/>
+        Se estiver demorando muito, por favor tente abrir novamente.<br/> 
+      </div>
+    </div>
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->

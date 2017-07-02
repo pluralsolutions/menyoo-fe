@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       routes,
-      urlRestaurante: '',
     };
   },
 };
@@ -48,6 +47,13 @@ body {
   color: #2c3e50;
   width: 100%;
   margin: auto;
+}
+
+img, div, input["type!=text"], h1{
+  -webkit-user-select: none; /* Chrome, Opera, Safari */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
 }
 
 .main-enter-active, .main-leave-active {
