@@ -1,9 +1,11 @@
 <template>
   <div id="app">
+    <keep-alive>
     <header>
       <user-header style="height:50px;"></user-header>
-      <RestauranteHeader v-if="showRestaurante" style="padding-top:50px;"></RestauranteHeader>
+      <RestauranteHeader v-show="showRestaurante" style="padding-top:50px;"></RestauranteHeader>
     </header>
+    </keep-alive>
     <main>
       <transition name="main">
       <router-view></router-view>
