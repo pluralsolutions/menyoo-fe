@@ -33,7 +33,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .user-head .burger{
   position: fixed;
   right: 1em;

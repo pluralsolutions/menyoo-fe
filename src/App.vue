@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <keep-alive>
-    <header>
-      <user-header style="height:50px;"></user-header>
-      <RestauranteHeader v-show="showRestaurante" style="padding-top:50px;"></RestauranteHeader>
-    </header>
+      <header>
+        <user-header style="height: 50px"></user-header>
+        <RestauranteHeader v-show="showRestaurante" style="padding-top: 50px"></RestauranteHeader>
+      </header>
     </keep-alive>
     <main>
       <transition name="main">
@@ -47,19 +47,19 @@ body {
   margin: auto;
 }
 
-img, div, input["type!=text"], h1{
-  -webkit-user-select: none; /* Chrome, Opera, Safari */
-  -moz-user-select: none; /* Firefox 2+ */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* Standard syntax */
+img, div, h1, h2, h3, h4, h5, h6, span, label{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .main-enter-active, .main-leave-active {
-  transition: opacity .3s
+  transition: opacity .3s;
 }
 
 .main-enter, .main-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 
 main {

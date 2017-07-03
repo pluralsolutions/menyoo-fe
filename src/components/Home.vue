@@ -15,8 +15,7 @@
             <img :src="prato.url" :alt="prato.titulo">
           </li>
         </ul>
-      </div>
-    <div><img src="../assets/home.png"></div>  
+      </div> 
   </div>
 </template>
 
@@ -33,8 +32,8 @@ export default {
     return {
       filtro: '',
       pratos: [
-        new Prato('Pizza de mussarela', 'Queijo mussarela e massa média caseira', '', 4),
-        new Prato('Pizza de mussarela', 'Queijo mussarela e massa média caseira', '', 4),
+        new Prato('Pizza de Mussarela', 'Queijo mussarela e massa média caseira', '', 4),
+        new Prato('Pizza de Romanesca', 'Queijo mussarela e tomates frescos e massa média caseira', '', 4),
       ],
     };
   },

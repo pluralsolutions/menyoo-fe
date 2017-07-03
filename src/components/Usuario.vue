@@ -8,7 +8,7 @@
     <form class="formulario" @submit.prevent="enviar">
       <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
         <label for="name'">Name</label>
-        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" :class="{'input': true, 'is-danger': errors.has('name') }" v-validate data-vv-rules="required|min:3|max:30" >
+        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" :class="input" v-validate data-vv-rules="required|min:3|max:30" >
         <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
       </div>
       <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
@@ -32,8 +32,7 @@ export default {
   data() {
     return {
       msg: 'Hello!',
-      user: new User('Gabriel Toledo',
-      'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
+      user: new User('Gabriel Toledo', 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
     };
   },
   methods: {
