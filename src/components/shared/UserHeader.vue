@@ -1,33 +1,47 @@
 <template>
     <div class="user-head">
-      <Burger style="float: right;margin-right: 15px;"></Burger>
+      <burger class="burger" navid="mySidenav"></burger>
       <router-link :to="{name: 'usuario'}" class="nolink">
-        <div class="photo-circle">
-          <img :src="user.urlPhoto" :alt="'User photo '+user.name">
-        </div>
+        <photo-circle :src="user.urlPhoto" :alt="'User photo '+user.name" size="32"></photo-circle>
         <span class="user">{{user.name}}</span>
       </router-link>
+      <menu-draw class="menulateral" id="mySidenav"></menu-draw>
     </div>
 </template>
 
 <script>
-import User from '../../domain/User';
-import Burger from './Burger';
+import User from '@/domain/User';
+import Burger from '@/components/shared/Burger';
+import MenuDraw from '@/components/shared/MenuDraw';
+import PhotoCircle from '@/components/shared/PhotoCircle';
 
 export default {
   name: 'UserHeader',
   components: {
-    Burger,
+    burger: Burger,
+    'menu-draw': MenuDraw,
+    'photo-circle': PhotoCircle,
   },
   data() {
     return {
+      menuopen: false,
       user: new User('Gabriel Toledo',
         'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
     };
   },
+  methods: {
+  },
 };
 </script>
 <style>
+.user-head .burger{
+  position: fixed;
+  right: 1em;
+  height: 5px; 
+}
+.menulateral{
+  
+}
 .user-head a {
   text-decoration: none;
 }
@@ -35,7 +49,8 @@ export default {
   display: block;
   width: 100%;
   position: fixed;
-  z-index: 9999;
+  top: 0px;
+  z-index: 9;
   font-size: 20px;
   line-height: 1;
   letter-spacing: 1.09em 2em;
@@ -55,22 +70,6 @@ export default {
   box-sizing: border-box;
   text-transform: uppercase;
   color: black;
-}
-
-.photo-circle {
-  display: inline-flex;
-  box-sizing: content-box;
-  background-clip: content-box;
-  border-radius: 50%;
-  box-shadow: inset 1px 5px 3px 0px rgba(0,0,0,.15), 0px 3px 5px 3px rgba(0,0,0,.15);
-  margin: 4px;
-}
-
-.photo-circle img {
-  border: 1px solid #eee;
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;  
 }
 
 </style>

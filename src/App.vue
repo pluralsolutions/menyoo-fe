@@ -2,9 +2,8 @@
   <div id="app">
     <header>
       <user-header style="height:50px;"></user-header>
-      <RestauranteHeader style="padding-top:50px;"></RestauranteHeader>
+      <RestauranteHeader v-if="showRestaurante" style="padding-top:50px;"></RestauranteHeader>
     </header>
-    <menudrawer :rotas="routes"></menudrawer>
     <main>
       <transition name="main">
       <router-view></router-view>
@@ -16,19 +15,16 @@
 <script>
 import UserHeader from '@/components/shared/UserHeader';
 import RestauranteHeader from '@/components/shared/RestauranteHeader';
-import Menudrawer from '@/components/shared/Menu';
-import routes from '@/router/routes';
 
 export default {
   name: 'app',
   components: {
     UserHeader,
     RestauranteHeader,
-    Menudrawer,
   },
   data() {
     return {
-      routes,
+      showRestaurante: true,
     };
   },
 };
@@ -57,7 +53,7 @@ img, div, input["type!=text"], h1{
 }
 
 .main-enter-active, .main-leave-active {
-  transition: opacity .2s
+  transition: opacity .3s
 }
 
 .main-enter, .main-leave-active {

@@ -1,43 +1,68 @@
 <template>
-  <nav class="mdl-layout__drawer">
+  <nav id="nav" @click="hideMenu">
     <ul>
       <router-link v-for="item in routes" :key="item" :to="item.path">
-          <li @click="hideMenu">{{item.titulo}}</li>
+          <li>{{item.titulo}}</li>
       </router-link>
     </ul>
   </nav>
 </template>
 <<script>
+import rotas from '@/router/routes';
+
 export default {
+  name: 'menudraw',
   props: {
-    rotas: {
-      type: Array,
-      required: true,
-    },
+    // rotas: {
+    //   type: Array,
+    //   required: true,
+    // },
   },
   data() {
     return {
-      routes: this.rotas.filter(r => r.exibir),
+      routes: rotas.filter(r => r.exibir),
     };
   },
   methods: {
     hideMenu: function hideMenu() {
-      document.getElementsByClassName('mdl-layout__drawer')[0].classList.remove('is-visible');
-      document.getElementsByClassName('mdl-layout__obfuscator')[0].classList.remove('is-visible');
+      // this.$el.style.width = '0';
+      if (this.$el.$elBurger) {
+        this.$el.$elBurger.burgerclick();
+      }
     },
   },
 };
 </script>
-<<style scoped>
+<style scoped>
 ul{
   list-style: none;
 }
 ul li{
   display: inline-block;
-  width: 80px;
+  width: 70%;
   border: 1px solid #eee;
   box-shadow: 5px 5px 5px;
-  padding: 5px 15px;
-  margin: 10px;
+  padding: 5px 5px 5px 15px;
+  margin: 5px;
+  background-color: #fff;
+}
+
+nav {
+    height: 100%;
+    width: 180px;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow-x: hidden;
+    transition: 0.9s;
+    padding-top: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  nav {padding-top: 15px;}
+  nav li {font-size: 14px;}
 }
 </style>

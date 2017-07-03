@@ -8,8 +8,8 @@ import ptBR from 'vee-validate/dist/locale/pt_BR';
 import App from './App';
 import router from './router';
 
-VeeValidate.Validator.addLocale(en);
 VeeValidate.Validator.addLocale(ptBR);
+VeeValidate.Validator.addLocale(en);
 
 Vue.use(VueResource);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';

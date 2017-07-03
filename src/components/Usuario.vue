@@ -1,21 +1,88 @@
 <template>
   <div>
-    <label>Exemplo {{ msg }}</label>
-    <div><img src="../assets/home.png"></div>  
+    <h1>Perfil</h1>
+    <div class="center">
+      <h2>{{user.name}}</h2>
+      <photo-circle :size="128" :src="user.urlPhoto" :alt="user.name"></photo-circle>
+    </div>
+    <form class="formulario" @submit.prevent="enviar">
+      <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
+        <label for="name'">Name</label>
+        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" :class="{'input': true, 'is-danger': errors.has('name') }" v-validate data-vv-rules="required|min:3|max:30" >
+        <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
+      </div>
+      <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
+        <label for="urlPhoto">urlPhoto</label>
+        <input v-validate data-vv-rules="required" v-model.lazy="user.urlPhoto" id="urlPhoto" name="urlPhoto" autocomplete="off">
+        <span class="erro" v-show="errors.has('urlPhoto')">{{ errors.first('urlPhoto') }}</span>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'hello',
-    data() {
-      return {
-        msg: 'Hello!',
-      };
+import User from '@/domain/User';
+import PhotoCircle from '@/components/shared/PhotoCircle';
+
+export default {
+  name: 'hello',
+  components: {
+    'photo-circle': PhotoCircle,
+  },
+  data() {
+    return {
+      msg: 'Hello!',
+      user: new User('Gabriel Toledo',
+      'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
+    };
+  },
+  methods: {
+    enviar: function enviar() {
+      this.$validator
+      .validateAll()
+      .then((success) => {
+        if (success) {
+          // voltar para pagina home.
+          this.$router.push({ name: 'home' });
+          // salvar dados do usuario
+          // this.service
+            // .cadastra (this.user)
+            // .then(() => {
+              // if(this.id) this.$router.push({name: 'home'});
+              // this.user = new user();
+            // }, err => console.log(err));
+        }
+      },
+      // eslint-disable-next-line
+      (err) => console.log(err));
     },
-  };
+  },
+};
 </script>
 
 <style scoped>
+.formulario{
+  text-align: left;
+  width: 80%;
+  padding: 5%;
+}
+.controle{
+  width: 100%;
+  margin: 20px;
+}
+label {
+  font-weight: bold;
+  width: 100%;
+}
 
+label, input, textarea{
+  width: 100%;
+  border-radius: 5px;
+}
+.invalid{
+  border-color: red;
+}
+.erro{
+  color: red;
+}
 </style>
