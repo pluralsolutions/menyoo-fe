@@ -3,13 +3,13 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
-import en from 'vee-validate/dist/locale/en';
-import ptBR from 'vee-validate/dist/locale/pt_BR';
+import validadeEn from 'vee-validate/dist/locale/en';
+import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import App from './App';
 import router from './router';
 
-VeeValidate.Validator.addLocale(ptBR);
-VeeValidate.Validator.addLocale(en);
+VeeValidate.Validator.addLocale(validadePtBR);
+VeeValidate.Validator.addLocale(validadeEn);
 
 Vue.use(VueResource);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';
