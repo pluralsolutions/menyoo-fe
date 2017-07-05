@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <header>
-        <user-header style="height: 50px"></user-header>
+    <header>
+        <UserHeader style="height: 50px"></userheader>
         <RestauranteHeader v-show="showRestaurante" style="padding-top: 50px"></RestauranteHeader>
-      </header>
-    </keep-alive>
+    </header>
     <main>
       <transition name="main">
       <router-view></router-view>
