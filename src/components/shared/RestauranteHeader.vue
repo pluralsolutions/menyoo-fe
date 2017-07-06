@@ -37,18 +37,20 @@ export default {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  vertical-align: text-bottom;
 }
-.restaurante-bg{
+.restaurante-bg {
   background: rgba(192, 16, 36, 0.4);
   height: 100%;
   width: 100%;
-  /*padding: 20px;*/
+  min-height: 160px;
   position: relative;
   text-align: bottom;
   vertical-align: text-bottom;
 }
 .restaurante-container {
   display: inline-block;
+  margin: auto auto;
 }
 .restaurante-name {
   color: #ffffff;
