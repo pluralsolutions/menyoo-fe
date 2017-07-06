@@ -1,34 +1,34 @@
 <template>
-  <nav id="nav" @click="hideMenu">
-    <ul>
-      <router-link v-for="item in routes" :key="item" :to="item.path">
-          <li>{{item.titulo}}</li>
-      </router-link>
-    </ul>
-  </nav>
+  <div>
+    <Burger ref="burg" v-model="aberto"></Burger>
+    <nav @click="hide" :class="{'hide': !aberto}">
+      <ul>
+        <router-link v-for="item in routes" :key="item" :to="item.path">
+            <li>{{item.titulo}}</li>
+        </router-link>
+      </ul>
+    </nav>
+  </div>
 </template>
 <<script>
 import rotas from '@/router/routes';
+import Burger from '@/components/shared/Burger';
 
 export default {
   name: 'menudraw',
-  props: {
-    // rotas: {
-    //   type: Array,
-    //   required: true,
-    // },
+  components: {
+    Burger,
   },
   data() {
     return {
       routes: rotas.filter(r => r.exibir),
+      aberto: false,
     };
   },
   methods: {
-    hideMenu: function hideMenu() {
-      // this.$el.style.width = '0';
-      if (this.$el.$elBurger) {
-        this.$el.$elBurger.burgerclick();
-      }
+    hide: function hide() {
+      this.aberto = false;
+      // this.$refs.burg.close();
     },
   },
 };
@@ -46,11 +46,14 @@ ul li{
   margin: 5px;
   background-color: #fff;
 }
-
+.hide{
+    display: none;
+}
 nav {
+    transition-duration: 0.3s;
+    display: block;
     height: 100%;
     width: 180px;
-    display: none;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -62,7 +65,7 @@ nav {
 }
 
 @media screen and (max-height: 450px) {
-  nav {padding-top: 15px;}
-  nav li {font-size: 14px;}
+  nav {padding-top: 20px;}
+  nav li {font-size-adjust: 2pt;}
 }
 </style>
