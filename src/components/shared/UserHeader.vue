@@ -1,24 +1,21 @@
 <template>
     <div class="user-head">
-      <burger class="burger" navid="mySidenav"></burger>
+      <menu-draw></menu-draw>
       <router-link :to="{name: 'usuario'}" class="nolink">
         <photo-circle :src="user.urlPhoto" :alt="'User photo '+user.name" size="32"></photo-circle>
         <span class="user">{{user.name}}</span>
       </router-link>
-      <menu-draw class="menulateral" id="mySidenav"></menu-draw>
     </div>
 </template>
 
 <script>
 import User from '@/domain/User';
-import Burger from '@/components/shared/Burger';
 import MenuDraw from '@/components/shared/MenuDraw';
 import PhotoCircle from '@/components/shared/PhotoCircle';
 
 export default {
   name: 'UserHeader',
   components: {
-    burger: Burger,
     'menu-draw': MenuDraw,
     'photo-circle': PhotoCircle,
   },
@@ -34,14 +31,6 @@ export default {
 };
 </script>
 <style scoped>
-.user-head .burger{
-  position: fixed;
-  right: 1em;
-  height: 5px; 
-}
-.menulateral{
-  
-}
 .user-head a {
   text-decoration: none;
 }
