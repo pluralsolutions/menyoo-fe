@@ -2,6 +2,17 @@
 
 > This is a progressive web apps for front end application for exclusive use of Plural Solutions
 
+## Get Node 7 or greater
+
+[Node JS Current](https://nodejs.org/en/download/current/)
+
+[Windows Installer (.msi)](https://nodejs.org/dist/v8.2.1/node-v8.2.1-x64.msi)
+
+[macOS Installer (.pkg)](https://nodejs.org/dist/v8.2.1/node-v8.2.1.pkg)
+
+[Linux Binaries (x86/x64)](https://nodejs.org/dist/v8.2.1/node-v8.2.1-linux-x64.tar.xz)
+
+
 ## Get repo
 
 ``` bash
