@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div id="app">
     <header>
         <UserHeader style="height: 50px"></userheader>
@@ -71,4 +71,7 @@ header {
   color: #ffffff;
 }
 
+.clearfix{
+  clear: both;
+}
 </style>

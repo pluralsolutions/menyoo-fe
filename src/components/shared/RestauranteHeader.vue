@@ -8,7 +8,8 @@
         </div>
       </div>
     </div>
-    <div style="height:140px;"></div>
+    <br class="clearfix" />
+    <div style="height:110px;"></div>
   </div>
 </template>
 
@@ -28,7 +29,7 @@ export default {
   created() {
     window.addEventListener('scroll', () => {
       this.sticky = (window && window.document && window.document.body) &&
-        (window.document.body.scrollTop || 0) > 100;
+        (window.document.body.scrollTop || 0) > 65;
     });
   },
 };
@@ -43,7 +44,7 @@ export default {
     width: 100%;
     height: 146px;
     padding: 0px;
-    z-index: 9;
+    z-index: 1;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

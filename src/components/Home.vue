@@ -1,25 +1,15 @@
 ﻿<template>
   <div>
-      <!--<form @submit.prevent="filtrar()">-->
-        <img src="../assets/lupa.svg" id="filtro_ico"></img>
-        <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
-          autocomplete="true" placeholder="Busque seu prato preferido"></input>
-          <br>
-          <div style="border:1px solid black;display:inline-block">{{filtro}}</div>
-      <!--</form>-->
-      <div class="lista">
-        <ul class="lista-pratos">
-          <li class="lista-pratos-item" v-for="prato in pratosComFiltro" v-bind:key="prato">
-            <PainelPrato :titulo="prato.titulo">
-              {{prato}}
-            <img width="99%" :src="prato.urlPhoto" :alt="prato.titulo">
-            </PainelPrato>
-          </li>
-        </ul>
-      </div> 
+    <div class="filtro">
+      <img src="../assets/lupa.svg" class="filtro_ico"></img>
+      <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true" 
+        autocomplete="true" placeholder="Busque seu prato preferido"></input>
+    </div>
+    <div class="lista">
+      <PainelPrato :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato._id">></PainelPrato>
+    </div>
   </div>
 </template>
-
 <script>
 import PainelPrato from '@/components/shared/PainelPrato';
 import Prato from '../domain/Prato';
@@ -57,18 +47,23 @@ export default {
       // .then(fotos => this.fotos = fotos, err => console.log(err));
 
     this.pratos = [
-      new Prato('Mussarela', 'Queijo mussarela e massa média caseira', 'http://www.pizzasdonatello.com.br/imagens/slides/7867e857eef46fd12dfbd2105dc4e3e6.jpg', 4),
-      new Prato('Manjericão', 'Queijo mussarela e tomates frescos e massa média caseira', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUhAGJJABIFdWDSc4ysVMwaIbeXja7Dz_3XuVLWKnY6BfsJfHMWA', 5),
+      new Prato('Pizza de Mussarela', 'Queijo mussarela e massa média caseira', 'http://www.pizzasdonatello.com.br/imagens/slides/7867e857eef46fd12dfbd2105dc4e3e6.jpg', 4),
+      new Prato('Pizza de Manjericão', 'Queijo mussarela e tomates frescos e massa média caseira', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUhAGJJABIFdWDSc4ysVMwaIbeXja7Dz_3XuVLWKnY6BfsJfHMWA', 5),
     ];
   },
 };
 </script>
+
 <style>
+.filtro{
+  margin: 10px 0;
+}
 #filtro{
+  width: 50%;
   padding-left: 32px;
   height: 32px;
 }
-#filtro_ico{
+.filtro_ico{
   width: 16px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -77,22 +72,10 @@ export default {
   left: 30px;
   top: 4px;
   opacity: 0.5;
-  /*z-index:2;*/
 }
 
 .lista{
   width: 100%;
-  /*height: 160px;*/
-  /*overflow: scroll;  */
 }
-
-.lista-pratos {
-  list-style: none;
-}
-
-.lista-pratos .lista-pratos-item {
-  display: inline-block;
-}
-
 
 </style>
