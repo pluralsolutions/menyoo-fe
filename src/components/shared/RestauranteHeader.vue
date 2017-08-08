@@ -48,11 +48,11 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     vertical-align: text-bottom;
-    transition: 1s;
-    -moz-transition: 1s;
-    -o-transition: 1s;
-    -ms-transition: 1s;
-    -webkit-transition: 1s;
+    transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -webkit-transition: .3s;
   }
   .restaurante-bg {
     background: rgba(192, 16, 36, 0.4);
