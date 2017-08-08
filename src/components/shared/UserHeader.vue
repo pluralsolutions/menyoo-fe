@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="user-head">
       <menu-draw></menu-draw>
       <router-link :to="{name: 'usuario'}" class="nolink">
@@ -23,7 +23,7 @@ export default {
     return {
       menuopen: false,
       user: new User('Gabriel Toledo',
-        'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
+        'static/img/usuario.svg'),
     };
   },
   methods: {
