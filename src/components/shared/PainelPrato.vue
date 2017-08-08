@@ -49,6 +49,7 @@ export default {
   .painel-fade-enter{
     opacity: 0;
   }
+
   .painel-fade-leave-active,  
   .painel-fade-enter-active{
     transition: opacity .4s;

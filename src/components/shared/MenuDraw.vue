@@ -10,7 +10,7 @@
     </nav>
   </div>
 </template>
-<<script>
+<script>
 import rotas from '@/router/routes';
 import Burger from '@/components/shared/Burger';
 

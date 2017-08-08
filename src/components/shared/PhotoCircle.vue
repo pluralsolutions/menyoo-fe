@@ -1,4 +1,4 @@
-<<template>
+<template>
   <div class="photo-circle">
     <img :src="src" :alt="alt" :style="`height: ${size}px; width: ${size}px;`">
   </div>

@@ -10,9 +10,10 @@
       <div class="lista">
         <ul class="lista-pratos">
           <li class="lista-pratos-item" v-for="prato in pratosComFiltro" v-bind:key="prato">
-            <PainelPrato titulo="gsd"></PainelPrato>
+            <PainelPrato :titulo="prato.titulo">
             {{prato.titulo}}
-            <img :src="prato.url" :alt="prato.titulo">
+            <img width="99%" :src="prato.urlPhoto" :alt="prato.titulo">
+            </PainelPrato>
           </li>
         </ul>
       </div> 
@@ -31,10 +32,7 @@ export default {
   data() {
     return {
       filtro: '',
-      pratos: [
-        new Prato('Pizza de Mussarela', 'Queijo mussarela e massa média caseira', '', 4),
-        new Prato('Pizza de Romanesca', 'Queijo mussarela e tomates frescos e massa média caseira', '', 4),
-      ],
+      pratos: [],
     };
   },
   methods: {
@@ -57,10 +55,15 @@ export default {
     // this.$http.get('http://localhost:3000/v1/fotos')
       // .then(res => res.json())
       // .then(fotos => this.fotos = fotos, err => console.log(err));
+
+    this.pratos = [
+      new Prato('Mussarela', 'Queijo mussarela e massa média caseira', 'http://www.pizzasdonatello.com.br/imagens/slides/7867e857eef46fd12dfbd2105dc4e3e6.jpg', 4),
+      new Prato('Manjericão', 'Queijo mussarela e tomates frescos e massa média caseira', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUhAGJJABIFdWDSc4ysVMwaIbeXja7Dz_3XuVLWKnY6BfsJfHMWA', 5),
+    ];
   },
 };
 </script>
-<<style>
+<style>
 #filtro{
   padding-left: 32px;
   height:32px;
