@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
       <!--<form @submit.prevent="filtrar()">-->
         <img src="../assets/lupa.svg" id="filtro_ico"></img>
@@ -11,7 +11,7 @@
         <ul class="lista-pratos">
           <li class="lista-pratos-item" v-for="prato in pratosComFiltro" v-bind:key="prato">
             <PainelPrato :titulo="prato.titulo">
-            {{prato.titulo}}
+              {{prato}}
             <img width="99%" :src="prato.urlPhoto" :alt="prato.titulo">
             </PainelPrato>
           </li>
@@ -66,7 +66,7 @@ export default {
 <style>
 #filtro{
   padding-left: 32px;
-  height:32px;
+  height: 32px;
 }
 #filtro_ico{
   width: 16px;
