@@ -1,15 +1,13 @@
 ﻿<template>
-  <div>
+  <div class="restaurante-container">
     <div :class="{'restaurante-head':1, 'sticky': sticky}" :style="'background-image: url('+resto.urlHeader+')'">
       <div class="center restaurante-bg">
-        <div class="restaurante-container">
+        <div class="restaurante-descricao">
           <h1 class="restaurante-name">{{resto.nome}}</h1>
           <img :class="{'imglogo':1, 'sticky': sticky}" :src="resto.urlLogo">
         </div>
       </div>
     </div>
-    <br class="clearfix" />
-    <div style="height:110px;"></div>
   </div>
 </template>
 
@@ -38,6 +36,9 @@ export default {
   .center{
     text-align: center;
   }
+  .restaurante-container {
+	height: 150px;
+  }
   .restaurante-head {
     overflow: hidden;
     position: fixed;
@@ -53,18 +54,19 @@ export default {
     -moz-transition: .3s;
     -o-transition: .3s;
     -ms-transition: .3s;
+	top: -1px;
+	margin-top: 45px;
     -webkit-transition: .3s;
   }
   .restaurante-bg {
     background: rgba(192, 16, 36, 0.4);
     height: 100%;
     width: 100%;
-    min-height: 160px;
     position: relative;
     text-align: bottom;
     vertical-align: text-bottom;
   }
-  .restaurante-container {
+  .restaurante-descricao {
     display: inline-block;
     margin: auto auto;
   }
@@ -97,7 +99,7 @@ export default {
   }
 
   .restaurante-head.sticky {
-    top: 50px;
+    top: -1px;
     height: 50px;
   }
 </style>

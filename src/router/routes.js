@@ -8,17 +8,18 @@ const Inicial = () => System.import('@/components/Inicial');
 
 export default [
   {
+    path: '/',
+    name: '',
+    titulo: 'Inicial',
+    exibir: false,
+    exibirHeader: false,
+    component: Inicial,
+  },
+  {
     path: '/hello',
     name: 'Hello',
     titulo: 'Hello',
     component: Hello,
-  },
-  {
-    path: '/',
-    name: '',
-    titulo: 'Inicial',
-    exibirHeader: false,
-    component: Inicial,
   },
   {
     path: '/teste',
@@ -36,7 +37,6 @@ export default [
     path: '/usuario',
     name: 'usuario',
     titulo: 'Usuario',
-    exibirHeader: true,
     exibir: false,
     component: Usuario,
   },

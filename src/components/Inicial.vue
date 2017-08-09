@@ -21,7 +21,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .inicial {
     width: 100%;
     height: 100%;
@@ -46,8 +46,5 @@
     height: 100%;
     top: 0px;
     position: fixed;
-  }
-  header{
-    display: none;
   }
 </style>

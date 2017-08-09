@@ -35,10 +35,8 @@ export default {
   text-decoration: none;
 }
 .user-head {
-  display: block;
   width: 100%;
   position: fixed;
-  top: 0px;
   z-index: 9;
   font-size: 20px;
   line-height: 1;

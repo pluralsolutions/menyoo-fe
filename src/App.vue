@@ -1,9 +1,8 @@
 ﻿<template>
   <div id="app">
     <header>
-      <div>
-        <UserHeader style="height: 50px"></UserHeader>
-        <RestauranteHeader v-show="showRestaurante" style="padding-top: 50px"></RestauranteHeader>
+      <div :class="{'hide':!mostraHeader()}">
+        <UserHeader></UserHeader>
       </div>
     </header>
     <main>
@@ -16,17 +15,14 @@
 
 <script>
 import UserHeader from '@/components/shared/UserHeader';
-import RestauranteHeader from '@/components/shared/RestauranteHeader';
 
 export default {
   name: 'app',
   components: {
     UserHeader,
-    RestauranteHeader,
   },
   data() {
     return {
-      showRestaurante: true,
     };
   },
   methods: {
@@ -73,15 +69,17 @@ img, div, h1, h2, h3, h4, h5, h6, span, label{
 
 main {
   text-align: center;
-  margin-top: 40px;
 }
 
 header {
   margin: 0;
   background-color: #BE1622;
   color: #ffffff;
+  height: 50px;
 }
-
+  .hide {
+    display:none;
+  }
 .clearfix{
   clear: both;
 }
