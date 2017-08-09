@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import rotas from '@/router/routes';
+// import rotas from '@/router/routes';
 import Burger from '@/components/shared/Burger';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      routes: rotas.filter(r => r.exibir),
+      routes: this.$router.options.routes.filter(r => r.exibir || (typeof r.exibir === 'undefined')),
       aberto: false,
     };
   },
