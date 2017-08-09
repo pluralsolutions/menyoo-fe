@@ -16,6 +16,7 @@
     },
     created() {
       // fazer checagem se o usuario já está logado
+      setTimeout(() => { this.$router.push('/Home'); }, 500);
     },
   };
 </script>

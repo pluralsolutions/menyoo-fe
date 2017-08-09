@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div id="app">
     <header>
       <div>
@@ -32,7 +32,6 @@ export default {
   methods: {
     mostraHeader: function a() {
       const rt = this.$router.options.routes.filter(r => r.name === this.$route.name);
-      console.log(rt);
       if (rt && rt.length > 0) {
         return rt[0].exibirHeader || (typeof rt[0].exibirHeader === 'undefined');
       }
