@@ -1,8 +1,10 @@
 ﻿<template>
   <div id="app">
     <header>
+      <div v-show="mostraHeader">
         <UserHeader style="height: 50px"></userheader>
         <RestauranteHeader v-show="showRestaurante" style="padding-top: 50px"></RestauranteHeader>
+      </div>
     </header>
     <main>
       <transition name="main">
@@ -26,6 +28,15 @@ export default {
     return {
       showRestaurante: true,
     };
+  },
+  methods: {
+    mostraHeader: function a() {
+      const rt = this.$router.options.routes.filter(r => r.name === this.$route.name);
+      if (rt && rt.length > 0) {
+        return rt[0].exibirHeader || (typeof rt[0].exibirHeader === 'undefined');
+      }
+      return false;
+    },
   },
 };
 </script>
