@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      routes: this.$router.options.routes.filter(r => r.exibir || (typeof r.exibir === 'undefined')),
+      routes: this.$router.options.routes.filter(r => r.exibir),
       aberto: false,
     };
   },

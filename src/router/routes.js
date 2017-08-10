@@ -1,44 +1,25 @@
-﻿
-// separa o bundle e faz loading lazy
-import Hello from '@/components/Hello';
-import Teste from '@/components/Teste';
-import Home from '@/components/Home';
-import Usuario from '@/components/Usuario';
-import Inicial from '@/components/Inicial';
+﻿import Home from '@/components/Home';
+import Profile from '@/components/Profile';
+import Startup from '@/components/Startup';
 
 const routes = [
   {
     path: '/',
-    name: '',
-    titulo: 'Inicial',
-    exibir: false,
-    exibirHeader: false,
-    component: Inicial,
-  },
-  {
-    path: '/hello',
-    name: 'Hello',
-    titulo: 'Hello',
-    component: Hello,
-  },
-  {
-    path: '/teste',
-    name: 'teste',
-    titulo: 'Teste',
-    component: Teste,
+    component: Startup,
   },
   {
     path: '/home',
     name: 'Home',
     titulo: 'Home',
     component: Home,
+    exibir: true,
   },
   {
     path: '/usuario',
     name: 'usuario',
-    titulo: 'Usuario',
-    exibir: false,
-    component: Usuario,
+    titulo: 'Profile',
+    component: Profile,
+    exibir: true,
   },
 ];
 
