@@ -60,28 +60,5 @@ export default {
 </script>
 
 <style scoped>
-.formulario{
-  text-align: left;
-  width: 80%;
-  padding: 5%;
-}
-.controle{
-  width: 100%;
-  margin: 20px;
-}
-label {
-  font-weight: bold;
-  width: 100%;
-}
-
-label, input, textarea{
-  width: 100%;
-  border-radius: 5px;
-}
-.invalid{
-  border-color: red;
-}
-.erro{
-  color: red;
-}
+  @import '../assets/styles/profile.css'
 </style>

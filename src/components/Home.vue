@@ -1,26 +1,26 @@
 ﻿<template>
   <div>
-	<RestauranteHeader></RestauranteHeader>
+	<RestaurantHeader></RestaurantHeader>
     <div class="filtro">
       <img src="../assets/lupa.svg" class="filtro_ico"></img>
-      <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true" 
+      <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
         autocomplete="true" placeholder="Busque seu prato preferido"></input>
     </div>
     <div class="lista">
-      <PainelPrato :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato._id">></PainelPrato>
+      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato._id">></Product>
     </div>
   </div>
 </template>
 <script>
-import RestauranteHeader from '@/components/shared/RestauranteHeader';
-import PainelPrato from '@/components/shared/PainelPrato';
+import RestaurantHeader from '@/components/shared/RestaurantHeader';
+import Product from '@/components/shared/Product';
 import Prato from '../domain/Prato';
 
 export default {
   name: 'home',
   components: {
-    PainelPrato,
-    RestauranteHeader,
+    Product,
+    RestaurantHeader,
   },
   data() {
     return {
@@ -61,28 +61,6 @@ export default {
 };
 </script>
 
-<style>
-.filtro{
-  margin: 10px 0;
-}
-#filtro{
-  width: 50%;
-  padding-left: 32px;
-  height: 32px;
-}
-.filtro_ico{
-  width: 16px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  left: 30px;
-  top: 4px;
-  opacity: 0.5;
-}
-
-.lista{
-  width: 100%;
-}
-
+<style scoped>
+  @import '../assets/styles/home.css'
 </style>
