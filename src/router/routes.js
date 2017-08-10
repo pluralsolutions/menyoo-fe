@@ -1,12 +1,12 @@
 ﻿
 // separa o bundle e faz loading lazy
-const Hello = () => System.import('@/components/Hello');
-const Teste = () => System.import('@/components/Teste');
-const Home = () => System.import('@/components/Home');
-const Usuario = () => System.import('@/components/Usuario');
-const Inicial = () => System.import('@/components/Inicial');
+import Hello from '@/components/Hello';
+import Teste from '@/components/Teste';
+import Home from '@/components/Home';
+import Usuario from '@/components/Usuario';
+import Inicial from '@/components/Inicial';
 
-export default [
+const routes = [
   {
     path: '/',
     name: '',
@@ -41,3 +41,5 @@ export default [
     component: Usuario,
   },
 ];
+
+export default routes;
