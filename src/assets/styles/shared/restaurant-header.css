@@ -1,0 +1,69 @@
+.center{
+  text-align: center;
+}
+.restaurante-container {
+height: 150px;
+}
+.restaurante-head {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 146px;
+  padding: 0px;
+  z-index: 1;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: text-bottom;
+  transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  -ms-transition: .3s;
+top: -1px;
+margin-top: 45px;
+  -webkit-transition: .3s;
+}
+.restaurante-bg {
+  background: rgba(192, 16, 36, 0.4);
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: bottom;
+  vertical-align: text-bottom;
+}
+.restaurante-descricao {
+  display: inline-block;
+  margin: auto auto;
+}
+.restaurante-name {
+  color: #ffffff;
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: .02em;
+  font-weight: bolder;
+  box-sizing: border-box;
+}
+
+.imglogo {
+  position: relative;
+  height: 80px;
+  top: 5px;
+  transition: .2s;
+  -moz-transition: .2s;
+  -o-transition: .2s;
+  -ms-transition: .2s;
+  -webkit-transition: .2s;
+}
+
+.imglogo.sticky {
+  position: absolute;
+  height: 30px;
+  top: 10px;
+  left: 10px;
+}
+
+.restaurante-head.sticky {
+  top: -1px;
+  height: 50px;
+}

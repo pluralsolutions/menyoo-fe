@@ -1,0 +1,40 @@
+.painel-conteudo {
+  text-align: left;
+  position: relative;
+
+}
+.painel {
+  display: inline-block;
+  margin: 6px;
+  box-shadow: 5px 5px 10px grey;
+  width: 95%;
+  vertical-align: top;
+  text-align: center;
+  background-color: rgb(249, 242, 242);
+}
+
+.painel-titulo {
+  text-align: center;
+  margin: 0 0 5px 0;
+  padding: 8px;
+  text-transform: uppercase;
+  background-color: rgb(226, 222, 222);
+}
+
+.painel-foto {
+  width: 120px;
+  height: 120px;
+  margin: 0 10px 0 0;
+}
+
+.painel-descricao {
+
+}
+
+.painel {
+  box-shadow: 5px 5px 5px;
+}
+
+.estrelas {
+  width: 28px;
+}

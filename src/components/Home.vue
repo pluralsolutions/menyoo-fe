@@ -2,7 +2,7 @@
   <div>
 	<RestaurantHeader></RestaurantHeader>
     <div class="filtro">
-      <img src="../assets/lupa.svg" class="filtro_ico"></img>
+      <img src="../assets/images/lupa.svg" class="filtro_ico"></img>
       <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
         autocomplete="true" placeholder="Busque seu prato preferido"></input>
     </div>
