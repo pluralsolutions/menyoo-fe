@@ -1,6 +1,7 @@
 ﻿import Home from '@/components/Home';
 import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
+import Authentication from '@/components/Authentication';
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
     titulo: 'Profile',
     component: Profile,
     exibir: true,
+  },
+  {
+    path: '/entrar',
+    component: Authentication,
   },
 ];
 

@@ -1,0 +1,47 @@
+.authentication-container {
+  background-color: #f00;
+}
+
+.authenticators {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  margin: 0 auto;
+  height: 500px;
+  align-content: center;
+}
+
+.facebook, .google {
+  padding: 20px;
+  padding-left: 80px;
+  margin-top: 30px;
+  width: 80%;
+  position: relative;
+}
+
+.facebook::before,
+.google::before {
+  width: 62px;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  height: 62px;
+  position: absolute;
+}
+
+.facebook {
+  background-color: blue;
+}
+
+.facebook::before {
+  content: 'f';
+}
+
+.google {
+  background-color: white;
+}
+
+.google::before {
+  content: 'G';
+}
