@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div>
     <Burger ref="burg" v-model="aberto"></Burger>
