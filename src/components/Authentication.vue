@@ -1,12 +1,9 @@
 <template>
   <div class="authentication-container">
     <div class="authenticators">
-      <div class="facebook">
-        Entre com facebook
-      </div>
-      <div class="google">
-        Entre com Google
-      </div>
+      <router-link class="authenticator-item facebook" to="/home">Entre com Facebook</router-link>
+      <router-link class="authenticator-item google" to="/home">Entre com Google</router-link>
+      <router-link class="authenticator-item menyoo-account" to="/home">Entre com Email</router-link>
     </div>
   </div>
 </template>
@@ -16,8 +13,6 @@ export default {
   name: 'authentication',
   data() {
     return {
-      filtro: '',
-      pratos: [],
     };
   },
 };
