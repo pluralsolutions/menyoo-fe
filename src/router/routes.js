@@ -7,6 +7,7 @@ const routes = [
   {
     path: '/',
     component: Startup,
+    disableHeader: true,
   },
   {
     path: '/home',
@@ -25,6 +26,7 @@ const routes = [
   {
     path: '/entrar',
     component: Authentication,
+    disableHeader: true,
   },
 ];
 
