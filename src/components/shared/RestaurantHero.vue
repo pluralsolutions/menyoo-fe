@@ -1,12 +1,12 @@
 ﻿<template>
-  <div class="restaurante-container">
-    <div :class="{'restaurante-head':1, 'sticky': sticky}" :style="'background-image: url('+resto.urlHeader+')'">
-      <div class="center restaurante-bg">
-        <div class="restaurante-descricao">
-          <h1 class="restaurante-name">{{resto.nome}}</h1>
-          <img :class="{'imglogo':1, 'sticky': sticky}" :src="resto.urlLogo">
+  <div class="restaurant-hero-container">
+    <div :class="{'restaurante-hero': 1, 'sticky': sticky}" :style="'background-image: url('+resto.urlHeader+')'">
+      <div class="red-layer">
+        <div class="restaurante-desc">
+          <img class="logo" :src="resto.urlLogo">
         </div>
       </div>
+      <h1 class="restaurante-name">{{resto.nome}}</h1>
     </div>
   </div>
 </template>
@@ -27,11 +27,11 @@ export default {
   created() {
     window.addEventListener('scroll', () => {
       this.sticky = (window && window.document && window.document.body) &&
-        (window.document.body.scrollTop || 0) > 65;
+        (window.document.body.scrollTop || 0) > 30;
     });
   },
 };
 </script>
 <style>
-  @import '../../assets/styles/shared/restaurant-header.css'
+  @import '../../assets/styles/shared/restaurant-hero.css'
 </style>

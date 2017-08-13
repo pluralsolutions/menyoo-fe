@@ -1,18 +1,19 @@
 ﻿<template>
   <div>
-	<RestaurantHeader></RestaurantHeader>
+    <RestaurantHero></RestaurantHero>
     <div class="filtro">
-      <img src="../assets/images/lupa.svg" class="filtro_ico"></img>
+      <img src="../assets/images/lupa.svg" class="filtro_ico" />
       <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
-        autocomplete="true" placeholder="Busque seu prato preferido"></input>
+        autocomplete="true" placeholder="Busque seu prato preferido" />
     </div>
     <div class="lista">
       <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato._id">></Product>
     </div>
   </div>
 </template>
+
 <script>
-import RestaurantHeader from '@/components/shared/RestaurantHeader';
+import RestaurantHero from '@/components/shared/RestaurantHero';
 import Product from '@/components/shared/Product';
 import Prato from '../domain/Prato';
 
@@ -20,7 +21,7 @@ export default {
   name: 'home',
   components: {
     Product,
-    RestaurantHeader,
+    RestaurantHero,
   },
   data() {
     return {
