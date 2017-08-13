@@ -77,7 +77,9 @@
 
 .restaurant-hero-container.sticky .restaurante-name {
   position: absolute;
-  top: 0;
+  top: 16px;
   left: 60px;
   color: #fff;
+  margin: 0;
+  text-align: left;
 }
