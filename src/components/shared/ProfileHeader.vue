@@ -27,6 +27,6 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
   @import '../../assets/styles/shared/profile-header.css'
 </style>

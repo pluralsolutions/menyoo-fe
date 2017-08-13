@@ -33,5 +33,5 @@ export default {
 };
 </script>
 <style>
-  @import '../../assets/styles/shared/restaurant-hero.css'
+  @import '../../assets/styles/shared/restaurant-hero.css';
 </style>

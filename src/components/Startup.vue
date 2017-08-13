@@ -22,5 +22,5 @@
 </script>
 
 <style scoped>
-  @import '../assets/styles/startup.css'
+  @import '../assets/styles/startup.css';
 </style>

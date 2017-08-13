@@ -29,6 +29,6 @@
   };
 </script>
 
-<style scoped>
-  @import '../../assets/styles/shared/header.css'
+<style>
+  @import '../../assets/styles/shared/header.css';
 </style>

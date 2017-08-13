@@ -38,6 +38,6 @@ export default {
 };
 </script>
 
-<style scoped>
-  @import '../../assets/styles/shared/burger.css'
+<style>
+  @import '../../assets/styles/shared/burger.css';
 </style>

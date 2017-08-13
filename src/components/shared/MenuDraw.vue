@@ -33,6 +33,6 @@ export default {
   },
 };
 </script>
-<style scoped>
-  @import '../../assets/styles/shared/menu-draw.css'
+<style>
+  @import '../../assets/styles/shared/menu-draw.css';
 </style>
