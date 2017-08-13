@@ -1,0 +1,27 @@
+.counter{
+  padding: 1px 7px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+.counter .plus,
+.counter .minus,
+.counter .val{
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+  display: inline-block;
+}
+.counter .plus{
+  background-image: url('../../images/home/bt-add.svg');
+}
+.counter .minus{
+  background-image: url('../../images/home/bt-remove.svg');
+}
+.counter .val{
+  height: 16px;
+}

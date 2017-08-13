@@ -6,8 +6,7 @@
       </div>
       <div class="product-detail">
         <div class="">
-          <img class="product-estrelas" src="../../assets/images/estrela.svg" v-for="num in prato.estrelas" v-bind:key="num" />
-          <img class="product-nao-estrelas" src="../../assets/images/estrela.svg" v-for="num in 5-prato.estrelas" v-bind:key="num" />
+          <img :class="{'product-estrelas':true, 'product-estrelas-opaco':num>prato.estrelas}" src="../../assets/images/estrela.svg" v-for="num in 6" v-bind:key="num" />
         </div>
         <div class="product-title">
           <h2>{{prato.titulo}}</h2>
@@ -18,21 +17,21 @@
         <div class="product-value">
           R$ <label>{{valor}}</label>
         </div>
-        <div class="product-qtd">
-          <div class="product-plus" @click="quantidade=(quantidade>=50?49:quantidade)+1"></div>
-          <div>{{quantidade}}</div>
-          <div class="product-minus" @click="quantidade=(quantidade>0?quantidade:1)-1"/></div>
-        </div>
+        <Counter v-model="quantidade"></Counter>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Prato from '../../domain/Prato';
+import Counter from '@/components/shared/Counter';
+import Prato from '@/domain/Prato';
 // import Pedido from '../../domain/Pedido';
 
 export default {
+  components: {
+    Counter,
+  },
   props: {
     prato: {
       type: Prato,
