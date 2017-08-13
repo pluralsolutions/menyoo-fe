@@ -1,9 +1,8 @@
 ﻿<template>
   <div>
     <RestaurantHero></RestaurantHero>
-    <div class="filtro">
-      <img src="../assets/images/lupa.svg" class="filtro_ico" />
-      <input v-model="filtro" name="filtro" id="filtro" type="text" autofocus="true"
+    <div class="search">
+      <input v-model="filtro" name="filtro" class="search_field" type="text" autofocus="true"
         autocomplete="true" placeholder="Busque seu prato preferido" />
     </div>
     <div class="lista">

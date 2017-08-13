@@ -1,20 +1,27 @@
-.filtro{
-  margin: 10px 0;
-}
-#filtro{
-  width: 50%;
+.search{
+  margin: 10px auto;
+  width: 339px;
   padding-left: 32px;
   height: 32px;
-}
-.filtro_ico{
-  width: 16px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
-  left: 30px;
-  top: 4px;
-  opacity: 0.5;
+  border: solid 1.5px #bebebe;
+}
+
+.search::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-image: url('../images/search_icon.svg');
+  background-size: cover;
+  position: absolute;
+  top: 7px;
+  left: 12px;
+}
+
+.search_field {
+  padding: 7px;
+  width: 90%;
+  border: none;
 }
 
 .lista{

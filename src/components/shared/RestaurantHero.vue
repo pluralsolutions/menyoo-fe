@@ -1,6 +1,6 @@
 ﻿<template>
-  <div class="restaurant-hero-container">
-    <div :class="{'restaurante-hero': 1, 'sticky': sticky}" :style="'background-image: url('+resto.urlHeader+')'">
+  <div :class="{'restaurant-hero-container': 1, 'sticky': sticky}">
+    <div class="restaurante-hero" :style="'background-image: url('+resto.urlHeader+')'">
       <div class="red-layer">
         <div class="restaurante-desc">
           <img class="logo" :src="resto.urlLogo">
