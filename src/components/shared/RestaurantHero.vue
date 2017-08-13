@@ -27,7 +27,7 @@ export default {
   created() {
     window.addEventListener('scroll', () => {
       this.sticky = (window && window.document && window.document.body) &&
-        (window.document.body.scrollTop || 0) > 30;
+        (window.document.body.scrollTop || 0) > 12;
     });
   },
 };
