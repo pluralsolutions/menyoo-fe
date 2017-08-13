@@ -6,7 +6,7 @@
         <img class="painel-foto" :src="prato.urlPhoto" :alt="prato.titulo">
       </div>
       <div style="display: inline-block;border-color:aqua;max-width: 50%;">
-        <img class="estrelas" src="static\img\estrela.svg" v-for="num in prato.estrelas" v-bind:key="prato._id" />
+        <img class="estrelas" src="../../assets/images/estrela.svg" v-for="num in prato.estrelas" v-bind:key="prato._id" />
         <div class="painel-descricao ">{{prato.descricao}}</div>
       </div>
       <br class="clearfix" />

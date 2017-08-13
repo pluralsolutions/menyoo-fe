@@ -2,22 +2,22 @@
   width: 100%;
   height: 100%;
 }
-.bg_inicial {
+.inicial_bg {
   background-image: url('../images/inicial.png');
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 414px;
   width: 100%;
   height: 100%;
   top: 0px;
   position: fixed;
   text-align: center;
 }
-.img {
+.inicial_logo {
   background-image: url('../images/logo.png');
   background-position: 50% center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 276px;
   width: 100%;
   height: 100%;
   top: 0px;

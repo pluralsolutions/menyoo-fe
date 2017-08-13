@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="inicial">
-    <div class="bg_inicial">
-      <div class="img"></div>
+    <div class="inicial_bg">
+      <div class="inicial_logo">aafsas<br>dgsdgs<br></div>
     </div>
   </div>
 </template>
@@ -11,8 +11,16 @@
     name: 'hello',
     data() {
       return {
-        msg: 'Hello!',
+        redirected: false,
       };
+    },
+    mounted() {
+      // fazer checagem se o usuario já está logado
+      setTimeout(() => { this.$router.push('/Home'); }, 1500);
+    },
+    activated() {
+      // fazer checagem se o usuario já está logado
+      setTimeout(() => { this.$router.push('/Home'); }, 1500);
     },
     created() {
       // fazer checagem se o usuario já está logado
@@ -21,6 +29,6 @@
   };
 </script>
 
-<style scoped>
+<style>
   @import '../assets/styles/startup.css';
 </style>

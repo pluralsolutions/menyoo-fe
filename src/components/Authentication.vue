@@ -18,6 +18,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   @import '../assets/styles/authentication.css'
 </style>

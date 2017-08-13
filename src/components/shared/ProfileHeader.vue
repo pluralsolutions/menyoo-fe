@@ -19,8 +19,7 @@ export default {
   data() {
     return {
       menuopen: false,
-      user: new User('Gabriel Toledo',
-        'static/img/usuario.svg'),
+      user: new User('Gabriel Toledo', '/static/img/user.jpg'),
     };
   },
   methods: {
@@ -28,5 +27,5 @@ export default {
 };
 </script>
 <style>
-  @import '../../assets/styles/shared/profile-header.css'
+  @import '../../assets/styles/shared/profile-header.css';
 </style>

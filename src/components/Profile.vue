@@ -59,6 +59,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   @import '../assets/styles/profile.css'
 </style>
