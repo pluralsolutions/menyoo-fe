@@ -1,4 +1,4 @@
-﻿import Home from '@/components/Home';
+import Home from '@/components/Home';
 import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
 import Authentication from '@/components/Authentication';
