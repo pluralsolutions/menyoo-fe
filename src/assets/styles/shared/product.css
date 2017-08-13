@@ -32,7 +32,8 @@
 }
 .product-value{
   font-size: 11px;
-  padding: 5px 0;
+  padding-top: 6px;
+  padding-right: 16px;
   text-align: right;
 }
 .product-value label{

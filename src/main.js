@@ -14,6 +14,11 @@ VeeValidate.Validator.addLocale(validadeEn);
 Vue.use(VueResource);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';
 
+Vue.filter('currency', (value) => {
+  const val = (value / 1).toFixed(2).replace('.', ',');
+  return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+});
+
 Vue.use(VeeValidate,
   {
     locale: 'pt_BR',

@@ -5,8 +5,8 @@
         <img class="product-foto" :src="prato.urlPhoto" :alt="prato.titulo">
       </div>
       <div class="product-detail">
-        <div class="">
-          <img :class="{'product-estrelas':true, 'product-estrelas-opaco':num>prato.estrelas}" src="../../assets/images/estrela.svg" v-for="num in 6" v-bind:key="num" />
+        <div>
+          <img :class="{'product-estrelas':true, 'product-estrelas-opaco':num>prato.estrelas}" src="../../assets/images/estrela.svg" v-for="num in 5" v-bind:key="num" />
         </div>
         <div class="product-title">
           <h2>{{prato.titulo}}</h2>
@@ -15,7 +15,7 @@
           <h3>{{prato.descricao}}</h3>
         </div>
         <div class="product-value">
-          R$ <label>{{valor}}</label>
+          R$ <label>{{ prato.valor | currency }}</label>
         </div>
         <Counter v-model="quantidade"></Counter>
       </div>
@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       quantidade: 0,
-      valor: 10,
     };
   },
 };
