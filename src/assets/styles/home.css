@@ -4,9 +4,13 @@
   padding-left: 32px;
   height: 32px;
   position: relative;
-  border: solid 1.5px #bebebe;
+  border: solid 1px #bebebe;
 }
-
+.search:hover,
+.search:focus,
+.search:active{
+  border: solid 1.5px #BE1622;
+}
 .search::before {
   content: '';
   width: 14px;
