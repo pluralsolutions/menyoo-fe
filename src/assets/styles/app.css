@@ -31,7 +31,7 @@ ol, ul {
   list-style: none;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900&subset=latin-ext');
 
 #app {
   font-family: 'Titillium Web', 'Avenir', Helvetica, Arial, sans-serif;

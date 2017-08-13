@@ -1,40 +1,67 @@
-.painel-conteudo {
-  text-align: left;
-  position: relative;
-
-}
-.painel {
+.product{
   display: inline-block;
+  font-size: 15px;
+  width: 332px;
   margin: 6px;
-  box-shadow: 5px 5px 10px grey;
-  width: 95%;
   vertical-align: top;
-  text-align: center;
-  background-color: rgb(249, 242, 242);
-}
+  padding-bottom: 12px;
+ }
 
-.painel-titulo {
-  text-align: center;
-  margin: 0 0 5px 0;
-  padding: 8px;
-  text-transform: uppercase;
-  background-color: rgb(226, 222, 222);
-}
-
-.painel-foto {
-  width: 120px;
-  height: 120px;
+.product-photo {
+  display: inline-block;  
+  width: 140px;
   margin: 0 10px 0 0;
 }
 
-.painel-descricao {
-
+.product-foto {
+  width: 100%;
 }
 
-.painel {
-  box-shadow: 5px 5px 5px;
+.product-detail{
+  display: inline-block;  
+  text-align: left;
+  width: 160px;
 }
 
-.estrelas {
-  width: 28px;
+.product-estrelas,
+.product-nao-estrelas {
+  width: 14px;
+}
+.product-nao-estrelas {
+  opacity: 0.3;
+}
+
+.product-title{
+  font-weight: bolder;
+  font-size-adjust: +1;
+}
+.product-value{
+  font-size: 11px;
+  padding: 5px 0;
+}
+.product-value label{
+  font-size: 19px;
+  font-weight: bold;
+}
+.product-qtd {
+  padding: 1px 7px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+.product-qtd div{
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  vertical-align: top;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 23px 23px;
+  display: inline-block;
+}
+.product-plus{
+  background-image: url('../../images/home/bt-add.svg');
+}
+.product-minus{
+  background-image: url('../../images/home/bt-remove.svg');
 }

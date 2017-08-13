@@ -1,4 +1,4 @@
-export default class Restaurante {
+export default class Restaurant {
 
   constructor(nome = '', urlLogo = '', urlHeader = '') {
     this.nome = nome;
