@@ -17,20 +17,17 @@
         <div class="product-value">
           R$ <label>{{ prato.valor | currency }}</label>
         </div>
-        <Counter v-model="quantidade"></Counter>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Counter from '@/components/shared/Counter';
 import Prato from '@/domain/Prato';
 // import Pedido from '../../domain/Pedido';
 
 export default {
   components: {
-    Counter,
   },
   props: {
     prato: {

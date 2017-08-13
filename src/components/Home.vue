@@ -6,7 +6,7 @@
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
     </div>
     <div class="lista">
-      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id">></Product>
+      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id" v-if="prato.valor>0"></Product>
     </div>
   </div>
 </template>
@@ -39,7 +39,9 @@ export default {
         // expr regular case insensitivo
         const exp = new RegExp(this.filtro.trim(), 'i');
         // testa o array e retorna
-        return this.pratos.filter(p => (exp.test(p.titulo) || exp.test(p.descricao)));
+        const res = this.pratos.filter(p => (exp.test(p.titulo)));
+        Array.prototype.push.apply(res, this.pratos.filter(p => (exp.test(p.descricao))));
+        return res;
       }
       return this.pratos;
     },
