@@ -8,19 +8,22 @@
     <div class="lista">
       <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id" v-if="prato.valor>0"></Product>
     </div>
+    <FloatingCart/>
   </div>
 </template>
 
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import Product from '@/components/shared/Product';
+import FloatingCart from '@/components/shared/FloatingCart';
 import Prato from '../domain/Prato';
 
 export default {
   name: 'home',
   components: {
-    Product,
     RestaurantHero,
+    Product,
+    FloatingCart,
   },
   data() {
     return {
