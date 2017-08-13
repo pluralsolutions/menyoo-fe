@@ -1,0 +1,16 @@
+.profile-header-container a {
+  text-decoration: none;
+  display: block;
+  margin: 4px 0 0 30px;
+}
+
+.user {
+  position: relative;
+  top: -13px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  font-weight: bolder;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  color: black;
+}

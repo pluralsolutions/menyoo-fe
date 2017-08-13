@@ -59,13 +59,6 @@ main {
   text-align: center;
 }
 
-header {
-  margin: 0;
-  background-color: #BE1622;
-  color: #ffffff;
-  height: 50px;
-}
-
 .hide {
   display:none;
 }
