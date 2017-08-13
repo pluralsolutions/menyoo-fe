@@ -15,8 +15,14 @@
 </template>
 
 <script>
+import Prato from '../../domain/Prato';
+
 export default {
-  props: ['prato'],
+  props: {
+    prato: {
+      type: Prato,
+    },
+  },
   data() {
     return {
       visivel: true,
