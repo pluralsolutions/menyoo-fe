@@ -1,7 +1,9 @@
 ﻿<template>
   <div class="inicial">
     <div class="inicial_bg">
-      <div class="inicial_logo">aafsas<br>dgsdgs<br></div>
+      <div class="inicial_logo">
+        Menyoo - Sua melhor experiencia gastronomica
+      </div>
     </div>
   </div>
 </template>
@@ -11,7 +13,6 @@
     name: 'hello',
     data() {
       return {
-        redirected: false,
       };
     },
     mounted() {
@@ -20,11 +21,11 @@
     },
     activated() {
       // fazer checagem se o usuario já está logado
-      setTimeout(() => { this.$router.push('/Home'); }, 1500);
+      setTimeout(() => { this.$router.push('/Home'); }, 1550);
     },
     created() {
       // fazer checagem se o usuario já está logado
-      setTimeout(() => { this.$router.push('/Home'); }, 1500);
+      setTimeout(() => { this.$router.push('/Home'); }, 1600);
     },
   };
 </script>

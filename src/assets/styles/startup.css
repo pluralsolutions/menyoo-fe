@@ -3,7 +3,7 @@
   height: 100%;
 }
 .inicial_bg {
-  background-image: url('../images/inicial.png');
+  background-image: url('/static/img/inicial.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 414px;
@@ -14,7 +14,7 @@
   text-align: center;
 }
 .inicial_logo {
-  background-image: url('../images/logo.png');
+  background-image: url('/static/img/logo.svg');
   background-position: 50% center;
   background-repeat: no-repeat;
   background-size: 276px;
@@ -22,4 +22,5 @@
   height: 100%;
   top: 0px;
   position: fixed;
+  color: transparent;
 }
