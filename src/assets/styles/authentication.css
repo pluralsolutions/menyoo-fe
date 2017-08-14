@@ -1,23 +1,30 @@
 .authentication-container {
   background-image: url('../images/login/background.svg');
-  height: 100vh;
   background-position: bottom center;
-  background-attachment: fixed;
   background-size: cover;
+}
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.plate {
+  width: 80px;
+  height: 78px;
+  margin: 40px auto;
+  background-image: url('../images/login/plate.svg');
+  margin-bottom: 60px;
 }
 
 .authenticators {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 30px;
   justify-content: center;
-  margin: 0 auto;
-  padding: 0 30px;
-  height: 100%;
-  align-content: center;
 }
 
 .authenticator-item {
-  width: 340px;
+  width: 240px;
   padding: 22px;
   position: relative;
   background-color: rgba(225, 225, 225, 0.76);
@@ -63,4 +70,13 @@
   .authenticator-item {
     align-self: center;
   }
+}
+
+.menyoo-slogan {
+  width: 238px;
+  height: 71px;
+  margin: 40px auto;
+  background-image: url('../images/login/menyoo-slogan.svg');
+  background-repeat: no-repeat;
+  background-position: 50% center;
 }
