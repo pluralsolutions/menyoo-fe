@@ -9,8 +9,8 @@
   justify-content: center;
 }
 .plate {
-  width: 80px;
-  height: 78px;
+  width: 84px;
+  height: 90px;
   margin: 40px auto;
   background-image: url('../images/login/plate.svg');
   margin-bottom: 60px;
@@ -62,7 +62,10 @@
   background-image: url('../images/login/email_icon.svg');
 }
 
-@media (min-width: 940px){
+@media (min-width: 600px){
+  .elements {
+    flex-direction: column;
+  }
   .authenticators {
     flex-direction: column;
   }
@@ -71,7 +74,6 @@
     align-self: center;
   }
 }
-
 .menyoo-slogan {
   width: 238px;
   height: 71px;
