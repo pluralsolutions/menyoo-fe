@@ -5,7 +5,7 @@
         <img class="product-foto" :src="prato.urlPhoto" :alt="prato.titulo">
       </div>
       <div class="product-detail">
-        <div>
+        <div v-if="false">
           <img :class="{'product-estrelas':true, 'product-estrelas-opaco':num>prato.estrelas}" src="../../assets/images/estrela.svg" v-for="num in 5" v-bind:key="num" />
         </div>
         <div class="product-title">
