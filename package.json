@@ -33,6 +33,8 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
+    "sass-loader": "^6.0.6",
+    "node-sass": "^4.0.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-import-resolver-webpack": "^0.8.1",
