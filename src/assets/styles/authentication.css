@@ -1,13 +1,15 @@
-.authentication-container {
-  background-image: url('../images/login/background.svg');
+body {
+  background: url('../images/login/background.svg') no-repeat center center fixed;
   background-position: bottom center;
   background-size: cover;
 }
+
 .elements {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .plate {
   width: 84px;
   height: 90px;
