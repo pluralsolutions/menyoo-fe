@@ -1,6 +1,6 @@
 <template>
   <router-link to="/checkout" v-if="numitem>0">
-    <div class="fabCart" draggable="true" :id="id">
+    <div class="fabCart" draggable="true">
       <div class="fabCart1">
         <img src="../../assets/images/carrinho.svg" width="19"> {{numitem}}
       </div>
@@ -14,10 +14,6 @@
 <script>
 export default {
   props: {
-    id: {
-      type: String,
-      default: 'dragme',
-    },
     numitem: {
       type: Number,
       default: 1,
@@ -30,30 +26,35 @@ export default {
   methods: {
   },
   mounted() {
-    const drop = function d(event) {
-      const offset = event.dataTransfer.getData('fab').split(',');
-      const dm = document.getElementById(offset[2]);
-      if (dm && dm.style) {
-        dm.style.left = ''.concat(event.clientX + parseInt(offset[0], 10)).concat('px');
-        dm.style.top = ''.concat(event.clientY + parseInt(offset[1], 10)).concat('px');
-      }
-      event.preventDefault();
-      return false;
-    };
-    const dragover = function o(e) {
-      e.preventDefault();
-    };
-    const dragstart = function s(event) {
-      const style = window.getComputedStyle(event.target, null);
-      const str = ''.concat(parseInt(style.getPropertyValue('left') || '0', 10) - event.clientX
-        , ',', (parseInt(style.getPropertyValue('top') || '0', 10) - event.clientY)
-        , ',', (event.target.id));
-      event.dataTransfer.setData('fab', str);
-    };
-    const dm = this.$el || document.getElementById(this.id);
-    dm.addEventListener('dragstart', dragstart, false);
-    document.body.addEventListener('dragover', dragover, false);
-    document.body.addEventListener('drop', drop, false);
+    const dm = this.$el.firstChild;
+    if (dm != null) {
+      window.addEventListener('load', () => {
+        const drop = function move(event) {
+          let clientX = 0;
+          let clientY = 0;
+          if (event.touches && event.touches.length === 1) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+          } else {
+            clientX = event.clientX;
+            clientY = event.clientY;
+          }
+          if (dm && dm.style) {
+            dm.style.left = ''.concat(clientX - 40).concat('px');
+            dm.style.top = ''.concat(clientY - 40).concat('px');
+          }
+          event.preventDefault();
+          return false;
+        };
+        const dragover = (event) => {
+          event.preventDefault();
+        };
+        document.body.addEventListener('dragover', dragover, false);
+        document.body.addEventListener('drop', drop, false);
+        document.body.addEventListener('touchmove', drop, true);
+        document.body.addEventListener('touchend', drop, true);
+      }, false);
+    }
   },
 };
 </script>
@@ -66,8 +67,6 @@ export default {
 .fabCart{
   z-index: 99;
   position: fixed;
-  bottom: 40px;
-  right: 20px;
   height: 64px;
   width: 64px;
   border-radius: 50%; 
@@ -77,5 +76,7 @@ export default {
   color: white;
   vertical-align: middle;
   text-align: center;
+  bottom: 40px;
+  right: 20px;
 }  
 </style>
