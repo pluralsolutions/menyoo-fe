@@ -1,5 +1,5 @@
 ﻿<template>
-  <header v-show="showHeader()" class="header-container">
+  <header v-if="showHeader()" class="header-container">
     <div class="header-fixed">
       <ProfileHeader></ProfileHeader>
       <MenuDraw></MenuDraw>
