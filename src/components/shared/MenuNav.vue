@@ -5,7 +5,7 @@
       <div class="menu">
         <div class="profile">
           <div class="user-img">
-            <img />
+            <PhotoCircle :src="user.urlPhoto" :alt="`${user.name}`" size="69"></PhotoCircle>
           </div>
           <div class="user-name">
             Gabriel Lucas
@@ -37,14 +37,18 @@
 <script>
 
 import Burger from '@/components/shared/Burger';
+import PhotoCircle from '@/components/shared/PhotoCircle';
+import User from '@/domain/User';
 
 export default {
   components: {
     Burger,
+    PhotoCircle,
   },
   data() {
     return {
       isOpen: false,
+      user: new User('Gabriel Toledo', '/static/img/user.jpg'),
     };
   },
   methods: {
