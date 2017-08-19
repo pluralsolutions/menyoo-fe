@@ -1,5 +1,5 @@
 <template>
-  <nav :class="{'slide-in': isOpen}" class="menu-container" id="menu-content">
+  <nav :class="{'show-menu': isOpen}" class="menu-container" id="menu-content">
     <div class="menu">
       <a @click="toogle" class="close">X</a>
       <div class="profile">

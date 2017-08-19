@@ -8,7 +8,6 @@
 
 <script>
 export default {
-  name: 'burger',
   methods: {
     toogle: function toogle() {
       this.$emit('toogle');
