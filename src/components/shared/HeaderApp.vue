@@ -1,18 +1,21 @@
 ﻿<template>
   <header v-if="showHeader()" class="header-container">
     <div class="header-fixed">
-      <MenuMain></MenuMain>
+      <MenuMain />
+      <CheckoutPreview />
     </div>
   </header>
 </template>
 
 <script>
   import MenuMain from '@/components/shared/Menu';
+  import CheckoutPreview from '@/components/shared/CheckoutPreview';
 
   export default {
     name: 'HeaderApp',
     components: {
       MenuMain,
+      CheckoutPreview,
     },
     methods: {
       showHeader: function showHeader() {
