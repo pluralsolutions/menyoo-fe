@@ -10,17 +10,14 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'Home',
     titulo: 'Home',
     component: Home,
-    exibir: true,
   },
   {
-    path: '/usuario',
+    path: '/perfil',
     name: 'usuario',
     titulo: 'Profile',
     component: Profile,
-    exibir: true,
   },
   {
     path: '/entrar',

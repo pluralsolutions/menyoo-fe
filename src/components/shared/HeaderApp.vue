@@ -1,21 +1,18 @@
 ﻿<template>
   <header v-if="showHeader()" class="header-container">
     <div class="header-fixed">
-      <ProfileHeader></ProfileHeader>
-      <MenuNav></MenuNav>
+      <MenuMain></MenuMain>
     </div>
   </header>
 </template>
 
 <script>
-  import ProfileHeader from '@/components/shared/ProfileHeader';
-  import MenuNav from '@/components/shared/MenuNav';
+  import MenuMain from '@/components/shared/Menu';
 
   export default {
     name: 'HeaderApp',
     components: {
-      ProfileHeader,
-      MenuNav,
+      MenuMain,
     },
     methods: {
       showHeader: function showHeader() {
