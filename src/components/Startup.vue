@@ -11,21 +11,8 @@
 <script>
   export default {
     name: 'hello',
-    data() {
-      return {
-      };
-    },
-    mounted() {
-      // fazer checagem se o usuario já está logado
-      setTimeout(() => { this.$router.push('/Home'); }, 1500);
-    },
-    activated() {
-      // fazer checagem se o usuario já está logado
-      setTimeout(() => { this.$router.push('/Home'); }, 1550);
-    },
     created() {
-      // fazer checagem se o usuario já está logado
-      setTimeout(() => { this.$router.push('/Home'); }, 1600);
+      setTimeout(() => { this.$router.push('/entrar'); }, 1600);
     },
   };
 </script>

@@ -1,4 +1,4 @@
-body {
+.authentication-container {
   background: url('../images/login/background.svg') no-repeat center center fixed;
   background-position: bottom center;
   background-size: cover;
