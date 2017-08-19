@@ -1,5 +1,5 @@
 <template>
-  <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': previewIsOpen}">
+  <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': !previewIsOpen}">
     <div v-if="selectedProducts.length === 0" class="no-order">
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho

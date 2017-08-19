@@ -1,21 +1,21 @@
 .checkout-preview-content-container {
-  width: 358px;
+  width: 300px;
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   top: 50px;
-  right: 40px;
-  min-height: 50%;
+  right: 20px;
+  min-height: 30%;
   background-color: #ededed;
   box-shadow: -0.6px 9px 47.5px 1.5px rgba(0, 0, 0, 0.29);
 }
 
 .no-order {
-  padding: 81px 29px;
+  padding: 50px 29px;
 }
 
 .negative-box {
-  padding: 49px 38px;
-  font-size: 30px;
+  padding: 39px 28px;
+  font-size: 22px;
   text-align: center;
   color: #2b2b2b;
   line-height: 1.4;
