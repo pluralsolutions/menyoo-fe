@@ -6,6 +6,7 @@ import VeeValidate from 'vee-validate';
 import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import App from './App';
+import store from './store';
 import router from './router';
 
 VeeValidate.Validator.addLocale(validadePtBR);
@@ -45,6 +46,7 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   components: { App },
