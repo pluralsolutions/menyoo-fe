@@ -1,0 +1,45 @@
+.navigation-bar-content {
+  height: 63px;
+}
+
+.navigation-fixed {
+  background-color: #be1622;
+  padding: 18px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  flex-direction: row;
+  display: flex;
+}
+
+.back, .page-title {
+  position: relative;
+}
+
+.back{
+  width: 60%;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.back:before {
+  content: '<';
+  width: 22px;
+  height: 19px;
+  background: #000;
+  position: absolute;
+  left: 0;
+}
+
+.page-title{
+  width: 40%;
+}
+
+.page-title:before{
+  content: '+';
+  width: 22px;
+  height: 30px;
+  background: #000;
+  position: absolute;
+  left: 0;
+}
