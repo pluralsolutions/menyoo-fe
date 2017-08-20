@@ -17,15 +17,15 @@ export default {
   methods: {
     signInFacebook: function signInFacebook() {
       this.$store.dispatch('signInFacebook');
-      this.$router.push('home');
+      this.$router.push(this.$route.query.redirect || 'home');
     },
     signInGoogle: function signInGoogle() {
       this.$store.dispatch('signInGoogle');
-      this.$router.push('home');
+      this.$router.push(this.$route.query.redirect || 'home');
     },
     signInEmail: function signInEmail() {
       this.$store.dispatch('signInEmail');
-      this.$router.push('home');
+      this.$router.push(this.$route.query.redirect || 'home');
     },
   },
 };

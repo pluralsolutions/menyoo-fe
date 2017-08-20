@@ -3,16 +3,19 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
+import VueCookie from 'vue-cookie';
 import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
-import App from './App';
 import store from './store';
 import router from './router';
+
+import App from './App';
 
 VeeValidate.Validator.addLocale(validadePtBR);
 VeeValidate.Validator.addLocale(validadeEn);
 
 Vue.use(VueResource);
+Vue.use(VueCookie);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';
 
 Vue.filter('currency', (value) => {
@@ -42,6 +45,23 @@ Vue.http.interceptors.push((req, next) => {
 });
 
 Vue.config.productionTip = false;
+
+router.beforeEach((to, from, next) => {
+  const requireAuth = !to.matched.some(record => record.meta.noAuth);
+  let redirectTo = {};
+
+  store.dispatch('getLoggedUser');
+
+  const isLoggedUser = store.getters.isLoggedUser;
+
+  if (requireAuth && !isLoggedUser) {
+    redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
+  } else if (isLoggedUser && to.path === '/entrar') {
+    redirectTo = { path: to.query.redirect || '/home' };
+  }
+
+  return next(redirectTo);
+});
 
 /* eslint-disable no-new */
 new Vue({
