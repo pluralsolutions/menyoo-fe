@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavigationBar title="Perfil"/>
     <h1>Perfil</h1>
     <div class="center">
       <h2>{{user.name}}</h2>
@@ -23,11 +24,13 @@
 <script>
 import User from '@/domain/User';
 import PhotoCircle from '@/components/shared/PhotoCircle';
+import NavigationBar from '@/components/shared/NavigationBar';
 
 export default {
   name: 'hello',
   components: {
     'photo-circle': PhotoCircle,
+    NavigationBar,
   },
   data() {
     return {
