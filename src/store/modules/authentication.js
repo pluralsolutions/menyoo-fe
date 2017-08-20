@@ -9,7 +9,16 @@ const getters = {
 
 // actions
 const actions = {
-  logUserIn({ commit }, user) {
+  signInFacebook({ commit }) {
+    const user = { user: 1 };
+    commit(LOGGED_USER_LOADED, user);
+  },
+  signInGoogle({ commit }) {
+    const user = { user: 2 };
+    commit(LOGGED_USER_LOADED, user);
+  },
+  signInEmail({ commit }) {
+    const user = { user: 3 };
     commit(LOGGED_USER_LOADED, user);
   },
 };
