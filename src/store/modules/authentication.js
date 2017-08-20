@@ -1,25 +1,37 @@
+import Vue from 'vue';
 import {
   LOGGED_USER_LOADED,
 } from '../mutation-types';
 
-// getters
+const COOKIE_TOKEN_NAME = 'token';
+
+const loggedSuccess = (commit, user) => {
+  commit(LOGGED_USER_LOADED, user);
+  Vue.cookie.set(COOKIE_TOKEN_NAME, '123124');
+};
+
 const getters = {
   isLoggedUser: state => (!!state.loggedUser),
 };
 
-// actions
 const actions = {
   signInFacebook({ commit }) {
     const user = { user: 1 };
-    commit(LOGGED_USER_LOADED, user);
+    loggedSuccess(commit, user);
   },
   signInGoogle({ commit }) {
     const user = { user: 2 };
-    commit(LOGGED_USER_LOADED, user);
+    loggedSuccess(commit, user);
   },
   signInEmail({ commit }) {
     const user = { user: 3 };
-    commit(LOGGED_USER_LOADED, user);
+    loggedSuccess(commit, user);
+  },
+  getLoggedUser(store) {
+    if (Vue.cookie.get(COOKIE_TOKEN_NAME)) {
+      const user = { user: 3 };
+      store.commit(LOGGED_USER_LOADED, user);
+    }
   },
 };
 

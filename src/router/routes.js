@@ -7,6 +7,12 @@ const routes = [
   {
     path: '/',
     component: Startup,
+    meta: { noAuth: true },
+  },
+  {
+    path: '/entrar',
+    component: Authentication,
+    meta: { noAuth: true },
   },
   {
     path: '/home',
@@ -18,10 +24,6 @@ const routes = [
     name: 'usuario',
     titulo: 'Profile',
     component: Profile,
-  },
-  {
-    path: '/entrar',
-    component: Authentication,
   },
 ];
 
