@@ -4,6 +4,7 @@
   height: 50px;
   width: 46px;
 	z-index: 1;
-  background: #000;
+  background: url('../../images/cart_icon.svg') no-repeat center center;
 	cursor: pointer;
+  background-size: 34px;
 }

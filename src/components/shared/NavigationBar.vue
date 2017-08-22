@@ -1,8 +1,8 @@
 <template>
   <div class="navigation-bar-content">
     <div class="navigation-fixed">
-      <span @click="back" class="back"></span>
-      <div class="page-title">{{title}}</div>
+      <div @click="back" class="back">Voltar</div>
+      <div class="page-title" v-if="title">{{title}}</div>
     </div>
   </div>
 </template>

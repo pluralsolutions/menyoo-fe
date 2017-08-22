@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar title="Perfil"/>
+    <NavigationBar />
     <h1>Perfil</h1>
     <div class="center">
       <h2>{{user.name}}</h2>

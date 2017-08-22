@@ -97,11 +97,21 @@
 }
 
 .menu-item:before {
-  content: '+';
+  content: '';
   height: 40px;
   width: 40px;
-  background: #000;
   position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40px;
+}
+
+.edit-profile:before {
+  background-image: url('../../images/profile_edit_icon.svg');
+}
+
+.tracking-orders:before {
+  background-image: url('../../images/tracking_order_icon.svg');
 }
 
 .menu-item a {
