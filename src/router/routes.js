@@ -20,6 +20,10 @@ const routes = [
     component: Home,
   },
   {
+    path: '/ao',
+    component: () => import('../components/AwaitingOrder'),
+  },
+  {
     path: '/perfil',
     name: 'usuario',
     titulo: 'Profile',

@@ -1,0 +1,28 @@
+.awaitorder{
+  width: 6em;
+  height: 8em;
+  margin: 15% 5%;
+  display: flex;
+  background: url('../images/step1.svg') no-repeat 50% 50%;
+  //background-size: cover;
+  -webkit-filter: grayscale(100%) brightness(400%) brightness(70%);
+  filter: grayscale(100%) brightness(300%) brightness(70%);
+}
+.awaitorder.step1{
+  background-image: url('../images/step1.svg');
+}
+.awaitorder.step2{
+  background-image: url('../images/step2.svg');
+}
+.awaitorder.step3{
+  background-image: url('../images/step3.svg');
+}
+.awaitorder.active{
+  -webkit-filter: none;
+  filter: none;
+}
+@media (min-width: 600px){
+  .awaitorder{
+    display: inline-flex;
+  }
+}
