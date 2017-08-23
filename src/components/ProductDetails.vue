@@ -6,7 +6,10 @@
       <div class="product-header">
         <span class="product-price-unit">Preço unitário</span>
         <span class="product-price">R$ 43,00</span>
-        <span class="product-evaluations"></span>
+        <div class="product-evaluations" v-if="score >= 20 ">
+          <span class="star-neutral"></span>
+          <span class="star-active" v-bind:style="{width: score + '%'}"></span>
+        </div>
       </div>
       <div class="product-content">
         <div class="product-title">Pizza Muçarela grande</div>
@@ -30,6 +33,11 @@ import NavigationBar from '@/components/shared/NavigationBar';
 export default {
   components: {
     NavigationBar,
+  },
+  data() {
+    return {
+      score: 20,
+    };
   },
 };
 </script>
