@@ -15,27 +15,17 @@ export default {
   components: {
     RestaurantHero,
   },
-  data() {
-    return {
-      // step: 1,
-    };
-  },
   methods: {
     mais() {
-      console.log(this.$store);
-      this.$store.state.awaitingorder.step = 2;
+      this.$store.dispatch('updateStep', { kind: '+' });
     },
     menos() {
-      console.log(this.$store);
-      this.$store.state.awaitingorder.step = 3;
-    },
-    refresh() {
-      // TODO: buscar atualização
+      this.$store.dispatch('updateStep', { kind: '-' });
     },
   },
   computed: {
     step() {
-      return this.$store.state.awaitingorder.step;
+      return this.$store.getters.orderStep;
     },
   },
 };
