@@ -13,7 +13,7 @@
       </div>
       <div class="product-content">
         <div class="product-title">Pizza Muçarela grande</div>
-        <div class="product-title">
+        <div class="product-desc">
           PIZZA COM MASSA TRANDICIONAL, RECHEIO DE MOLHO DE
           TOMATE FRESCO, CEBOLA DOURADA E MUSSARELA SADIA.
         </div>
@@ -22,6 +22,39 @@
         <div class="add" />
         <div class="current-quantity">01</div>
         <div class="remove" />
+      </div>
+      <div class="custom-ingredients">
+        <span class="title">Personalize seus ingredientes</span>
+        <ul class="ingredients-list">
+          <li>
+            <span class="ingredientes-section">Padrões deste prato</span>
+            <ul>
+              <li>Padrão 1</li>
+              <li>Padrão 2</li>
+              <li>Padrão 3</li>
+            </ul>
+          </li>
+          <li>
+            <span class="ingredientes-section">Queijos</span>
+            <ul>
+              <li>
+                <span class="checkbox checked" />
+                <span class="ingredient-name">Queijo Gouda</span>
+                <span class="additional-cost">+R$ 1,40</span>
+              </li>
+              <li>
+                <span class="checkbox" />
+                <span class="ingredient-name">Queijo Gorgonzola</span>
+                <span class="additional-cost">+R$ 1,40</span>
+              </li>
+              <li>
+                <span class="checkbox checked" />
+                <span class="ingredient-name">Queijo Emental</span>
+                <span class="additional-cost">+R$ 1,40</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
