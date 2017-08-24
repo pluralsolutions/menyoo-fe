@@ -1,28 +1,39 @@
 .awaitorder{
-  width: 6em;
-  height: 8em;
-  margin: 15% 5%;
+  width: 20em;
+  text-align: center;
+  vertical-align: middle;
+  color: #393;
+  margin: auto;
+  display: grid;
+}
+.awaitorder img{
+  width: 7em;
+  height: 10em;
+}
+.awaitorder span{
+  margin: auto;
+  padding: 0 20px;
+  width: 7em;
+}
+.awaitorder div{
+  margin: 0 auto;
   display: flex;
-  background: url('../images/step1.svg') no-repeat 50% 50%;
-  //background-size: cover;
-  -webkit-filter: grayscale(100%) brightness(400%) brightness(70%);
-  filter: grayscale(100%) brightness(300%) brightness(70%);
+  flex-direction: row;
+  -webkit-filter: grayscale(100%) brightness(110%) brightness(70%);
+  filter: grayscale(100%) brightness(110%) brightness(70%);
 }
-.awaitorder.step1{
-  background-image: url('../images/step1.svg');
-}
-.awaitorder.step2{
-  background-image: url('../images/step2.svg');
-}
-.awaitorder.step3{
-  background-image: url('../images/step3.svg');
-}
-.awaitorder.active{
+.awaitorder .active{
   -webkit-filter: none;
   filter: none;
 }
 @media (min-width: 600px){
+  .awaitorder div{
+    flex-direction: column;
+    width: 200px;
+    margin: 20px;
+  }
   .awaitorder{
     display: inline-flex;
+    width: 90%;
   }
 }

@@ -1,9 +1,12 @@
-﻿<template>
+<template>
   <div>
-    <div><div @click="mais()">++++</div><div @click="menos()">----</div>{{step}}</div>
-    <div :class="{awaitorder:1, step1:1, active: step>=1}"></div>
-    <div :class="{awaitorder:1, step2:1, active: step>=2}"></div>
-    <div :class="{awaitorder:1, step3:1, active: step>=3}"></div>
+    <div class="awaitorder">
+      <div :class="{active: step>=1}"><img src="../assets/images/step1.svg"/><span>Seu pedido já foi para o balcão do chefe</span></div>
+      <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>Seu pedido está sendo preparado</span></div>
+      <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>Seu pedido está a caminho da sua mesa</span></div>
+    </div>
+	<button>PAGAR</button>
+    <div><button @click="mais()">+++</button> {{ step }} <button @click="menos()">----</button> </div>
   </div>
 </template>
 
