@@ -21,7 +21,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/product',
+    path: '/produto/:id',
     component: ProductDetails,
   },
   {

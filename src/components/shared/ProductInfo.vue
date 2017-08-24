@@ -2,18 +2,15 @@
   <div>
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
-      <span class="product-price">R$ 43,00</span>
-      <div class="product-evaluations" v-if="score >= 20 ">
+      <span class="product-price">R$ {{ product.price | currency }}</span>
+      <div class="product-evaluations" v-if="product.score >= 20 ">
         <span class="star-neutral"></span>
-        <span class="star-active" v-bind:style="{width: score + '%'}"></span>
+        <span class="star-active" v-bind:style="{width: product.score + '%'}"></span>
       </div>
       </div>
       <div class="product-content">
-        <div class="product-title">Pizza Muçarela grande</div>
-        <div class="product-desc">
-          PIZZA COM MASSA TRANDICIONAL, RECHEIO DE MOLHO DE
-          TOMATE FRESCO, CEBOLA DOURADA E MUSSARELA SADIA.
-        </div>
+        <div class="product-title">{{product.title}}</div>
+        <div class="product-desc">{{product.description}}</div>
       </div>
 
       <div class="product-add-remove">
@@ -25,12 +22,19 @@
 </template>
 
 <script>
+import Product from '@/domain/Product';
+
 export default {
   data() {
     return {
-      score: 20,
       count: 0,
     };
+  },
+  props: {
+    product: {
+      type: Product,
+      required: true,
+    },
   },
   methods: {
     addProduct: function addProduct() {

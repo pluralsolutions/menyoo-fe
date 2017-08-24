@@ -3,7 +3,7 @@
     <NavigationBar type="product-desc"/>
     <div class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
-      <ProductInfo />
+      <ProductInfo :product="product"/>
       <div class="custom-ingredients">
         <span class="title">Personalize seus ingredientes</span>
         <ul class="ingredients-list">
@@ -49,16 +49,25 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
+import Product from '@/domain/Product';
 
 export default {
   components: {
     NavigationBar,
     ProductInfo,
   },
+  data() {
+    return {
+      product: null,
+    };
+  },
   methods: {
     toogleIt: function toogleIt(event) {
       event.target.classList.toggle('checked');
     },
+  },
+  created() {
+    this.product = Product.sample()[0];
   },
 };
 </script>

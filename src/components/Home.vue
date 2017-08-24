@@ -6,7 +6,7 @@
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
     </div>
     <div class="lista">
-      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id" v-if="prato.valor>0"></Product>
+      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id" v-if="prato.price>0"></Product>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import Product from '@/components/shared/Product';
-import Prato from '../domain/Prato';
+import Prato from '../domain/Product';
 
 export default {
   name: 'home',
