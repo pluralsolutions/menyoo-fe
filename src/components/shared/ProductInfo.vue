@@ -17,9 +17,9 @@
       </div>
 
       <div class="product-add-remove">
-        <div class="add" />
-        <div class="current-quantity">01</div>
-        <div class="remove" />
+        <div @click="addProduct" class="add" />
+        <div class="current-quantity">{{ count }}</div>
+        <div @click="removeProduct" class="remove" />
       </div>
   </div>
 </template>
@@ -29,7 +29,16 @@ export default {
   data() {
     return {
       score: 20,
+      count: 0,
     };
+  },
+  methods: {
+    addProduct: function addProduct() {
+      this.count += 1;
+    },
+    removeProduct: function removeProduct() {
+      if (this.count > 0) this.count -= 1;
+    },
   },
 };
 </script>
