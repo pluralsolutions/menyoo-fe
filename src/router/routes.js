@@ -20,7 +20,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/ao',
+    path: '/pedidos/acompanhar',
     component: () => import('../components/AwaitingOrder'),
   },
   {
