@@ -2,7 +2,7 @@
   <div>
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
-      <span class="product-price">R$ {{ product.price | currency }}</span>
+      <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
       <div class="product-evaluations" v-if="product.score >= 20 ">
         <span class="star-neutral"></span>
         <span class="star-active" v-bind:style="{width: product.score + '%'}"></span>
@@ -12,11 +12,15 @@
         <div class="product-title">{{product.title}}</div>
         <div class="product-desc">{{product.description}}</div>
       </div>
-
-      <div class="product-add-remove">
-        <div @click="addProduct" class="add" />
-        <div class="current-quantity">{{ count }}</div>
-        <div @click="removeProduct" class="remove" />
+      <div class="summary-items">
+        <div class="product-add-remove">
+          <div @click="addProduct" class="add" />
+          <div class="current-quantity">{{ count }}</div>
+          <div @click="removeProduct" class="remove" />
+        </div>
+        <div class="current-price">
+          R$ {{ itemsPrice | currency }}
+        </div>
       </div>
   </div>
 </template>
@@ -27,7 +31,8 @@ import Product from '@/domain/Product';
 export default {
   data() {
     return {
-      count: 0,
+      count: 1,
+      itemsPrice: this.product.unitPrice,
     };
   },
   props: {
@@ -39,9 +44,13 @@ export default {
   methods: {
     addProduct: function addProduct() {
       this.count += 1;
+      this.itemsPrice = this.product.unitPrice * this.count;
     },
     removeProduct: function removeProduct() {
-      if (this.count > 0) this.count -= 1;
+      if (this.count > 1) {
+        this.count -= 1;
+        this.itemsPrice = this.product.unitPrice * this.count;
+      }
     },
   },
 };

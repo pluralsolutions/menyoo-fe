@@ -1,11 +1,11 @@
 export default class Product {
 
-  constructor({ title, description, image, price, score, ingredients }) {
+  constructor({ title, description, image, unitPrice, score, ingredients }) {
     this.id = 1;
     this.title = title;
     this.description = description;
     this.image = image;
-    this.price = price;
+    this.unitPrice = unitPrice;
     this.score = score;
     this.ingredients = ingredients;
   }
@@ -36,7 +36,7 @@ export default class Product {
         title: titles[index],
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi',
         image: images[index],
-        price: 32.23,
+        unitPrice: 32.23,
         score: (Math.random() * (100 - 10)) + 10,
         ingredients: [],
       };

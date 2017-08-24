@@ -53,7 +53,6 @@
 
 .product-add-remove {
   display: flex;
-  margin-top: 10px;
 }
 
 .current-quantity {
@@ -74,4 +73,10 @@
 
 .remove {
   background: url('../../images/product-detail/remove.svg');
+}
+
+.summary-items {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
