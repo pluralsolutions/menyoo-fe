@@ -39,13 +39,3 @@
     width: 90%;
   }
 }
-
-.button {
-  width: 80%;
-  height: 44px;
-  object-fit: contain;
-  background-color: #3366cc;
-  border: 0;
-  color: #FFF;
-  box-shadow: 0 0 8px 0.4px rgba(0, 0, 0, 0.46), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
-}
