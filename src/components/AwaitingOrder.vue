@@ -6,8 +6,7 @@
       <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>SEU PEDIDO ESTÁ SENDO PREPARADO</span></div>
       <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>SEU PEDIDO ESTÁ A CAMINHO DA SUA MESA</span></div>
     </div>
-    <Btn @click="mais()">PAGAR</Btn>
-    <button class="button" v-if="step>=3">PAGAR</button>
+    <Btn @click="mais()" size="large" v-if="step>=3">PAGAR</Btn>
     <br/>
     <div><button @click="mais()">+++</button> {{ step }} <button @click="menos()">----</button> </div>
   </div>
