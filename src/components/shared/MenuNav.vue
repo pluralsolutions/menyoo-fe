@@ -20,7 +20,7 @@
 
           <ul class="menu-nav">
             <li class="menu-item home">
-              <router-link to="/home">Início</router-link>
+              <router-link to="/home">Ver cardápio</router-link>
             </li>
             <li class="menu-item edit-profile">
               <router-link to="/perfil">Editar perfil</router-link>
