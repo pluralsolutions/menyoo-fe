@@ -2,11 +2,12 @@
   <div>
     <NavigationBar/>
     <div class="awaitorder">
-      <div :class="{active: step>=1}"><img src="../assets/images/step1.svg"/><span>Seu pedido já foi para o balcão do chefe</span></div>
-      <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>Seu pedido está sendo preparado</span></div>
-      <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>Seu pedido está a caminho da sua mesa</span></div>
+      <div :class="{active: step>=1}"><img src="../assets/images/step1.svg"/><span>SEU PEDIDO JÁ FOI PARA O BALCÃO DO CHEFE</span></div>
+      <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>SEU PEDIDO ESTÁ SENDO PREPARADO</span></div>
+      <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>SEU PEDIDO ESTÁ A CAMINHO DA SUA MESA</span></div>
     </div>
-    <button v-if="step>=3">PAGAR</button>
+    <button class="button" v-if="step>=3">PAGAR</button>
+    <br/>
     <div><button @click="mais()">+++</button> {{ step }} <button @click="menos()">----</button> </div>
   </div>
 </template>
