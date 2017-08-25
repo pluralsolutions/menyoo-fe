@@ -1,14 +1,13 @@
 <template>
-  <div class="counter">
+  <div class="counter-container">
     <div class="plus" @click="plus"></div>
-    <div class="val">{{value}}</div>
+    <div class="val">{{nValue}}</div>
     <div class="minus" @click="minus"/></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'counter',
   props: {
     value: {
       type: Number,
@@ -16,25 +15,36 @@ export default {
     },
     min: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     max: {
       type: Number,
       default: 999,
     },
+    plusCallback: {
+      type: Function,
+    },
+    minusCallback: {
+      type: Function,
+    },
   },
   data() {
     return {
+      nValue: this.value,
     };
   },
   methods: {
     plus: function a() {
-      const newvalue = (this.value >= this.max ? this.max - 1 : this.value) + 1;
+      const newvalue = (this.nValue >= this.max ? this.max - 1 : this.nValue) + 1;
       this.$emit('input', newvalue);
+      this.nValue = newvalue;
+      if (typeof this.minusCallback !== 'undefined') this.plusCallback();
     },
     minus: function a() {
-      const newvalue = (this.value <= this.min ? this.min + 1 : this.value) - 1;
+      const newvalue = (this.nValue <= this.min ? this.min + 1 : this.nValue) - 1;
       this.$emit('input', newvalue);
+      this.nValue = newvalue;
+      if (typeof this.minusCallback !== 'undefined') this.minusCallback();
     },
   },
 };

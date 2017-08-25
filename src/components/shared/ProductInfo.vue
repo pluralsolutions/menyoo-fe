@@ -13,11 +13,7 @@
         <div class="product-desc">{{product.description}}</div>
       </div>
       <div class="summary-items">
-        <div class="product-add-remove">
-          <div @click="addProduct" class="add" />
-          <div class="current-quantity">{{ count }}</div>
-          <div @click="removeProduct" class="remove" />
-        </div>
+        <Counter :plusCallback="addProduct" :minusCallback="removeProduct" v-model:value="count"/>
         <div class="current-price">
           R$ {{ itemsPrice | currency }}
         </div>
@@ -27,6 +23,7 @@
 
 <script>
 import Product from '@/domain/Product';
+import Counter from '@/components/shared/Counter';
 
 export default {
   data() {
@@ -34,6 +31,9 @@ export default {
       count: 1,
       itemsPrice: this.product.unitPrice,
     };
+  },
+  components: {
+    Counter,
   },
   props: {
     product: {
@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     addProduct: function addProduct() {
-      this.count += 1;
       this.itemsPrice = this.product.unitPrice * this.count;
     },
     removeProduct: function removeProduct() {

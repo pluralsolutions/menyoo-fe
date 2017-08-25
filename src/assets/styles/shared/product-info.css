@@ -51,30 +51,6 @@
   color: #606060;
 }
 
-.product-add-remove {
-  display: flex;
-}
-
-.current-quantity {
-  padding: 0 10px;
-}
-
-.add,
-.remove {
-  width: 22px;
-  height: 22px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.add {
-  background: url('../../images/product-detail/add.svg');
-}
-
-.remove {
-  background: url('../../images/product-detail/remove.svg');
-}
-
 .summary-items {
   display: flex;
   justify-content: space-between;
