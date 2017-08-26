@@ -6,7 +6,7 @@
       <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>SEU PEDIDO ESTÁ SENDO PREPARADO</span></div>
       <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>SEU PEDIDO ESTÁ A CAMINHO DA SUA MESA</span></div>
     </div>
-    <Btn @click="mais()" size="large" v-if="step>=3">PAGAR</Btn>
+    <Btn @click="pagar()" size="large" v-if="step>=3">pagar</Btn>
     <br/>
     <div><button @click="mais()">+++</button> {{ step }} <button @click="menos()">----</button> </div>
   </div>
@@ -24,10 +24,13 @@ export default {
   },
   methods: {
     mais() {
-      this.$store.dispatch('updateStep', { kind: '+' });
+      this.$store.dispatch('updateStep', { step: 1 });
     },
     menos() {
-      this.$store.dispatch('updateStep', { kind: '-' });
+      this.$store.dispatch('updateStep', { step: -1 });
+    },
+    pagar() {
+      this.$router.push({ name: 'pay-order' });
     },
   },
   computed: {

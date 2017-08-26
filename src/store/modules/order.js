@@ -8,10 +8,9 @@ const getters = {
 };
 
 const actions = {
-  updateStep(state, { step, kind }) {
-    let newstep = step || state.getters.orderStep;
-    if (kind === '+') newstep += 1;
-    if (kind === '-') newstep -= 1;
+  updateStep(state, { step }) {
+    let newstep = state.getters.orderStep || 0;
+    newstep += step || 1;
     state.commit(ORDER_STEP_CHANGE, { newstep });
   },
 };

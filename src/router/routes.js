@@ -31,6 +31,11 @@ const routes = [
     component: () => import('../components/AwaitingOrder'),
   },
   {
+    path: '/order/pay',
+    name: 'pay-order',
+    component: Home,
+  },
+  {
     path: '/perfil',
     name: 'usuario',
     component: Profile,

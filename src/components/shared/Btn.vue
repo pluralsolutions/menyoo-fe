@@ -1,11 +1,16 @@
 <template>
-  <button :class="btnClass()" ><slot></slot></button>
+  <button :class="btnClass" @click="click" ><slot></slot></button>
 </template>
 <script>
 export default {
   props: {
     type: { type: String, default: 'primary' },
     size: { type: String, default: 'medium' },
+  },
+  methods: {
+    click: function click(e) {
+      this.$emit('click', e);
+    },
   },
   computed: {
     btnClass: function btnClass() {
