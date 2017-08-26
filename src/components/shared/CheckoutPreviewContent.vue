@@ -4,8 +4,9 @@
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
-
-      <button class="start-order" @click="toogle">Iniciar pedido</button>
+      <router-link to="home">
+        <button class="start-order" @click="toogle">Iniciar pedido</button>
+      </router-link>
     </div>
   </div>
 </template>
