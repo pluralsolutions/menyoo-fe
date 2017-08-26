@@ -1,14 +1,14 @@
 <template>
   <div class="product-detail-container">
     <NavigationBar type="product-desc"/>
-    <div class="product-galery" />  <!-- Should be a Galery Component-->
+    <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
       <ProductInfo :product="product"/>
       <div class="custom-ingredients">
         <span class="title">Personalize seus ingredientes</span>
         <ul class="ingredients-list">
           <li>
-            <span class="ingredientes-section">Padrões deste prato</span>
+            <span @click="toogleOptions" class="ingredientes-section active">Padrões deste prato</span>
             <ul>
               <li>
                 <span @click="toogleIt" class="checkbox checked" />
@@ -21,7 +21,7 @@
             </ul>
           </li>
           <li>
-            <span class="ingredientes-section">Queijos</span>
+            <span @click="toogleOptions" class="ingredientes-section">Queijos</span>
             <ul>
               <li>
                 <span @click="toogleIt" class="checkbox checked" />
@@ -43,6 +43,7 @@
         </ul>
       </div>
     </div>
+    <div @click="addOrder" class="add-order">Adicionr ao pedido</div>
   </div>
 </template>
 
@@ -64,6 +65,12 @@ export default {
   methods: {
     toogleIt: function toogleIt(event) {
       event.target.classList.toggle('checked');
+    },
+    toogleOptions: function toogleOptions(event) {
+      event.target.classList.toggle('active');
+    },
+    addOrder: function addOrder() {
+      this.$router.push('/home');
     },
   },
   created() {
