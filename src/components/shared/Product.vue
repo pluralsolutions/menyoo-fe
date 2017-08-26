@@ -9,7 +9,9 @@
           <img :class="{'product-estrelas':true, 'product-estrelas-opaco':num>prato.rate}" src="../../assets/images/estrela.svg" v-for="num in 5" v-bind:key="num" />
         </div>
         <div class="product-title">
-          <h2>{{prato.title}}</h2>
+          <router-link tag="h2" :to="{ name: 'produtos', params: { id: prato.id }}">
+            <a>{{prato.title}}</a>
+          </router-link>
         </div>
         <div class="product-desc">
           <h3>{{prato.description}}</h3>
