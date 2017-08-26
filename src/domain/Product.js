@@ -31,7 +31,6 @@ export default class Product {
     const products = [];
     for (let x = 0; x < limit; x += 1) {
       const index = Math.floor((Math.random() * (limit - 1)) + 1);
-      console.log(index);
       const sampleData = {
         id: x,
         title: titles[index],
