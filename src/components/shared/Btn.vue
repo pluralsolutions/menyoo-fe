@@ -1,5 +1,5 @@
 <template>
-  <button :class="btnClass()" ><slot></slot></button>
+  <button :class="btnClass" ><slot></slot></button>
 </template>
 <script>
 export default {
