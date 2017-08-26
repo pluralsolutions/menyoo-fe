@@ -1,5 +1,5 @@
 <template>
-  <button :class="btnClass()" @click="click"><slot></slot></button>
+  <button :class="btnClass()" ><slot></slot></button>
 </template>
 <script>
 export default {
@@ -7,10 +7,7 @@ export default {
     type: { type: String, default: 'primary' },
     size: { type: String, default: 'medium' },
   },
-  methods: {
-    click: function click(e) {
-      this.$emit('click', e);
-    },
+  computed: {
     btnClass: function btnClass() {
       return 'button '.concat(this.type).concat(' ').concat(this.size);
     },
@@ -25,10 +22,11 @@ export default {
 <style scoped>
 .button {
   width: 80%;
-  height: 44px;
+  height: 39px;
   background-color: #3366cc;
-  border: 0;
-  color: #FFF;
+  border-color: #3399ff;
+  color: #FFF;  
+  text-transform: uppercase;
   box-shadow: 0 0 8px 0.4px rgba(0, 0, 0, 0.46), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
 }
 .button.primary{
