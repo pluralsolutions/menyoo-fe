@@ -15,7 +15,7 @@
           <h3>{{prato.description}}</h3>
         </div>
         <div class="product-value">
-          R$ <label>{{ prato.price | currency }}</label>
+          R$ <label>{{ prato.unitPrice | currency }}</label>
         </div>
       </div>
     </div>

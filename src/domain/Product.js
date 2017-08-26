@@ -1,7 +1,7 @@
 export default class Product {
 
-  constructor({ title, description, image, unitPrice, score, ingredients }) {
-    this.id = 1;
+  constructor({ id, title, description, image, unitPrice, score, ingredients }) {
+    this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
@@ -30,11 +30,12 @@ export default class Product {
 
     const products = [];
     for (let x = 0; x < limit; x += 1) {
-      const index = (Math.random() * (limit - 1)) + 1;
+      const index = Math.floor((Math.random() * (limit - 1)) + 1);
+      console.log(index);
       const sampleData = {
         id: x,
         title: titles[index],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
         image: images[index],
         unitPrice: 32.23,
         score: (Math.random() * (100 - 10)) + 10,
