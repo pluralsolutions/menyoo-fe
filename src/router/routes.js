@@ -26,9 +26,13 @@ const routes = [
     component: ProductDetails,
   },
   {
+    name: 'awaiting-order',
+    path: '/pedidos/acompanhar',
+    component: () => import('../components/AwaitingOrder'),
+  },
+  {
     path: '/perfil',
     name: 'usuario',
-    titulo: 'Profile',
     component: Profile,
   },
 ];

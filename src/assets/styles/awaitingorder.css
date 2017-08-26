@@ -1,0 +1,41 @@
+.awaitorder{
+  width: 20em;
+  text-align: center;
+  vertical-align: middle;
+  color: #393;
+  margin: 30px auto;
+  display: grid;
+}
+.awaitorder img{
+  width: 7em;
+  height: 10em;
+}
+.awaitorder span{
+  margin: auto;
+  padding: 0 20px;
+  width: 7em;
+  font-size: 19px;
+}
+.awaitorder div{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  -webkit-filter: grayscale(100%) brightness(400%) brightness(90%);
+  filter: grayscale(100%) brightness(400%) brightness(90%);
+}
+.awaitorder .active{
+  -webkit-filter: none;
+  filter: none;
+}
+@media (min-width: 600px){
+  .awaitorder div{
+    flex-direction: column;
+    width: 200px;
+    margin: 20px;
+  }
+  .awaitorder{
+    display: inline-flex;
+    margin: 0;
+    width: 90%;
+  }
+}
