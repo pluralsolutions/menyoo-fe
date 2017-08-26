@@ -6,7 +6,7 @@
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
     </div>
     <div class="lista">
-      <Product :prato="prato" v-for="prato in pratosComFiltro" v-bind:key="prato.id" v-if="prato.valor>0"></Product>
+      <Product :prato="prato" v-for="prato in pratosComFiltro" :key="prato.id" v-if="prato.unitPrice > 0"></Product>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import Product from '@/components/shared/Product';
-import Prato from '../domain/Prato';
+import Prato from '../domain/Product';
 
 export default {
   name: 'home',
@@ -39,8 +39,8 @@ export default {
         // expr regular case insensitivo
         const exp = new RegExp(this.filtro.trim(), 'i');
         // testa o array e retorna
-        const res = this.pratos.filter(p => (exp.test(p.titulo)));
-        Array.prototype.push.apply(res, this.pratos.filter(p => (exp.test(p.descricao))));
+        const res = this.pratos.filter(p => (exp.test(p.title)));
+        Array.prototype.push.apply(res, this.pratos.filter(p => (exp.test(p.description))));
         return res;
       }
       return this.pratos;
@@ -50,7 +50,7 @@ export default {
     // this.$http.get('http://localhost:3000/v1/fotos')
       // .then(res => res.json())
       // .then(fotos => this.fotos = fotos, err => console.log(err));
-    this.pratos = Prato.sample();
+    this.pratos = Prato.sample(5);
   },
 };
 </script>
