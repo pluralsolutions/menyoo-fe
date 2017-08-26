@@ -4,8 +4,8 @@
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
-      <router-link to="home">
-        <button class="start-order" @click="toogle">Iniciar pedido</button>
+      <router-link :to="{name: 'home'}">
+        <Btn size="large" class="start-order" @click="toogle">Iniciar pedido</Btn>
       </router-link>
     </div>
   </div>
@@ -13,6 +13,9 @@
 
 <script>
 export default {
+  components: {
+    Btn: () => import('@/components/shared/Btn'),
+  },
   data() {
     return {
       previewIsOpen: false,

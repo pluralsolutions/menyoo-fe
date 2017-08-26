@@ -13,6 +13,10 @@
   padding: 50px 29px;
 }
 
+.start-order{
+  width: 100% !important;
+}
+
 .negative-box {
   padding: 39px 28px;
   font-size: 22px;
@@ -21,16 +25,4 @@
   line-height: 1.4;
   border: solid 2px #de1010;
   text-transform: uppercase;
-}
-
-.start-order {
-  background-color: #4a79d1;
-  padding: 14px;
-  font-size: 16px;
-  width: 100%;
-  margin-top: 20px;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.38), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
 }

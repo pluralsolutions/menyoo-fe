@@ -26,22 +26,23 @@ export default {
 
 <style scoped>
 .button {
-  width: 80%;
-  height: 39px;
-  background-color: #3366cc;
-  border-color: #3399ff;
-  color: #FFF;  
+  background-color: #4a79d1;
+  padding: 14px;
+  font-size: 16px;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
   text-transform: uppercase;
-  box-shadow: 0 0 8px 0.4px rgba(0, 0, 0, 0.46), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.38), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
 }
 .button.primary{
-  background-color: #3366cc;
+  background-color: #4a79d1;
 }
 .button.secondary{
-  background-color: #3366cc;
+  background-color: #743;
 }
 .button.large{
-  width: 80%;  
+  width: 80%;
 }
 .button.medium{
   width: 45%;  
