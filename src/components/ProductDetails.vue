@@ -1,6 +1,6 @@
 <template>
   <div class="product-detail-container">
-    <NavigationBar type="product-desc"/>
+    <NavigationBar type="product-desc">Descrição do Produto</NavigationBar>
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
       <ProductInfo :product="product"/>
