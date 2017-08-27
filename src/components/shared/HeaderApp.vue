@@ -1,7 +1,7 @@
 ﻿<template>
   <header v-if="isLoggedUser" class="header-container">
     <div class="header-fixed">
-      <MenuMain />
+      <MenuSidebar />
       <CheckoutPreview />
     </div>
   </header>
@@ -10,12 +10,12 @@
 <script>
   import { mapGetters } from 'vuex';
 
-  import MenuMain from '@/components/shared/Menu';
+  import MenuSidebar from '@/components/shared/MenuSidebar';
   import CheckoutPreview from '@/components/shared/CheckoutPreview';
 
   export default {
     components: {
-      MenuMain,
+      MenuSidebar,
       CheckoutPreview,
     },
     computed: mapGetters([

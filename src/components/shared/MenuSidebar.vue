@@ -59,5 +59,5 @@ export default {
 };
 </script>
 <style>
-  @import '../../assets/styles/shared/menu-nav.css';
+  @import '../../assets/styles/shared/menu-sidebar.css';
 </style>
