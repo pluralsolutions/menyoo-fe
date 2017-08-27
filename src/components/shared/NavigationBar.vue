@@ -1,7 +1,7 @@
 <template>
   <div class="navigation-bar-content">
     <div class="navigation-fixed">
-      <div @click="back" class="back">Voltar</div>
+      <div @click="back" class="back">Voltar {{ backToWhere }}</div>
       <div :class="['page-title', type]"><slot/></div>
     </div>
   </div>
@@ -13,6 +13,15 @@ export default {
   methods: {
     back: function back() {
       this.$router.back();
+    },
+  },
+  computed: {
+    backToWhere: function b() {
+      let meta = this.$route.meta;
+      // backSomeWhereInTime was defined in main.js$router.beforeEach
+      if (meta) meta = meta.backSomeWhereInTime;
+      if (!meta) meta = '';
+      return meta;
     },
   },
 };

@@ -59,7 +59,9 @@ router.beforeEach((to, from, next) => {
   } else if (isLoggedUser && to.path === '/entrar') {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
-
+  // meta.backSomeWhereInTime Used by NavigationBar
+  // TODO: Define what name in meta will be used to mark from name
+  // else to.meta.backSomeWhereInTime = from.name;
   return next(redirectTo);
 });
 
