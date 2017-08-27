@@ -1,20 +1,17 @@
 <template>
-  <button :class="btnClass" @click="click" ><slot></slot></button>
+  <button :class="btnClass" @click="onClick" ><slot></slot></button>
 </template>
 <script>
 export default {
   props: {
     type: { type: String, default: 'primary' },
     size: { type: String, default: 'medium' },
-  },
-  methods: {
-    click: function click(e) {
-      this.$emit('click', e);
-    },
+    additionalClass: { type: String, default: '' },
+    onClick: { type: Function, default: () => null },
   },
   computed: {
     btnClass: function btnClass() {
-      return 'button '.concat(this.type).concat(' ').concat(this.size);
+      return `button ${this.type} ${this.size} ${this.additionalClass}`;
     },
   },
   data() {
@@ -45,9 +42,9 @@ export default {
   width: 80%;
 }
 .button.medium{
-  width: 45%;  
+  width: 45%;
 }
 .button.small{
-  width: 24%;  
+  width: 24%;
 }
 </style>

@@ -5,7 +5,7 @@
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
       <router-link :to="{name: 'home'}">
-        <Btn size="large" class="start-order" @click="toogle">Iniciar pedido</Btn>
+        <ButtonComponent size="large" class="start-order" @click="toogle">Iniciar pedido</ButtonComponent>
       </router-link>
     </div>
   </div>
@@ -14,7 +14,7 @@
 <script>
 export default {
   components: {
-    Btn: () => import('@/components/shared/Btn'),
+    ButtonComponent: () => import('@/components/shared/Button'),
   },
   data() {
     return {
