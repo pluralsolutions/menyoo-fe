@@ -1,4 +1,4 @@
-import Home from '@/components/Home';
+import Menu from '@/components/Menu';
 import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
 import Authentication from '@/components/Authentication';
@@ -16,9 +16,9 @@ const routes = [
     meta: { noAuth: true },
   },
   {
-    path: '/home',
-    name: 'home',
-    component: Home,
+    path: '/restaurantes/:name',
+    name: 'menu',
+    component: Menu,
   },
   {
     name: 'produtos',
@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/order/pay',
     name: 'pay-order',
-    component: Home,
+    component: Menu,
   },
   {
     path: '/perfil',

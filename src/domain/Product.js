@@ -1,6 +1,6 @@
 export default class Product {
 
-  constructor({ id, title, description, image, unitPrice, score, ingredients }) {
+  constructor({ id, title, description, image, unitPrice, score, evaluationCount, ingredients }) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -8,6 +8,7 @@ export default class Product {
     this.unitPrice = unitPrice;
     this.score = score;
     this.ingredients = ingredients;
+    this.evaluationCount = evaluationCount;
   }
 
   static sample(limit = 1) {
@@ -23,7 +24,7 @@ export default class Product {
     ];
 
     const products = [];
-    const descript = function d() {
+    const description = () => {
       let r = 'Lorem ipsum dolor sit amet';
       const rnd = Math.floor(Math.random() * 4);
       if (rnd % 2 === 0) r += ', consectetur adipiscing elit';
@@ -35,11 +36,12 @@ export default class Product {
       const index = Math.floor((Math.random() * (limit - 1)) + 1) % titles.length;
       const sampleData = {
         id: x,
-        title: titles[index],
-        description: descript(),
+        title: titles[index].slice(0, 50),
+        description: description().slice(0, 70),
         image: images[index],
         unitPrice: (Math.random() * 30) + 9,
         score: (Math.random() * (100 - 10)) + 10,
+        evaluationCount: 700,
         ingredients: [],
       };
 

@@ -56,10 +56,6 @@ img, div, h1, h2, h3, h4, h5, h6, span, label{
   opacity: 0;
 }
 
-main {
-  text-align: center;
-}
-
 .hide {
   display:none;
 }

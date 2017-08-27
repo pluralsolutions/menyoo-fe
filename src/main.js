@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
   if (requireAuth && !isLoggedUser) {
     redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
   } else if (isLoggedUser && to.path === '/entrar') {
-    redirectTo = { path: to.query.redirect || '/home' };
+    redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
 
   return next(redirectTo);

@@ -70,7 +70,7 @@ export default {
       event.target.classList.toggle('active');
     },
     addOrder: function addOrder() {
-      this.$router.push('/home');
+      this.$router.push('/restaurantes/bar-do-ze');
     },
   },
   created() {
