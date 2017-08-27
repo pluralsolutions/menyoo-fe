@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['product-evaluation-container']" v-if="score >= 20 ">
-    <span :class="$style['count']">{{evaluationCount}} avaliações</span>
+    <span :class="$style['count']" v-if="evaluationCount">{{evaluationCount}} avaliações</span>
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
       <span :class="$style['star-active']" :style="{width: score + '%'}" />
@@ -17,7 +17,6 @@ export default {
     },
     evaluationCount: {
       type: Number,
-      required: true,
     },
   },
 };

@@ -3,6 +3,7 @@
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
       <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
+      <ProductEvaluation :score="product.score" />
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
@@ -20,6 +21,7 @@
 <script>
 import Product from '@/domain/Product';
 import Counter from '@/components/shared/Counter';
+import ProductEvaluation from '@/components/shared/ProductEvaluation';
 
 export default {
   data() {
@@ -30,6 +32,7 @@ export default {
   },
   components: {
     Counter,
+    ProductEvaluation,
   },
   props: {
     product: {
