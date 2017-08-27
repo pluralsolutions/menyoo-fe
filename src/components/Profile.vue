@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar />
+    <NavigationBar>Profile</NavigationBar>
     <h1>Perfil</h1>
     <div class="center">
       <h2>{{user.name}}</h2>
@@ -9,7 +9,7 @@
     <form class="formulario" @submit.prevent="enviar">
       <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
         <label for="name'">Name</label>
-        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" :class="input" v-validate data-vv-rules="required|min:3|max:30" >
+        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" class="input" v-validate data-vv-rules="required|min:3|max:30" >
         <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
       </div>
       <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
@@ -63,5 +63,5 @@ export default {
 </script>
 
 <style>
-  @import '../assets/styles/profile.css'
+  @import '../assets/styles/profile.css';
 </style>

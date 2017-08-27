@@ -1,6 +1,6 @@
 <template>
   <div class="product-detail-container">
-    <NavigationBar type="product-desc">Descrição do Produto</NavigationBar>
+    <NavigationBar>Descrição do Produto</NavigationBar>
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
       <ProductInfo :product="product"/>
@@ -43,7 +43,7 @@
         </ul>
       </div>
     </div>
-    <div @click="addOrder" class="add-order">Adicionr ao pedido</div>
+    <div @click="addOrder" class="add-order">Adicionar ao pedido</div>
   </div>
 </template>
 
