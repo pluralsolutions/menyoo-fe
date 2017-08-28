@@ -1,22 +1,25 @@
 <template>
-  <div :class="$style['product-evaluation-container']">
-    <span :class="$style['count']" v-if="evaluationCount">{{evaluationCount}} avaliações</span>
+  <div :class="$style['product-evaluation-container']" v-if="evaluation.score >= 20 ">
+    <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCount}} avaliações</span>
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
-      <span :class="$style['star-active']" :style="{width: score + '%'}" />
+      <span :class="$style['star-active']" :style="{width: evaluation.score + '%'}" />
     </div>
   </div>
 </template>
 
 <script>
+import Evaluation from '@/domain/Evaluation';
+
 export default {
   props: {
-    score: {
-      type: Number,
+    evaluation: {
+      type: Evaluation,
       required: true,
     },
-    evaluationCount: {
-      type: Number,
+    counter: {
+      type: Boolean,
+      default: true,
     },
   },
 };

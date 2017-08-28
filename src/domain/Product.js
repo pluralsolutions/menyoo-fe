@@ -1,14 +1,15 @@
+import Evaluation from './Evaluation';
+
 export default class Product {
 
-  constructor({ id, title, description, image, unitPrice, score, evaluationCount, ingredients }) {
+  constructor({ id, title, description, image, unitPrice, evaluation, ingredients }) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
     this.unitPrice = unitPrice;
-    this.score = score;
     this.ingredients = ingredients;
-    this.evaluationCount = evaluationCount;
+    this.evaluation = evaluation;
   }
 
   static sample(limit = 1) {
@@ -33,6 +34,30 @@ export default class Product {
       return r;
     };
     for (let x = 0; x < limit; x += 1) {
+      const evaluation = new Evaluation({
+        score: (Math.random() * (100 - 10)) + 10,
+        evaluationCount: 700,
+      });
+
+      const ingredients = [
+        {
+          standard: true,
+          title: 'padrões deste prato',
+          items: [
+            { name: 'Tomate', checked: true },
+            { name: 'Azeite', checked: true },
+          ],
+        },
+        {
+          title: 'Queijo',
+          items: [
+            { name: 'Queijo Gouda', addionalPrice: 1.40 },
+            { name: 'Queijo Gorgonzola', addionalPrice: 1.40 },
+            { name: 'Queijo Emental', addionalPrice: 1.40 },
+          ],
+        },
+      ];
+
       const index = Math.floor((Math.random() * (limit - 1)) + 1) % titles.length;
       const sampleData = {
         id: x,
@@ -40,9 +65,8 @@ export default class Product {
         description: description().slice(0, 70),
         image: images[index],
         unitPrice: (Math.random() * 30) + 9,
-        score: (Math.random() * (100 - 10)) + 10,
-        evaluationCount: 700,
-        ingredients: [],
+        ingredients,
+        evaluation,
       };
 
       products.push(new Product(sampleData));
