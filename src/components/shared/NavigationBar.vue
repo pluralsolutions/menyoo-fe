@@ -1,8 +1,8 @@
 <template>
-  <div class="navigation-bar-content">
-    <div class="navigation-fixed">
-      <div @click="back" class="back">Voltar {{ backToWhere }}</div>
-      <div :class="['page-title', type]"><slot/></div>
+  <div :class="$style['navigation-bar-content']">
+     <div :class="$style['navigation-fixed']">
+       <div @click="back" :class="$style.back">Voltar {{ backToWhere }}</div>
+       <div :class="$style.type_icon" v-if="type"><slot/></div>
     </div>
   </div>
 </template>
