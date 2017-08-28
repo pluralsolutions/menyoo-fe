@@ -1,9 +1,7 @@
-import Product from './Product';
-
-export default class Pedido {
-  constructor(product = { type: Product }, value = { type: Number }, quantity = { type: Number }) {
+export default class Order {
+  constructor({ product, totalValue, quantity }) {
     this.product = product;
-    this.value = value;
+    this.totalValue = totalValue;
     this.quantity = quantity;
   }
 }

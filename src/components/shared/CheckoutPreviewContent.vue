@@ -1,6 +1,6 @@
 <template>
   <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': !previewIsOpen}">
-    <div v-if="selectedProducts.length === 0" class="no-order">
+    <div v-if="orders.length === 0" class="no-order">
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   components: {
     ButtonComponent: () => import('@/components/shared/Button'),
@@ -27,10 +29,6 @@ export default {
     },
   },
   props: {
-    selectedProducts: {
-      type: Array,
-      default: () => [],
-    },
     value: {
       type: Boolean,
       default: false,
@@ -42,6 +40,9 @@ export default {
       this.$emit('toogle');
     },
   },
+  computed: mapGetters([
+    'orders',
+  ]),
 };
 </script>
 
