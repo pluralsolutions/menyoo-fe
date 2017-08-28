@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['product-evaluation-container']" v-if="score >= 20 ">
+  <div :class="$style['product-evaluation-container']">
     <span :class="$style['count']" v-if="evaluationCount">{{evaluationCount}} avaliações</span>
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
@@ -45,6 +45,7 @@ export default {
     top: 0;
     height: 15px;
     background: url('../../assets/images/product-detail/star-active.svg');
+    background-size: 15px;
   }
 
   .star-neutral {
