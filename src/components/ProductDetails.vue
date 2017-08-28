@@ -7,36 +7,13 @@
       <div class="custom-ingredients">
         <span class="title">Personalize seus ingredientes</span>
         <ul class="ingredients-list">
-          <li>
-            <span @click="toogleOptions" class="ingredientes-section active">Padrões deste prato</span>
+          <li v-for="group in product.ingredients">
+            <span @click="toogleOptions" :class="{'ingredientes-section': true, active: group.standard}"> {{group.title}}</span>
             <ul>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Tomate</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Azeite</span>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span @click="toogleOptions" class="ingredientes-section">Queijos</span>
-            <ul>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Queijo Gouda</span>
-                <span class="additional-cost">+R$ 1,40</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox" />
-                <span class="ingredient-name">Queijo Gorgonzola</span>
-                <span class="additional-cost">+R$ 1,40</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Queijo Emental</span>
-                <span class="additional-cost">+R$ 1,40</span>
+              <li v-for="item in group.items">
+                <span @click="toogleIt" :class="{checkbox: true, checked: item.checked}" />
+                <span class="ingredient-name">{{item.name}}</span>
+                <span class="additional-cost" v-if="item.addionalPrice">+R$ {{item.addionalPrice | currency}}</span>
               </li>
             </ul>
           </li>
@@ -70,6 +47,7 @@ export default {
       event.target.classList.toggle('active');
     },
     addOrder: function addOrder() {
+      this.$store.dispatch('addOrderItem', this.product);
       this.$router.push('/restaurantes/bar-do-ze');
     },
   },

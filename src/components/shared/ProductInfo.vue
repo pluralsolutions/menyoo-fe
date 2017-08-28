@@ -3,7 +3,7 @@
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
       <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
-      <ProductEvaluation :score="product.score" />
+      <ProductEvaluation :evaluation="product.evaluation" :counter="false"/>
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
