@@ -26,7 +26,7 @@
               <router-link to="/perfil">Editar perfil</router-link>
             </li>
             <li class="menu-item tracking-orders">
-              <router-link to="/pedidos/acompanhar">Acompanhar pedido</router-link>
+              <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
             </li>
           </ul>
 
