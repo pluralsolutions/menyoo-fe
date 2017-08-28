@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style module>
+  .button[disabled] {
+    -webkit-filter: grayscale(60%) brightness(60%);
+    filter: grayscale(60%) brightness(60%);
+  }
   .button {
     background-color: #4a79d1;
     padding: 14px;

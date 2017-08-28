@@ -44,7 +44,7 @@ export default {
     left: 0;
     top: 0;
     height: 15px;
-    background: url('../../assets/images/product-detail/star-active.svg');
+    background: url('@/assets/images/product-detail/star-active.svg');
     background-size: 15px;
   }
 
