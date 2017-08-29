@@ -28,11 +28,12 @@
 
 .authenticator-item {
   width: 240px;
-  padding-left: 80px;
-  height: 43px;
+  height: 20px;
+  padding: 15px;
   position: relative;
   background-color: rgba(225, 225, 225, 0.76);
   text-decoration: none;
+  text-align: center;
   color: #fff;
   text-transform: uppercase;
   font-size: 19px;
@@ -40,16 +41,18 @@
 }
 
 .authenticator-item:not(:first-child) {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .authenticator-item::before {
-  left: -2px;
-  height: 43px;
-  width: 50px;
+  left: -21px;
+  top: 0px;
+  height: 50px;
+  width: 45px;
   position: absolute;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  background-position: 0px 0px;
   content: '';
 }
 
