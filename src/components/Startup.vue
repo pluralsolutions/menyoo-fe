@@ -10,7 +10,6 @@
 
 <script>
   export default {
-    name: 'hello',
     created() {
       setTimeout(() => { this.$router.push('/entrar'); }, 1600);
     },
