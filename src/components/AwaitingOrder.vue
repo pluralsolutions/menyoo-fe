@@ -6,9 +6,9 @@
       <div :class="{active: step>=2}"><img src="../assets/images/step2.svg"/><span>SEU PEDIDO ESTÁ SENDO PREPARADO</span></div>
       <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>SEU PEDIDO ESTÁ A CAMINHO DA SUA MESA</span></div>
     </div>
-    <ButtonComponent :onClick="pagar()" size="large" v-if="step>=3">pagar</ButtonComponent>
+    <ButtonComponent :onClick="pagar" size="large" v-if="step>=3">pagar</ButtonComponent>
     <br/>
-    <div><button @click="mais()">+++</button> {{ step }} <button @click="menos()">----</button> </div>
+    <div><button @click="mais">+++</button> {{ step }} <button @click="menos()">----</button> </div>
      <OrderEvaluationPush v-show="step>=5"/> 
   </div>
 </template>
@@ -42,11 +42,11 @@ export default {
     },
   },
   created() {
+    setTimeout(this.mais, 2000);
     setTimeout(this.mais, 3000);
+    setTimeout(this.mais, 4000);
+    setTimeout(this.mais, 5000);
     setTimeout(this.mais, 6000);
-    setTimeout(this.mais, 8000);
-    setTimeout(this.mais, 10000);
-    setTimeout(this.mais, 12000);
   },
 };
 </script>
