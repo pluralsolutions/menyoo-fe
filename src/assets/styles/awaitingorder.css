@@ -1,5 +1,8 @@
+.awaitorder-container{
+  align-content: center;
+}
 .awaitorder{
-  color: #393;
+    color: #393;
   margin: 30px auto;
   display: flex;
   flex-direction: column;
@@ -32,7 +35,10 @@
   }
   .awaitorder{
     flex-direction: row;
-    margin: 0;
+    margin: auto 30px;
     width: 90%;
   }
+}
+.awaitorder-paybtn{
+  display: flex;
 }
