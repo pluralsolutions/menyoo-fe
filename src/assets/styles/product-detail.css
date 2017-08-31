@@ -88,7 +88,7 @@
   background-color: #f00;
 }
 
-.add-order {
+.product-detail-container .add-order {
   cursor: pointer;
   position: fixed;
   bottom: 0;
@@ -98,5 +98,12 @@
   font-size: 19px;
   text-align: center;
   color: #3366cc;
+  box-shadow: none;
   border-top: 1px solid #3366cc;
+}
+
+.summary-items {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }

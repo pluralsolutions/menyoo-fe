@@ -4,6 +4,12 @@
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
       <ProductInfo :product="product"/>
+      <div class="summary-items">
+        <Counter :plusCallback="addProduct" :minusCallback="removeProduct" v-model:value="productQuantity"/>
+        <div class="current-price">
+          R$ {{ itemsPrice | currency }}
+        </div>
+      </div>
       <div class="custom-ingredients">
         <span class="title">Personalize seus ingredientes</span>
         <ul class="ingredients-list">
@@ -18,7 +24,7 @@
                 </li>
               </ul>
             </li>
-            <ButtonComponent>Adicionr ao pedido</ButtonComponent>
+            <ButtonComponent additionalClass="add-order">Adicionr ao pedido</ButtonComponent>
           </form>
         </ul>
       </div>
@@ -31,16 +37,21 @@
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
 import Product from '@/domain/Product';
+import Order from '@/domain/Order';
+import Counter from '@/components/shared/Counter';
 import ButtonComponent from '@/components/shared/Button';
 
 export default {
   components: {
     NavigationBar,
     ProductInfo,
+    Counter,
     ButtonComponent,
   },
   data() {
     return {
+      productQuantity: 0,
+      itemsPrice: 0,
       product: null,
     };
   },
@@ -51,14 +62,31 @@ export default {
     toogleOptions: function toogleOptions(event) {
       event.target.classList.toggle('active');
     },
+    addProduct: function addProduct() {
+      console.log('heeer');
+      this.itemsPrice = this.product.unitPrice * this.productQuantity;
+    },
+    removeProduct: function removeProduct() {
+      if (this.productQuantity > 1) {
+        this.productQuantity -= 1;
+        this.itemsPrice = this.product.unitPrice * this.productQuantity;
+      }
+    },
     addOrder: function addOrder(event) {
       const checkboxs = event.target.querySelectorAll('input:checked');
       const selectedIngredients = [];
       for (let x = 0; x < checkboxs.length; x += 1) {
-        selectedIngredients.push(checkboxs[x].value);
+        const ingredientElement = checkboxs[x].parentElement.getElementsByClassName('ingredient-name')[0];
+        selectedIngredients.push({ id: checkboxs[x].value, name: ingredientElement.innerText });
       }
 
-      // this.$store.dispatch('addOrderItem', this.product);
+      const order = new Order({
+        product: this.product,
+        ingredients: selectedIngredients,
+        productQuantity: this.productQuantity,
+      });
+
+      this.$store.dispatch('addOrderItem', order);
       // this.$router.push('/restaurantes/bar-do-ze');
     },
   },

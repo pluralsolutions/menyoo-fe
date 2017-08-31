@@ -1,7 +1,9 @@
 export default class Order {
-  constructor({ product, totalValue, quantity }) {
+  constructor({ product, productQuantity, ingredients }) {
     this.product = product;
-    this.totalValue = totalValue;
-    this.quantity = quantity;
+    this.productQuantity = productQuantity;
+    this.ingredients = ingredients;
+
+    Object.freeze(this);
   }
 }
