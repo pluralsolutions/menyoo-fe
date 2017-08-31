@@ -1,6 +1,6 @@
 import {
   ORDER_STEP_CHANGE,
-  ADD_ORDER_ITEM,
+  ADD_ITEM_TO_ORDER,
 } from '../mutation-types';
 
 
@@ -15,8 +15,8 @@ const actions = {
     newstep += step || 1;
     state.commit(ORDER_STEP_CHANGE, { newstep });
   },
-  addOrderItem(state, order) {
-    state.commit(ADD_ORDER_ITEM, order);
+  addItemToOrder(state, order) {
+    state.commit(ADD_ITEM_TO_ORDER, order);
   },
 };
 
@@ -24,7 +24,7 @@ const mutations = {
   [ORDER_STEP_CHANGE](state, { newstep }) {
     state.orderStep = newstep;
   },
-  [ADD_ORDER_ITEM](state, order) {
+  [ADD_ITEM_TO_ORDER](state, order) {
     state.orders.push(order);
   },
 };
