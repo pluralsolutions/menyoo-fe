@@ -44,16 +44,16 @@ export default class Product {
           standard: true,
           title: 'padrões deste prato',
           items: [
-            { name: 'Tomate', checked: true },
-            { name: 'Azeite', checked: true },
+            { name: 'Tomate', checked: true, id: 1 },
+            { name: 'Azeite', checked: true, id: 2 },
           ],
         },
         {
           title: 'Queijo',
           items: [
-            { name: 'Queijo Gouda', addionalPrice: 1.40 },
-            { name: 'Queijo Gorgonzola', addionalPrice: 1.40 },
-            { name: 'Queijo Emental', addionalPrice: 1.40 },
+            { name: 'Queijo Gouda', addionalPrice: 1.40, id: 5 },
+            { name: 'Queijo Gorgonzola', addionalPrice: 1.40, id: 10 },
+            { name: 'Queijo Emental', addionalPrice: 1.40, id: 11 },
           ],
         },
       ];

@@ -7,16 +7,19 @@
       <div class="custom-ingredients">
         <span class="title">Personalize seus ingredientes</span>
         <ul class="ingredients-list">
-          <li v-for="group in product.ingredients">
-            <span @click="toogleOptions" :class="{'ingredientes-section': true, active: group.standard}"> {{group.title}}</span>
-            <ul>
-              <li v-for="item in group.items">
-                <span @click="toogleIt" :class="{checkbox: true, checked: item.checked}" />
-                <span class="ingredient-name">{{item.name}}</span>
-                <span class="additional-cost" v-if="item.addionalPrice">+R$ {{item.addionalPrice | currency}}</span>
-              </li>
-            </ul>
-          </li>
+          <form v-on:submit.prevent="addOrder">
+            <li v-for="group in product.ingredients">
+              <span @click="toogleOptions" :class="{'ingredientes-section': true, active: group.standard}"> {{group.title}}</span>
+              <ul>
+                <li v-for="item in group.items">
+                  <input type="checkbox" name="ingredients" :value="item.id" :checked="item.checked">
+                  <span class="ingredient-name">{{item.name}}</span>
+                  <span class="additional-cost" v-if="item.addionalPrice">+R$ {{item.addionalPrice | currency}}</span>
+                </li>
+              </ul>
+            </li>
+            <ButtonComponent>Adicionr ao pedido</ButtonComponent>
+          </form>
         </ul>
       </div>
     </div>
@@ -28,11 +31,13 @@
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
 import Product from '@/domain/Product';
+import ButtonComponent from '@/components/shared/Button';
 
 export default {
   components: {
     NavigationBar,
     ProductInfo,
+    ButtonComponent,
   },
   data() {
     return {
@@ -46,9 +51,15 @@ export default {
     toogleOptions: function toogleOptions(event) {
       event.target.classList.toggle('active');
     },
-    addOrder: function addOrder() {
-      this.$store.dispatch('addOrderItem', this.product);
-      this.$router.push('/restaurantes/bar-do-ze');
+    addOrder: function addOrder(event) {
+      const checkboxs = event.target.querySelectorAll('input:checked');
+      const selectedIngredients = [];
+      for (let x = 0; x < checkboxs.length; x += 1) {
+        selectedIngredients.push(checkboxs[x].value);
+      }
+
+      // this.$store.dispatch('addOrderItem', this.product);
+      // this.$router.push('/restaurantes/bar-do-ze');
     },
   },
   created() {
