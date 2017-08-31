@@ -5,7 +5,7 @@
     <div class="product-info">
       <ProductInfo :product="product"/>
       <div class="summary-items">
-        <Counter :plusCallback="addProduct" :minusCallback="removeProduct" v-model:value="productQuantity"/>
+        <Counter :min="0" :plusCallback="addProduct" :minusCallback="removeProduct" v-model:value="productQuantity"/>
         <div class="current-price">
           R$ {{ itemsPrice | currency }}
         </div>
@@ -36,10 +36,11 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
-import Product from '@/domain/Product';
-import Order from '@/domain/Order';
 import Counter from '@/components/shared/Counter';
 import ButtonComponent from '@/components/shared/Button';
+
+import Product from '@/domain/Product';
+import Order from '@/domain/Order';
 
 export default {
   components: {
@@ -63,16 +64,19 @@ export default {
       event.target.classList.toggle('active');
     },
     addProduct: function addProduct() {
-      console.log('heeer');
       this.itemsPrice = this.product.unitPrice * this.productQuantity;
     },
     removeProduct: function removeProduct() {
-      if (this.productQuantity > 1) {
+      if (this.productQuantity > 0) {
         this.productQuantity -= 1;
         this.itemsPrice = this.product.unitPrice * this.productQuantity;
       }
     },
     addOrder: function addOrder(event) {
+      if (this.productQuantity < 1) {
+        alert('Adicione pelo menos 1 produto no pedido');
+        return;
+      }
       const checkboxs = event.target.querySelectorAll('input:checked');
       const selectedIngredients = [];
       for (let x = 0; x < checkboxs.length; x += 1) {
@@ -86,8 +90,7 @@ export default {
         productQuantity: this.productQuantity,
       });
 
-      this.$store.dispatch('addOrderItem', order);
-      // this.$router.push('/restaurantes/bar-do-ze');
+      this.$store.dispatch('addItemToOrder', order);
     },
   },
   created() {
