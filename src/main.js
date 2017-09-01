@@ -50,8 +50,6 @@ router.beforeEach((to, from, next) => {
   const requireAuth = !to.matched.some(record => record.meta.noAuth);
   let redirectTo = {};
 
-  store.dispatch('getLoggedUser');
-
   const isLoggedUser = store.getters.isLoggedUser;
 
   if (requireAuth && !isLoggedUser) {
