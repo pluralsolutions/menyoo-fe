@@ -4,20 +4,20 @@ import {
 
 
 const getters = {
-  orderStep: state => (state.orderStep),
+  orderStep: commit => (commit.orderStep),
 };
 
 const actions = {
-  updateStep(state, { step }) {
-    let newstep = state.getters.orderStep || 0;
+  updateStep(commit, { step }) {
+    let newstep = commit.getters.orderStep || 0;
     newstep += step || 1;
-    state.commit(ORDER_STEP_CHANGE, { newstep });
+    commit.commit(ORDER_STEP_CHANGE, { newstep });
   },
 };
 
 const mutations = {
-  [ORDER_STEP_CHANGE](state, { newstep }) {
-    state.orderStep = newstep;
+  [ORDER_STEP_CHANGE](commit, { newstep }) {
+    commit.orderStep = newstep;
   },
 };
 
