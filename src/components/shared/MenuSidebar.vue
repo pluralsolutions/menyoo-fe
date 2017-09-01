@@ -14,7 +14,7 @@
               <PhotoCircle :src="user.urlPhoto" :alt="`${user.name}`" size="69"></PhotoCircle>
             </div>
             <div class="user-name">
-              Gabriel Lucas
+              {{ user.name }}
             </div>
           </div>
 
@@ -32,7 +32,7 @@
 
           <ul class="menu-secondary">
             <li class="menu-item logout">
-              <router-link to="/logout">Sair</router-link>
+              <router-link to="/">Sair</router-link>
             </li>
           </ul>
         </div>
@@ -43,18 +43,25 @@
 <script>
 
 import PhotoCircle from '@/components/shared/PhotoCircle';
-import User from '@/domain/User';
 
 export default {
   components: {
     PhotoCircle,
-    User,
   },
   data() {
     return {
       show: false,
-      user: new User('Gabriel Toledo', '/static/img/user.jpg'),
     };
+  },
+  methods: {
+    signOut() {
+      this.$store.dispatch('signOut');
+    },
+  },
+  computed: {
+    user: function u() {
+      return this.$store.getters.loggedUser;
+    },
   },
 };
 </script>

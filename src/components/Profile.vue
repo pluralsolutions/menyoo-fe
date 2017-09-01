@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import User from '@/domain/User';
 import PhotoCircle from '@/components/shared/PhotoCircle';
 import NavigationBar from '@/components/shared/NavigationBar';
 
@@ -35,7 +34,7 @@ export default {
   data() {
     return {
       msg: 'Hello!',
-      user: new User('Gabriel Toledo', 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg'),
+      user: this.$store.getters.loggedUser,
     };
   },
   methods: {
@@ -44,6 +43,7 @@ export default {
       .validateAll()
       .then((success) => {
         if (success) {
+          this.$store.dispatch('updateUser', { user: user });
           // voltar para pagina home.
           this.$router.push({ name: 'home' });
           // salvar dados do usuario

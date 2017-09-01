@@ -28,6 +28,9 @@ export default {
     };
   },
   computed: {
+    loggedUser() {
+      return this.$store.getters.getLoggedUser;
+    },
     productsLoaded() {
       if (this.query === '') return this.products;
 
