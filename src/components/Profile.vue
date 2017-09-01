@@ -43,7 +43,6 @@ export default {
       .validateAll()
       .then((success) => {
         if (success) {
-          this.$store.dispatch('updateUser', { user: user });
           // voltar para pagina home.
           this.$router.push({ name: 'home' });
           // salvar dados do usuario
