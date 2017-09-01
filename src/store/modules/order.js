@@ -2,7 +2,6 @@ import {
   ORDER_STEP_CHANGE,
 } from '../mutation-types';
 
-
 const getters = {
   orderStep: commit => (commit.orderStep),
 };
@@ -16,8 +15,8 @@ const actions = {
 };
 
 const mutations = {
-  [ORDER_STEP_CHANGE](commit, { newstep }) {
-    commit.orderStep = newstep;
+  [ORDER_STEP_CHANGE](state, { newstep }) {
+    state.orderStep = newstep;
   },
 };
 
