@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div class="product-info-container">
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
       <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
-      <ProductEvaluation :evaluation="product.evaluation" :counter="false"/>
+      <ProductEvaluation v-if="!noRating" :evaluation="product.evaluation" :counter="false"/>
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
       <div class="product-desc">{{product.description}}</div>
     </div>
-    <div class="summary-items">
+    <div v-if="!noSummary" class="summary-items">
       <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model:value="productQuantity"/>
       <div class="current-price">
         R$ {{ itemsPrice | currency }}
@@ -40,6 +40,14 @@ export default {
     additionalPrice: {
       type: Number,
       default: 0,
+    },
+    noSummary: {
+      type: Boolean,
+      default: false,
+    },
+    noRating: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

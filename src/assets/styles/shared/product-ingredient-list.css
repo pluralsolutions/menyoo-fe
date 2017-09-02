@@ -57,23 +57,6 @@
   background-color: #fff;
 }
 
-.ingredients-list li ul li .checkbox {
-  border: solid 1px #7c7c7c;
-  padding: 4px;
-}
-
-.checkbox:before {
-  content: '';
-  width: 4px;
-  display: block;
-  height: 4px;
-}
-
-.ingredients-list li ul li .checkbox.checked:before {
-  background-color: #f00;
-}
-
-
 .custom-ingredients .add-order {
   cursor: pointer;
   position: fixed;

@@ -34,8 +34,11 @@ export default {
     addOrder: function addOrder(event) {
       const checkboxs = event.target.querySelectorAll('input:checked');
       const selectedIngredients = [];
+      let additionalPrice = 0;
       for (let x = 0; x < checkboxs.length; x += 1) {
         const ingredientElement = checkboxs[x].parentElement.getElementsByClassName('ingredient-name')[0];
+        const price = checkboxs[x].getAttribute('data-price');
+        if (price) additionalPrice += parseFloat(price);
         selectedIngredients.push({ id: checkboxs[x].value, name: ingredientElement.innerText });
       }
 
@@ -43,6 +46,7 @@ export default {
         product: this.product,
         ingredients: selectedIngredients,
         productQuantity: this.productQuantity,
+        totalValue: additionalPrice + (this.productQuantity * this.product.unitPrice),
       });
 
       this.$store.dispatch('addItemToOrder', order);
