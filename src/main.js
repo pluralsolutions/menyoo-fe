@@ -50,21 +50,21 @@ router.beforeEach((to, from, next) => {
   const requireAuth = !to.matched.some(record => record.meta.noAuth);
   let redirectTo = { };
 
-  if (requireAuth) {
-    let haveIACookie = store.getters.haveIACookie;
-    if (haveIACookie && !store.getters.isLoggedUser) {
-      store.dispatch('fetchUser').then(() => {
-        haveIACookie = store.getters.haveIACookie;
-      },
-      () => router.push('/entrar'));
-    }
-
-    if (requireAuth && !haveIACookie) {
-      redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
-    } else if (haveIACookie && to.path === '/entrar') {
-      redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
-    }
+  let haveIACookie = store.getters.haveIACookie;
+  if (requireAuth && haveIACookie && !store.getters.isLoggedUser) {
+    store.dispatch('fetchUser').then(() => {
+      haveIACookie = store.getters.haveIACookie;
+    },
+    // on error
+    () => router.push('/entrar'));
   }
+
+  if (requireAuth && !haveIACookie) {
+    redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
+  } else if (haveIACookie && to.path === '/entrar') {
+    redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
+  }
+  console.log(redirectTo);
 
   return next(redirectTo);
 });
