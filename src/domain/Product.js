@@ -51,9 +51,9 @@ export default class Product {
         {
           title: 'Queijo',
           items: [
-            { name: 'Queijo Gouda', addionalPrice: 1.40, id: 5 },
-            { name: 'Queijo Gorgonzola', addionalPrice: 1.40, id: 10 },
-            { name: 'Queijo Emental', addionalPrice: 1.40, id: 11 },
+            { name: 'Queijo Gouda', additionalPrice: 1.40, id: 5 },
+            { name: 'Queijo Gorgonzola', additionalPrice: 1.40, id: 10 },
+            { name: 'Queijo Emental', additionalPrice: 1.40, id: 11 },
           ],
         },
       ];

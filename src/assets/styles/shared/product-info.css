@@ -28,3 +28,9 @@
   text-align: left;
   color: #606060;
 }
+
+.summary-items {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
