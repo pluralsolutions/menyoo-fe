@@ -6,7 +6,12 @@ export default class User {
     this.urlPhoto = urlPhoto;
   }
 
-  static sample() {
-    return new User('123345', 'Gabriel Lucas de Toledo Toledo', 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg');
+  static n(mod) {
+    return Math.floor(Math.random() * 1984 * 12 * 6 * 4) % (mod);
+  }
+
+  static sample(a) {
+    const token = `${this.n(9999)}-${a}-${this.n(99999)}`;
+    return new User(token, 'Gabriel Lucas de Toledo Ribeiro', '/static/img/user.jpg');
   }
 }
