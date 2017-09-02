@@ -13,20 +13,19 @@
 </template>
 
 <script>
-import User from '../domain/User';
 
 export default {
   methods: {
     signInFacebook: function signInFacebook() {
-      this.$store.dispatch('signInFacebook', { user: User.sample('f') });
+      this.$store.dispatch('signInFacebook');
       this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInGoogle: function signInGoogle() {
-      this.$store.dispatch('signInGoogle', { user: User.sample('g') });
+      this.$store.dispatch('signInGoogle');
       this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInEmail: function signInEmail() {
-      this.$store.dispatch('signInEmail', { user: User.sample('e') });
+      this.$store.dispatch('signInEmail');
       this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
   },

@@ -4,7 +4,7 @@
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
-      <router-link :to="{name: 'menu'}">
+      <router-link to="/restaurantes/bar-do-ze">
         <ButtonComponent size="large" class="start-order" @click="toogle">Iniciar pedido</ButtonComponent>
       </router-link>
     </div>

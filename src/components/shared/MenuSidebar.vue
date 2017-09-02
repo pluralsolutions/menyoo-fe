@@ -55,8 +55,8 @@ export default {
   },
   methods: {
     signOut() {
-      this.$store.dispatch('signOut');
-      setTimeout(() => this.$router.push('/'));
+      this.$store.dispatch('signOut').then(
+        () => setTimeout(() => this.$router.push('/')));
     },
   },
   computed: {

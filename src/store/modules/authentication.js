@@ -5,29 +5,35 @@ import {
   LOGGED_USER_UNLOADED,
 } from '../mutation-types';
 
+import User from '../../domain/User';
+
 const COOKIE_TOKEN_NAME = 'token';
 
 const getters = {
-  isLoggedUser: state => (!!state.loggedUser),
+  isLoggedUser: state => !!state.loggedUser,
   loggedUser: state => state.loggedUser,
+  haveIACookie: () => !!Vue.cookie.get(COOKIE_TOKEN_NAME),
 };
 
 const actions = {
-  signInFacebook(commit, { user }) {
-    // const user = { user: 1 };
+  signInFacebook(commit) {
+    const user = User.sample('f');
     commit.commit(LOGGED_USER_LOADED, user);
   },
-  signInGoogle(commit, { user }) {
-    // const user = { user: 2 };
+  signInGoogle(commit) {
+    const user = User.sample('g');
     commit.commit(LOGGED_USER_LOADED, user);
   },
-  signInEmail(commit, { user }) {
-    // const user = { user: 3 };
+  signInEmail(commit) {
+    const user = User.sample('f');
     commit.commit(LOGGED_USER_LOADED, user);
   },
-  updateUser(commit, { user }) {
-    // const user = { user: 3 };
-    commit.commit(LOGGED_USER_LOADED, user);
+  fetchUser({ commit }) {
+    const token = Vue.cookie.get(COOKIE_TOKEN_NAME);
+    // TODO: get User from API using cookie
+    const user = User.sample('fetched');
+    user.token = token;
+    commit(LOGGED_USER_LOADED, user);
   },
   signOut(commit) {
     commit.commit(LOGGED_USER_UNLOADED);

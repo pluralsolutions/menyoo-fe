@@ -48,15 +48,24 @@ Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
   const requireAuth = !to.matched.some(record => record.meta.noAuth);
-  let redirectTo = {};
+  let redirectTo = { };
 
-  const isLoggedUser = store.getters.isLoggedUser;
+  if (requireAuth) {
+    let haveIACookie = store.getters.haveIACookie;
+    if (haveIACookie && !store.getters.isLoggedUser) {
+      store.dispatch('fetchUser').then(() => {
+        haveIACookie = store.getters.haveIACookie;
+      },
+      () => router.push('/entrar'));
+    }
 
-  if (requireAuth && !isLoggedUser) {
-    redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
-  } else if (isLoggedUser && to.path === '/entrar') {
-    redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
+    if (requireAuth && !haveIACookie) {
+      redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
+    } else if (haveIACookie && to.path === '/entrar') {
+      redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
+    }
   }
+
   return next(redirectTo);
 });
 
