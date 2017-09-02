@@ -50,11 +50,9 @@ router.beforeEach((to, from, next) => {
   const requireAuth = !to.matched.some(record => record.meta.noAuth);
   let redirectTo = { };
 
-  let haveIACookie = store.getters.haveIACookie;
+  const haveIACookie = Vue.cookie.get('token');
   if (requireAuth && haveIACookie && !store.getters.isLoggedUser) {
-    store.dispatch('fetchUser').then(() => {
-      haveIACookie = store.getters.haveIACookie;
-    },
+    store.dispatch('fetchUser').then(() => { },
     // on error
     () => router.push('/entrar'));
   }
@@ -64,7 +62,7 @@ router.beforeEach((to, from, next) => {
   } else if (haveIACookie && to.path === '/entrar') {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
-  console.log(redirectTo);
+  console.log(`redirectTo: ${redirectTo.path} or to: ${to.path}`);
 
   return next(redirectTo);
 });

@@ -7,12 +7,11 @@ import {
 
 import User from '../../domain/User';
 
-const COOKIE_TOKEN_NAME = 'token';
+export const COOKIE_TOKEN_NAME = 'token';
 
 const getters = {
   isLoggedUser: state => !!state.loggedUser,
   loggedUser: state => state.loggedUser,
-  haveIACookie: () => !!Vue.cookie.get(COOKIE_TOKEN_NAME),
 };
 
 const actions = {
