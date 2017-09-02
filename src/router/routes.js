@@ -7,11 +7,13 @@ import ProductDetails from '@/components/ProductDetails';
 const routes = [
   {
     path: '/',
+    name: 'index',
     component: Startup,
     meta: { noAuth: true },
   },
   {
     path: '/entrar',
+    name: 'auth',
     component: Authentication,
     meta: { noAuth: true },
   },
