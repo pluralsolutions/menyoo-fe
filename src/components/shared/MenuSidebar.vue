@@ -32,7 +32,7 @@
 
           <ul class="menu-secondary">
             <li class="menu-item logout">
-              <router-link to="/">Sair</router-link>
+              <a @click="signOut">Sair</a>
             </li>
           </ul>
         </div>
@@ -56,6 +56,7 @@ export default {
   methods: {
     signOut() {
       this.$store.dispatch('signOut');
+      setTimeout(() => this.$router.push('/'));
     },
   },
   computed: {

@@ -18,16 +18,16 @@ import User from '../domain/User';
 export default {
   methods: {
     signInFacebook: function signInFacebook() {
-      this.$store.dispatch('signInFacebook', { user: User.sample() });
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$store.dispatch('signInFacebook', { user: User.sample('f') });
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInGoogle: function signInGoogle() {
-      this.$store.dispatch('signInGoogle', { user: User.sample() });
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$store.dispatch('signInGoogle', { user: User.sample('g') });
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInEmail: function signInEmail() {
-      this.$store.dispatch('signInEmail', { user: User.sample() });
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$store.dispatch('signInEmail', { user: User.sample('e') });
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
   },
 };
