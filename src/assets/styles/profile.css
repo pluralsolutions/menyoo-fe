@@ -1,24 +1,68 @@
-.formulario{
+.profileuser {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+.profile-formulario{
   text-align: left;
   width: 80%;
   padding: 5%;
 }
-.controle{
-  width: 100%;
-  margin: 20px;
+.profile-btn-container {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  width: 90%;
 }
-label {
-  font-weight: bold;
-  width: 100%;
+.profile-btn {
+  margin: auto;
+  width: 45%;
 }
-
-label, input, textarea{
+.profile-controle textarea,
+.profile-controle input{
   width: 100%;
-  border-radius: 5px;
+  align-self: right;
+  border: none;
+  border-bottom: 1px solid red;
+  padding: 5px;
+  margin-top: 20px;
+  font-size: 19px;
+  position: relative;
 }
 .invalid{
   border-color: red;
 }
 .erro{
   color: red;
+}
+
+.profile-controle::before{
+  content: '';
+  height: 60px;
+  width: 40px;
+  position: absolute;
+  left: 0px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 21px;
+}
+
+.profile-controle.name::before{
+  background-image: url('../images/profile_home_icon.svg');
+}
+.profile-controle.phone::before{
+  background-image: url('../images/profile_home_icon.svg');
+}
+.profile-controle.email::before{
+  background-image: url('../images/profile_home_icon.svg');
+}
+.profile-controle.birth::before{
+  background-image: url('../images/profile_home_icon.svg');
+}
+.profile-controle.cpf::before{
+  background-image: url('../images/profile_home_icon.svg');
 }

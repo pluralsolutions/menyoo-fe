@@ -1,41 +1,66 @@
 <template>
   <div>
     <NavigationBar>Profile</NavigationBar>
-    <h1>Perfil</h1>
-    <div class="center">
-      <h2>{{user.name}}</h2>
-      <photo-circle :size="128" :src="user.urlPhoto" :alt="user.name"></photo-circle>
+    <div class="profileuser">
+      <PhotoCircle :size="128" :src="user.urlPhoto" :alt="user.name"></PhotoCircle>
+      <a>ALTERAR</a>
+      <form class="profile-formulario" @submit.prevent="enviar">
+        <div :class="{'profile-controle name': true, 'erro': errors.has('name')}">
+          <input data-vv-as="nome" v-validate data-vv-rules="alpha_spaces|required|min:3|max:100" v-model.lazy="user.name" id="name" name="name" autocomplete="off">
+          <span class="erro" v-show="errors.has('name')">{{ errors.first('name') }}</span>
+        </div>
+        <div :class="{'profile-controle phone': true, 'erro': errors.has('phone')}">
+          <input data-vv-as="telefone" v-validate data-vv-rules="required" v-model.lazy="user.phone" id="phone" name="phone" autocomplete="off">
+          <span class="erro" v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
+        </div>
+        <div :class="{'profile-controle email': true, 'erro': errors.has('email')}">
+          <input data-vv-as="e-mail" v-validate="{ rules: {required: true, email: true }}" v-model="user.email" id="email" name="email">
+          <span class="erro" v-show="errors.has('email')">{{ errors.first('email') }}</span>
+        </div>
+        <div :class="{'profile-controle birth': true, 'erro': errors.has('birth')}">
+          <input data-vv-as="data de nascimento" v-validate="{ rules: {required: true, date_format: 'DD/MM/YYYY' } }" v-model="user.birth" id="birth" name="birth">
+          <span class="erro" v-show="errors.has('birth')">{{ errors.first('birth') }}</span>
+        </div>
+        <div :class="{'profile-controle cpf': true, 'erro': errors.has('cpf')}">
+          <input data-vv-as="CPF" v-validate="{ rules: {required: true, min:11, max: 11 } }" v-model="user.cpf" id="cpf" name="cpf">
+          <span class="erro" v-show="errors.has('cpf')">{{ errors.first('cpf') }}</span>
+        </div>
+      </form>
+        <div class="profile-btn-container">
+          <div class="profile-btn">
+            <Button type="secondary" :disabled="errors.any()" size="full">Salvar</Button>
+          </div>
+          <div class="profile-btn">
+            <Button type="primary" size="full">Cancelar</Button>
+          </div>
+        </div>
     </div>
-    <form class="formulario" @submit.prevent="enviar">
-      <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
-        <label for="name'">Name</label>
-        <input data-vv-as="Name" v-model.lazy="user.name" id="name" name="name" autocomplete="off" class="input" v-validate data-vv-rules="required|min:3|max:30" >
-        <span class="erro" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
-      </div>
-      <div :class="{'controle': true, 'erro': errors.has('urlPhoto')}">
-        <label for="urlPhoto">urlPhoto</label>
-        <input v-validate data-vv-rules="required" v-model.lazy="user.urlPhoto" id="urlPhoto" name="urlPhoto" autocomplete="off">
-        <span class="erro" v-show="errors.has('urlPhoto')">{{ errors.first('urlPhoto') }}</span>
-      </div>
-    </form>
   </div>
 </template>
 
 <script>
 import PhotoCircle from '@/components/shared/PhotoCircle';
 import NavigationBar from '@/components/shared/NavigationBar';
+import Button from '@/components/shared/Button';
 
 export default {
-  name: 'hello',
+  name: 'profile',
   components: {
-    'photo-circle': PhotoCircle,
+    PhotoCircle,
     NavigationBar,
+    Button,
   },
   data() {
     return {
-      msg: 'Hello!',
-      user: this.$store.getters.loggedUser,
+      user: null,
     };
+  },
+  mounted() {
+    this.user = this.$store.getters.loggedUser;
+    console.log(this.user);
+  },
+  computed: {
+    maxDate: () => ((new Date()).toLocaleDateString()),
   },
   methods: {
     enviar: function enviar() {
@@ -44,7 +69,7 @@ export default {
       .then((success) => {
         if (success) {
           // voltar para pagina home.
-          this.$router.push({ name: 'home' });
+          this.$router.push('/');
           // salvar dados do usuario
           // this.service
             // .cadastra (this.user)

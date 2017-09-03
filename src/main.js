@@ -26,7 +26,7 @@ Vue.filter('currency', (value) => {
 Vue.use(VeeValidate,
   {
     locale: 'pt_BR',
-    enableAutoClasses: true,
+    classes: true,
   },
 );
 

@@ -23,8 +23,8 @@ export default {
 
 <style module>
   .button[disabled] {
-    -webkit-filter: grayscale(60%) brightness(60%);
-    filter: grayscale(60%) brightness(60%);
+    -webkit-filter: grayscale(60%) brightness(70%);
+    filter: grayscale(60%) brightness(70%);
   }
   .button {
     background-color: #4a79d1;
@@ -39,8 +39,14 @@ export default {
   .primary{
     background-color: #4a79d1;
   }
-  .secondary{
+  .danger{
     background-color: #743;
+  }
+  .secondary{
+    background-color: #33cc66;
+  }
+  .full{
+    width: 100%;
   }
   .large{
     width: 80%;
