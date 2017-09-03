@@ -54,9 +54,12 @@ export default {
     };
   },
   methods: {
+    routeToZero() {
+      this.$router.push('/');
+    },
     signOut() {
       this.$store.dispatch('signOut').then(
-        () => setTimeout(() => this.$router.push('/')));
+        () => this.$nextTick(this.routeToZero));
     },
   },
   computed: {
