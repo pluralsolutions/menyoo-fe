@@ -1,8 +1,8 @@
 {
   "name": "menyoo",
   "version": "1.0.0",
-  "description": "This is a Simple Proof of Concept (POC) for using Vue making progressive web apps",
-  "author": "Gabriel Lucas de Toledo Ribeiro <gabrielltr84@gmail.com>",
+  "description": "Menyoo is a system for restaurants using a Vue making progressive web apps better for all",
+  "author": "Gabriel Lucas de Toledo Ribeiro <gabrielltr84@gmail.com>, Lucas de Sousa Gomide <lucaslg200@gmail.com>, Fernando Seguim <fernando.seguim@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -68,8 +68,8 @@
     "webpack-merge": "^4.1.0"
   },
   "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
+    "node": ">= 7.5.0",
+    "npm": ">= 5.0.0"
   },
   "browserslist": [
     "> 1%",
