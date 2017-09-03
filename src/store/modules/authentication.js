@@ -34,6 +34,9 @@ const actions = {
     user.token = token;
     commit(LOGGED_USER_LOADED, user);
   },
+  updateUser({ commit }, { user }) {
+    commit(LOGGED_USER_LOADED, user);
+  },
   signOut(commit) {
     commit.commit(LOGGED_USER_UNLOADED);
     Vue.cookie.delete(COOKIE_TOKEN_NAME);

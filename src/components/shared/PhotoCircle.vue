@@ -1,38 +1,88 @@
 <template>
   <div class="photo-circle">
-    <img :src="src" :alt="alt" :style="`height: ${size}px; width: ${size}px;`">
+    <img class="photo-img" :src="src" :alt="alt" :style="`height: ${size}px; width: ${size}px;`">
+    <button class="photo-change" v-if="showChangeButton" @click.prevent="changeImage">ALTERAR FOTO</button>
+    <input ref="photoInput" class="photo-input" v-show="0" v-if="showChangeButton" type="file" @change="onFileChange">
+    <div v-if="showRemoveButton&&src">
+      <button @click.prevent="removeImage">Remover imagem</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    src: { },
+    src: '',
     alt: {
       default: '',
     },
     size: {
       default: 32,
     },
+    showChangeButton: {
+      type: Boolean,
+      default: false,
+    },
+    showRemoveButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    changeImage() {
+      // const c = this.$el.children[2];
+      const c = this.$refs.photoInput;
+      console.log(c);
+      c.click();
+    },
+    onFileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+      console.log(files);
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      const reader = new FileReader();
+      const vm = this;
+
+      reader.onload = (e) => {
+        // vm.src = e.target.result;
+        vm.$emit('src', e.target.result);
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage() {
+      this.src = '';
+    },
   },
 };
 </script>
 
-<style>
-
+<style scoped>
 .photo-circle {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: content-box;
   background-clip: content-box;
   border-radius: 50%;
   margin: 4px;
 }
 
-.photo-circle img {
+.photo-img {
   border: 1px solid #eee;
   height: 32px;
   width: 32px;
   border-radius: 50%;
 }
-
+.photo-change {
+  background: none;
+  border: none;
+  padding: 15px;
+  color: #36c;
+  font-size: 19px;
+}
+.photo-input {
+  padding: 15px;
+}
 </style>
