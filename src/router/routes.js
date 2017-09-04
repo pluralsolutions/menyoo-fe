@@ -3,6 +3,7 @@ import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
 import Authentication from '@/components/Authentication';
 import ProductDetails from '@/components/ProductDetails';
+import Checkout from '@/components/Checkout';
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/order/pay',
     name: 'pay-order',
     component: Menu,
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: Checkout,
   },
   {
     path: '/perfil',
