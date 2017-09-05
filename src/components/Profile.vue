@@ -20,11 +20,11 @@
         </div>
         <div :class="{'profile-controle birth': true, 'erro': errors.has('birth')}">
           <input data-vv-as="Data de nascimento" placeholder="Data de nascimento (dd/mm/aaaa)" 
-            v-validate="'required|date_format:DD/MM/YYYY'" v-model="user.birth" id="birth" name="birth">
+            v-validate="{rules: 'required'}" v-model="user.birth" id="birth" name="birth">
           <span class="erro" v-show="errors.has('birth')">{{ errors.first('birth') }}</span>
         </div>
         <div :class="{'profile-controle cpf': true, 'erro': errors.has('cpf')}">
-          <input data-vv-as="CPF" placeholder="CPF" v-validate="'required|min:11|max:11|numeral'" v-model="user.cpf" id="cpf" name="cpf">
+          <input data-vv-as="CPF" placeholder="CPF" v-validate="'required|min:11|max:11'" v-model="user.cpf" id="cpf" name="cpf">
           <span class="erro" v-show="errors.has('cpf')">{{ errors.first('cpf') }}</span>
         </div>
       </form>
@@ -59,8 +59,6 @@ export default {
   },
   mounted() {
     this.$validator.validateAll();
-  //   this.user = this.$store.getters.loggedUser.clone();
-  //   console.log(this.user);
   },
   computed: {
     maxDate: () => ((new Date()).toLocaleDateString()),
@@ -71,14 +69,12 @@ export default {
       this.$store.dispatch('fetchUser');
     },
     saveProfile() {
-      console.log('saveProfile');
-      this.$validator
-      .validateAll()
+      this.$validator.validateAll()
       .then((success) => {
         if (success) {
           // voltar para pagina home.
           this.$store.dispatch('updateUser', { user: this.user });
-          this.$router.push('/');
+          this.$router.push('/restaurantes/bar-do-ze');
           // salvar dados do usuario
           // this.service
             // .cadastra (this.user)

@@ -1,6 +1,6 @@
 <template>
   <div class="photo-circle">
-    <img class="photo-img" :src="src" :alt="alt" :style="`height: ${size}px; width: ${size}px;`">
+    <img class="photo-img" @click="changeImage" :src="src" :alt="alt" :style="`height: ${size}px; width: ${size}px;`">
     <button class="photo-change" v-if="showChangeButton" @click.prevent="changeImage">ALTERAR FOTO</button>
     <input ref="photoInput" class="photo-input" v-show="0" v-if="showChangeButton" type="file" @change="onFileChange">
     <div v-if="showRemoveButton&&src">
@@ -30,10 +30,9 @@ export default {
   },
   methods: {
     changeImage() {
-      // const c = this.$el.children[2];
-      const c = this.$refs.photoInput;
-      console.log(c);
-      c.click();
+      if (this.showChangeButton && this.src) {
+        this.$refs.photoInput.click();
+      }
     },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
@@ -78,7 +77,7 @@ export default {
 .photo-change {
   background: none;
   border: none;
-  padding: 15px;
+  padding: 5px;
   color: #36c;
   font-size: 19px;
 }
