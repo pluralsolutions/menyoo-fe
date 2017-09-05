@@ -1,8 +1,7 @@
 import Vue from 'vue';
 
 import {
-  LOGGED_USER_LOADED,
-  LOGGED_USER_UNLOADED,
+  UPDATE_CURRENT_USER,
 } from '../mutation-types';
 
 import User from '../../domain/User';
@@ -14,44 +13,46 @@ const getters = {
   loggedUser: state => state.loggedUser,
 };
 
+const setUserCookie = function f(token) { Vue.cookie.set(COOKIE_TOKEN_NAME, token); };
+const clearUserCookie = function f() { Vue.cookie.delete(COOKIE_TOKEN_NAME); };
+
 const actions = {
   signInFacebook(commit) {
     const user = User.sample('f');
-    commit.commit(LOGGED_USER_LOADED, user);
+    setUserCookie(user.token);
+    commit.commit(UPDATE_CURRENT_USER, user);
   },
   signInGoogle(commit) {
     const user = User.sample('g');
-    commit.commit(LOGGED_USER_LOADED, user);
+    setUserCookie(user.token);
+    commit.commit(UPDATE_CURRENT_USER, user);
   },
   signInEmail(commit) {
     const user = User.sample('f');
-    commit.commit(LOGGED_USER_LOADED, user);
+    setUserCookie(user.token);
+    commit.commit(UPDATE_CURRENT_USER, user);
   },
   fetchUser({ commit }) {
     const token = Vue.cookie.get(COOKIE_TOKEN_NAME);
     // TODO: get User from API using cookie
     const user = User.sample('fetched');
     user.token = token;
-    commit(LOGGED_USER_LOADED, user);
+    commit(UPDATE_CURRENT_USER, user);
   },
   updateUser({ commit }, { user }) {
-    commit(LOGGED_USER_LOADED, user);
+    setUserCookie(user.token);
+    commit(UPDATE_CURRENT_USER, user);
   },
   signOut(commit) {
-    commit.commit(LOGGED_USER_UNLOADED);
-    Vue.cookie.delete(COOKIE_TOKEN_NAME);
+    clearUserCookie();
+    commit.commit(UPDATE_CURRENT_USER, null);
   },
 };
 
 // mutations
 const mutations = {
-  [LOGGED_USER_LOADED](state, user) {
+  [UPDATE_CURRENT_USER](state, user) {
     state.loggedUser = user;
-    Vue.cookie.set(COOKIE_TOKEN_NAME, user.token);
-  },
-  [LOGGED_USER_UNLOADED](state) {
-    state.loggedUser = null;
-    Vue.cookie.delete(COOKIE_TOKEN_NAME);
   },
 };
 
