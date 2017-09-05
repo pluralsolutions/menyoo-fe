@@ -7,9 +7,9 @@
   margin-top: 15px;
 }
 .profile-formulario{
-  text-align: left;
-  width: 80%;
-  padding: 5%;
+  width: 90%;
+  padding: 8%;
+  padding-top: 0;
 }
 .profile-btn-container {
   flex-direction: row;
@@ -48,11 +48,11 @@
   left: 0px;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 21px;
+  background-size: 28px;
 }
 
 .profile-controle.name::before{
-  background-image: url('../images/profile_home_icon.svg');
+  background-image: url('../images/profile_user_icon.svg');
 }
 .profile-controle.phone::before{
   background-image: url('../images/profile_home_icon.svg');
