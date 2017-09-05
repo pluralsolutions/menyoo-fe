@@ -36,7 +36,6 @@ export default {
     },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
-      console.log(files);
       if (!files.length) return;
       this.createImage(files[0]);
     },

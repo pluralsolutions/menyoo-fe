@@ -65,11 +65,9 @@ export default {
   },
   methods: {
     cancelProfile() {
-      console.log('cancelProfile');
       this.$store.dispatch('fetchUser');
     },
     saveProfile() {
-      console.log('saveProfile');
       this.$validator.validateAll()
       .then((success) => {
         if (success) {
@@ -82,6 +80,7 @@ export default {
             // .then(() => {
               // if(this.id) this.$router.push({name: 'home'});
               // this.user = new user();
+      // eslint-disable-next-line
             // }, err => console.log(err));
         }
       },
