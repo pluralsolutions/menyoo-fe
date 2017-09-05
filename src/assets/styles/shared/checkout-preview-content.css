@@ -13,8 +13,8 @@
   padding: 50px 29px;
 }
 
-.start-order{
-  width: 100% !important;
+.checkout-preview-content-container .start-order{
+  width: 100%;
 }
 
 .negative-box {
@@ -25,4 +25,60 @@
   line-height: 1.4;
   border: solid 2px #de1010;
   text-transform: uppercase;
+}
+
+.has-orders {
+  overflow: scroll;
+  max-height: 340px;
+}
+
+.title-items {
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+  border-bottom: 1px solid #be1622;
+}
+
+.order-items li{
+  display: flex;
+  margin-bottom: 40px;
+  padding: 12px;
+}
+
+.product-quantity{
+  padding-right: 10px;
+  text-align: right;
+}
+
+.ingredient-item {
+  font-weight: bold;
+  color: #454545;
+  font-size: 11px;
+}
+
+.total-value {
+  margin: 30px;
+  border-left: 10px solid #be1622;
+  padding: 13px;
+  text-transform: uppercase;
+}
+
+.total-value p {
+  display: block;
+  font-size: 16px;
+}
+
+.total-value .price {
+  font-weight: bold;
+  color: #be1622;
+}
+
+.total-value a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #33cc66;l
+  display: block;
+  margin-top: 15px;
+  display: block;
+  text-decoration: none;
 }

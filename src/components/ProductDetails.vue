@@ -3,74 +3,53 @@
     <NavigationBar>Descrição do Produto</NavigationBar>
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
-      <ProductInfo :product="product"/>
-      <div class="custom-ingredients">
-        <span class="title">Personalize seus ingredientes</span>
-        <ul class="ingredients-list">
-          <li>
-            <span @click="toogleOptions" class="ingredientes-section active">Padrões deste prato</span>
-            <ul>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Tomate</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Azeite</span>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span @click="toogleOptions" class="ingredientes-section">Queijos</span>
-            <ul>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Queijo Gouda</span>
-                <span class="additional-cost">+R$ 1,40</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox" />
-                <span class="ingredient-name">Queijo Gorgonzola</span>
-                <span class="additional-cost">+R$ 1,40</span>
-              </li>
-              <li>
-                <span @click="toogleIt" class="checkbox checked" />
-                <span class="ingredient-name">Queijo Emental</span>
-                <span class="additional-cost">+R$ 1,40</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+      <ProductInfo :product="product" v-model:value="productQuantity" :additionalPrice="additionalPrice"/>
+      <ProductIngredientList :product="product" v-model:value="additionalPrice" :onSubmit="addOrder" />
     </div>
-    <div @click="addOrder" class="add-order">Adicionar ao pedido</div>
   </div>
 </template>
 
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
+import ProductIngredientList from '@/components/shared/ProductIngredientList';
+
 import Product from '@/domain/Product';
+import Order from '@/domain/Order';
 
 export default {
   components: {
     NavigationBar,
     ProductInfo,
+    ProductIngredientList,
   },
   data() {
     return {
+      productQuantity: 0,
       product: null,
+      additionalPrice: 0,
     };
   },
   methods: {
-    toogleIt: function toogleIt(event) {
-      event.target.classList.toggle('checked');
-    },
-    toogleOptions: function toogleOptions(event) {
-      event.target.classList.toggle('active');
-    },
-    addOrder: function addOrder() {
-      this.$router.push('/restaurantes/bar-do-ze');
+    addOrder: function addOrder(event) {
+      const checkboxs = event.target.querySelectorAll('input:checked');
+      const selectedIngredients = [];
+      let additionalPrice = 0;
+      for (let x = 0; x < checkboxs.length; x += 1) {
+        const ingredientElement = checkboxs[x].parentElement.getElementsByClassName('ingredient-name')[0];
+        const price = checkboxs[x].getAttribute('data-price');
+        if (price) additionalPrice += parseFloat(price);
+        selectedIngredients.push({ id: checkboxs[x].value, name: ingredientElement.innerText });
+      }
+
+      const order = new Order({
+        product: this.product,
+        ingredients: selectedIngredients,
+        productQuantity: this.productQuantity,
+        totalValue: additionalPrice + (this.productQuantity * this.product.unitPrice),
+      });
+
+      this.$store.dispatch('addItemToOrder', order);
     },
   },
   created() {

@@ -1,3 +1,7 @@
+.product-info-container {
+  text-transform: uppercase;
+}
+
 .product-header {
   display: flex;
   flex-direction: row;

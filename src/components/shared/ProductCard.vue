@@ -4,7 +4,7 @@
       <img :src="product.image" :alt="product.title">
     </div>
     <div class="detail">
-      <ProductEvaluation :score="product.score" :evaluationCount="product.evaluationCount" />
+      <ProductEvaluation :evaluation="product.evaluation" />
       <div class="title">
         <router-link tag="h2" :to="{ name: 'produtos', params: { id: product.id }}">
           <a>{{product.title}}</a>

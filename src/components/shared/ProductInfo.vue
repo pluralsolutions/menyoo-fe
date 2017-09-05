@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="product-info-container">
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
       <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
-      <ProductEvaluation :score="product.score" />
+      <ProductEvaluation v-if="!noRating" :evaluation="product.evaluation" :counter="false"/>
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
       <div class="product-desc">{{product.description}}</div>
     </div>
-    <div class="summary-items">
-      <Counter :plusCallback="addProduct" :minusCallback="removeProduct" v-model:value="count"/>
+    <div v-if="!noSummary" class="summary-items">
+      <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model:value="productQuantity"/>
       <div class="current-price">
         R$ {{ itemsPrice | currency }}
       </div>
@@ -20,36 +20,55 @@
 
 <script>
 import Product from '@/domain/Product';
-import Counter from '@/components/shared/Counter';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
+import Counter from '@/components/shared/Counter';
 
 export default {
-  data() {
-    return {
-      count: 1,
-      itemsPrice: this.product.unitPrice,
-    };
-  },
   components: {
-    Counter,
     ProductEvaluation,
+    Counter,
   },
   props: {
+    value: {
+      type: Number,
+      default: 0,
+    },
     product: {
       type: Product,
       required: true,
     },
+    additionalPrice: {
+      type: Number,
+      default: 0,
+    },
+    noSummary: {
+      type: Boolean,
+      default: false,
+    },
+    noRating: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      productQuantity: 1,
+      itemsPrice: 0,
+    };
+  },
+  watch: {
+    additionalPrice: function additionalPrice() {
+      this.updatePrice();
+    },
   },
   methods: {
-    addProduct: function addProduct() {
-      this.itemsPrice = this.product.unitPrice * this.count;
+    updatePrice: function updatePrice() {
+      this.$emit('input', this.productQuantity);
+      this.itemsPrice = (this.product.unitPrice * this.productQuantity) + this.additionalPrice;
     },
-    removeProduct: function removeProduct() {
-      if (this.count > 1) {
-        this.count -= 1;
-        this.itemsPrice = this.product.unitPrice * this.count;
-      }
-    },
+  },
+  created() {
+    this.updatePrice();
   },
 };
 </script>
