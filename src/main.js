@@ -61,7 +61,6 @@ router.beforeEach((to, from, next) => {
   } else if (haveIACookie && to.path === '/entrar') {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
-  console.log(`redirectTo: ${redirectTo.path} or to: ${to.path}`);
 
   return next(redirectTo);
 });
