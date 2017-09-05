@@ -31,7 +31,7 @@
           </ul>
 
           <ul class="menu-secondary">
-            <li class="menu-item logout" @click="signOut">
+            <li class="menu-item signout" @click="signOut">
               <a>Sair</a>
             </li>
           </ul>

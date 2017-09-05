@@ -8,7 +8,7 @@
 }
 .profile-formulario{
   width: 85%;
-  align-items: left;
+  align-items: center;
   padding-left: 40px;
 }
 .profile-btn-container {
@@ -24,7 +24,7 @@
 }
 .profile-controle textarea,
 .profile-controle input{
-  width: 100%;
+  width: 96%;
   align-self: right;
   border: none;
   border-bottom: 1px solid red;
@@ -38,6 +38,7 @@
 }
 .erro{
   color: red;
+  clear: both;
 }
 
 .profile-controle::before{
@@ -45,7 +46,7 @@
   height: 60px;
   width: 40px;
   position: absolute;
-  left: 0px;
+  left: 10px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 28px;

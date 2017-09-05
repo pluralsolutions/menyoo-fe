@@ -117,6 +117,9 @@
 .tracking-orders:before {
   background-image: url('../../images/tracking_order_icon.svg');
 }
+.signout:before {
+  background-image: url('../../images/signout_icon.svg');
+}
 
 .menu-item a {
   font-size: 17px;
