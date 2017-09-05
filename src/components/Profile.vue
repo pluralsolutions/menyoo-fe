@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationBar>Profile</NavigationBar>
-    <div class="profileuser">
+    <div class="profile">
       <div :class="{'erro': errors.has('urlPhoto')}">
         <PhotoCircle :size="128" v-bind:src="user.urlPhoto" v-on:src="a=>user.urlPhoto=a" :alt="user.name" :showChangeButton="true"></PhotoCircle>
       </div>
@@ -69,6 +69,7 @@ export default {
       this.$store.dispatch('fetchUser');
     },
     saveProfile() {
+      console.log('saveProfile');
       this.$validator.validateAll()
       .then((success) => {
         if (success) {

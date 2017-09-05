@@ -1,4 +1,4 @@
-.profileuser {
+.profile {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -52,17 +52,17 @@
 }
 
 .profile-controle.name::before{
-  background-image: url('../images/profile_user_icon.svg');
+  background-image: url('../images/user_icon.svg');
 }
 .profile-controle.phone::before{
-  background-image: url('../images/profile_home_icon.svg');
+  background-image: url('../images/profile/phone_icon.svg');
 }
 .profile-controle.email::before{
-  background-image: url('../images/profile_home_icon.svg');
+  background-image: url('../images/profile/email_icon.svg');
 }
 .profile-controle.birth::before{
-  background-image: url('../images/profile_home_icon.svg');
+  background-image: url('../images/calendar.svg');
 }
 .profile-controle.cpf::before{
-  background-image: url('../images/profile_home_icon.svg');
+  background-image: url('../images/profile/card_icon.svg');
 }

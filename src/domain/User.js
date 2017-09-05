@@ -1,6 +1,6 @@
 export default class User {
 
-  constructor(token = '', name = '', urlPhoto = '/static/img/user.jpg', email = '', phone = '', birth = '', cpf = '') {
+  constructor(token = '', name = '', urlPhoto = '', email = '', phone = '', birth = '', cpf = '') {
     this.token = token;
     this.name = name;
     this.urlPhoto = urlPhoto;
@@ -18,6 +18,6 @@ export default class User {
 
   static sample(commingFrom) {
     const token = `${this.n(9999)}-${commingFrom}-${this.n(99999)}`;
-    return new User(token, 'Gabriel Lucas de Toledo Ribeiro', '/static/img/user.jpg', 'gltr@pluralsolutions.com.br', '(11) 98181-5555', '06/12/1984', '11111111111');
+    return new User(token, 'Gabriel Lucas de Toledo Ribeiro', '/static/img/user.jpg', 'gltr@pluralsolutions.com.br', '(11) 98181-5555', '06/12/1984', '111.111.111-11');
   }
 }

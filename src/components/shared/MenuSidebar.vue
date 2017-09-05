@@ -9,7 +9,7 @@
     <transition name="fade">
       <nav v-if="show" @click="show = !show" class="menu-container">
         <div class="menu">
-          <div class="profile">
+          <div class="menu-profile">
             <div class="user-img">
               <PhotoCircle :src="user.urlPhoto" :alt="`${user.name}`" size="69"></PhotoCircle>
             </div>
