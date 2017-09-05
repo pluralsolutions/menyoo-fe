@@ -16,7 +16,7 @@
             </li>
           </ul>
         </li>
-        <ButtonComponent additionalClass="add-order">Adicionr ao pedido</ButtonComponent>
+        <ButtonComponent additionalClass="add-order">Adicionar ao pedido</ButtonComponent>
       </form>
     </ul>
   </div>
