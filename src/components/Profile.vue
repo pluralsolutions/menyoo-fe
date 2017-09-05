@@ -7,23 +7,24 @@
       </div>
       <form class="profile-formulario" @submit.prevent="enviar">
         <div :class="{'profile-controle name': true, 'erro': errors.has('name')}">
-          <input data-vv-as="nome" v-validate data-vv-rules="alpha_spaces|required|min:3|max:100" v-model.lazy="user.name" id="name" name="name" autocomplete="off">
+          <input data-vv-as="nome" placeholder="Nome" v-validate="'alpha_spaces|required|min:3|max:100'" v-model="user.name" id="name" name="name" autocomplete="off">
           <span class="erro" v-show="errors.has('name')">{{ errors.first('name') }}</span>
         </div>
         <div :class="{'profile-controle phone': true, 'erro': errors.has('phone')}">
-          <input data-vv-as="telefone" v-validate data-vv-rules="required" v-model.lazy="user.phone" id="phone" name="phone" autocomplete="off">
+          <input data-vv-as="telefone" placeholder="Telefone" v-validate="'required'" v-model="user.phone" id="phone" name="phone" autocomplete="off">
           <span class="erro" v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
         </div>
         <div :class="{'profile-controle email': true, 'erro': errors.has('email')}">
-          <input data-vv-as="e-mail" v-validate data-vv-rules="required|email" v-model="user.email" id="email" name="email">
+          <input data-vv-as="e-mail" placeholder="E-mail" v-validate="'required|email'" v-model="user.email" id="email" name="email">
           <span class="erro" v-show="errors.has('email')">{{ errors.first('email') }}</span>
         </div>
         <div :class="{'profile-controle birth': true, 'erro': errors.has('birth')}">
-          <input data-vv-as="data de nascimento" v-validate data-vv-rules="required|date_format:'DD/MM/YYYY'" v-model="user.birth" id="birth" name="birth">
+          <input data-vv-as="Data de nascimento" placeholder="Data de nascimento (dd/mm/aaaa)" 
+            v-validate="'required|date_format:DD/MM/YYYY'" v-model="user.birth" id="birth" name="birth">
           <span class="erro" v-show="errors.has('birth')">{{ errors.first('birth') }}</span>
         </div>
         <div :class="{'profile-controle cpf': true, 'erro': errors.has('cpf')}">
-          <input data-vv-as="CPF" v-validate data-vv-rules="required|min:11|max:11" v-model="user.cpf" id="cpf" name="cpf">
+          <input data-vv-as="CPF" placeholder="CPF" v-validate="'required|min:11|max:11|numeral'" v-model="user.cpf" id="cpf" name="cpf">
           <span class="erro" v-show="errors.has('cpf')">{{ errors.first('cpf') }}</span>
         </div>
       </form>
@@ -56,10 +57,11 @@ export default {
       user: this.$store.getters.loggedUser.clone(),
     };
   },
-  // mounted() {
+  mounted() {
+    this.$validator.validateAll();
   //   this.user = this.$store.getters.loggedUser.clone();
   //   console.log(this.user);
-  // },
+  },
   computed: {
     maxDate: () => ((new Date()).toLocaleDateString()),
   },

@@ -8,7 +8,6 @@ import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import store from './store';
 import router from './router';
-
 import App from './App';
 
 VeeValidate.Validator.addLocale(validadePtBR);
@@ -18,10 +17,10 @@ Vue.use(VueResource);
 Vue.use(VueCookie);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';
 
-// Vue.filter('currency', (value) => {
-//   const val = (value / 1).toFixed(2).replace('.', ',');
-//   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-// });
+Vue.filter('currency', (value) => {
+  const val = (value / 1).toFixed(2).replace('.', ',');
+  return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+});
 
 Vue.use(VeeValidate,
   {
