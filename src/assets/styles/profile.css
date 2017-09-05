@@ -7,9 +7,9 @@
   margin-top: 15px;
 }
 .profile-formulario{
-  width: 90%;
-  padding: 8%;
-  padding-top: 0;
+  width: 85%;
+  align-items: left;
+  padding-left: 40px;
 }
 .profile-btn-container {
   flex-direction: row;
