@@ -8,7 +8,6 @@ import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import store from './store';
 import router from './router';
-
 import App from './App';
 
 VeeValidate.Validator.addLocale(validadePtBR);
@@ -26,7 +25,7 @@ Vue.filter('currency', (value) => {
 Vue.use(VeeValidate,
   {
     locale: 'pt_BR',
-    enableAutoClasses: true,
+    classes: true,
   },
 );
 
@@ -48,17 +47,21 @@ Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
   const requireAuth = !to.matched.some(record => record.meta.noAuth);
-  let redirectTo = {};
+  let redirectTo = { };
 
-  store.dispatch('getLoggedUser');
+  const haveIACookie = Vue.cookie.get('token');
+  if (requireAuth && haveIACookie && !store.getters.isLoggedUser) {
+    store.dispatch('fetchUser').then(() => { },
+    // on error
+    () => router.push('/entrar'));
+  }
 
-  const isLoggedUser = store.getters.isLoggedUser;
-
-  if (requireAuth && !isLoggedUser) {
+  if (requireAuth && !haveIACookie) {
     redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
-  } else if (isLoggedUser && to.path === '/entrar') {
+  } else if (haveIACookie && to.path === '/entrar') {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
+
   return next(redirectTo);
 });
 

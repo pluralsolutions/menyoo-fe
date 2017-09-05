@@ -13,19 +13,20 @@
 </template>
 
 <script>
+
 export default {
   methods: {
     signInFacebook: function signInFacebook() {
       this.$store.dispatch('signInFacebook');
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInGoogle: function signInGoogle() {
       this.$store.dispatch('signInGoogle');
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
     signInEmail: function signInEmail() {
       this.$store.dispatch('signInEmail');
-      this.$router.push(this.$route.query.redirect || 'restaurantes/bar-do-ze');
+      this.$router.push(this.$route.query.redirect || '/restaurantes/bar-do-ze');
     },
   },
 };

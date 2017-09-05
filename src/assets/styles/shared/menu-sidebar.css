@@ -47,12 +47,12 @@
   background-color: #fff;
 }
 
-.profile {
+.menu-profile {
   display: flex;
   height: 20%;
 }
 
-.profile div {
+.menu-profile div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -107,15 +107,18 @@
 }
 
 .home:before {
-  background-image: url('../../images/profile_home_icon.svg');
+  background-image: url('../../images/home_icon.svg');
 }
 
 .edit-profile:before {
-  background-image: url('../../images/profile_edit_icon.svg');
+  background-image: url('../../images/edit_icon.svg');
 }
 
 .tracking-orders:before {
   background-image: url('../../images/tracking_order_icon.svg');
+}
+.signout:before {
+  background-image: url('../../images/signout_icon.svg');
 }
 
 .menu-item a {
@@ -127,6 +130,7 @@
   padding: 7px 0 12px 50px;
   display: block;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .close {

@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    created() {
+    mounted() {
       setTimeout(() => { this.$router.push('/entrar'); }, 1600);
     },
   };

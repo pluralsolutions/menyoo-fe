@@ -3,17 +3,16 @@ import {
   ADD_ITEM_TO_ORDER,
 } from '../mutation-types';
 
-
 const getters = {
   orderStep: state => (state.orderStep),
   orders: state => (state.orders),
 };
 
 const actions = {
-  updateStep(state, { step }) {
-    let newstep = state.getters.orderStep || 0;
+  updateStep(commit, { step }) {
+    let newstep = commit.getters.orderStep || 0;
     newstep += step || 1;
-    state.commit(ORDER_STEP_CHANGE, { newstep });
+    commit.commit(ORDER_STEP_CHANGE, { newstep });
   },
   addItemToOrder(state, order) {
     state.commit(ADD_ITEM_TO_ORDER, order);
