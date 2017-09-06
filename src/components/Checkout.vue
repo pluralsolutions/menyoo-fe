@@ -3,15 +3,15 @@
     <NavigationBar>Checkout</NavigationBar>
     <div class="products">
       <ul class="order-items">
-        <li v-for="order in orders">
+        <li v-for="(order, index) in orders">
           <span class="product-quantity">
             {{order.productQuantity}} unid
           </span>
           <div>
             <ProductInfo :product="order.product" :noSummary="true" :noRating="true" />
             <span class="ingredient-item" v-for="ingredient in order.ingredients"> +{{ingredient.name}}</span>
-            <Counter :plusCallback="addProductIntoOrder.bind(null, order.product)" 
-                     :minusCallback="removeProductIntoOrder.bind(null, order.product)" />
+            <Counter :plusCallback="addProductIntoOrder.bind(null, index)" 
+                     :minusCallback="removeProductIntoOrder.bind(null, index)" />
           </div>
         </li>
       </ul>
@@ -33,11 +33,11 @@ export default {
     Counter,
   },
   methods: {
-    addProductIntoOrder(product) {
-      console.log(product);
+    addProductIntoOrder(orderIndex) {
+      this.$store.dispatch('duplicateItemOnOrder', orderIndex);
     },
-    removeProductIntoOrder(product) {
-      console.log(product);
+    removeProductIntoOrder(orderIndex) {
+      this.$store.dispatch('remoteItemFromOrder', orderIndex);
     },
   },
   computed: {
