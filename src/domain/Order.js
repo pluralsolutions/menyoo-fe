@@ -4,7 +4,5 @@ export default class Order {
     this.productQuantity = productQuantity;
     this.ingredients = ingredients;
     this.totalValue = totalValue;
-
-    Object.freeze(this);
   }
 }
