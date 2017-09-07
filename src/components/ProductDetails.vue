@@ -15,7 +15,7 @@ import ProductInfo from '@/components/shared/ProductInfo';
 import ProductIngredientList from '@/components/shared/ProductIngredientList';
 
 import Product from '@/domain/Product';
-import Order from '@/domain/Order';
+import ProductOrder from '@/domain/ProductOrder';
 
 export default {
   components: {
@@ -33,23 +33,25 @@ export default {
   methods: {
     addOrder: function addOrder(event) {
       const checkboxs = event.target.querySelectorAll('input:checked');
-      const selectedIngredients = [];
+      const productIngredients = [];
       let additionalPrice = 0;
       for (let x = 0; x < checkboxs.length; x += 1) {
         const ingredientElement = checkboxs[x].parentElement.getElementsByClassName('ingredient-name')[0];
         const price = checkboxs[x].getAttribute('data-price');
-        if (price) additionalPrice += parseFloat(price);
-        selectedIngredients.push({ id: checkboxs[x].value, name: ingredientElement.innerText });
+        if (price) additionalPrice = parseFloat(price);
+
+        productIngredients.push(
+          { id: checkboxs[x].value, name: ingredientElement.innerText, additionalPrice },
+        );
       }
 
-      const order = new Order({
+      const productOrder = new ProductOrder({
         product: this.product,
-        ingredients: selectedIngredients,
+        productOrderIngredients: productIngredients,
         productQuantity: this.productQuantity,
-        totalValue: additionalPrice + (this.productQuantity * this.product.unitPrice),
       });
 
-      this.$store.dispatch('addItemToOrder', order);
+      this.$store.dispatch('addProductToOrder', productOrder);
     },
   },
   created() {
