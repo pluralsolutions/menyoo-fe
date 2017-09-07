@@ -15,4 +15,21 @@ export default class Order {
     this.totalValue += productOrder.productOrderIngredients.sumAdditionalPrice() +
                         (productOrder.productQuantity * productOrder.product.unitPrice);
   }
+
+  removeProduct(productOrder, quantity) {
+    const { products } = this;
+    const productIndex = products.findIndex(p => productOrder.equalTo(p));
+
+    if (productIndex < 0) return;
+
+    this.totalValue -= productOrder.productOrderIngredients.sumAdditionalPrice() +
+                        (quantity * productOrder.product.unitPrice);
+
+    if (products[productIndex].productQuantity <= 1) {
+      products.splice(productIndex);
+      return;
+    }
+
+    products[productIndex].productQuantity -= quantity;
+  }
 }
