@@ -3,7 +3,6 @@ import Order from '@/domain/Order';
 import {
   ORDER_STEP_CHANGE,
   ADD_PRODUCT_TO_ORDER,
-  DUPLICATE_ITEM_ON_ORDER,
   REMOVE_ITEM_FROM_ORDER,
 } from '../mutation-types';
 
@@ -19,14 +18,11 @@ const actions = {
     newstep += step || 1;
     commit.commit(ORDER_STEP_CHANGE, { newstep });
   },
-  addProductToOrder(state, orderProduct) {
-    state.commit(ADD_PRODUCT_TO_ORDER, orderProduct);
+  addProductToOrder(state, productOrder) {
+    state.commit(ADD_PRODUCT_TO_ORDER, productOrder);
   },
-  duplicateItemOnOrder(state, orderIndex) {
-    state.commit(DUPLICATE_ITEM_ON_ORDER, orderIndex);
-  },
-  remoteItemFromOrder(state, orderIndex) {
-    state.commit(REMOVE_ITEM_FROM_ORDER, orderIndex);
+  removeProductFromOrder(state, { productOrder, quantity }) {
+    state.commit(REMOVE_ITEM_FROM_ORDER, { productOrder, quantity });
   },
 };
 
@@ -34,32 +30,25 @@ const mutations = {
   [ORDER_STEP_CHANGE](state, { newstep }) {
     state.orderStep = newstep;
   },
-  [ADD_PRODUCT_TO_ORDER](state, orderProduct) {
+  [ADD_PRODUCT_TO_ORDER](state, productOrder) {
     const order = state.order || new Order({});
-    order.addProduct(orderProduct);
+    order.addProduct(productOrder);
 
     state.order = order;
   },
-  [DUPLICATE_ITEM_ON_ORDER](state, orderIndex) {
-    const order = state.orders[orderIndex];
-    order.productQuantity += 1;
-    order.totalValue = order.unitPrice * order.productQuantity;
-
-    state.orders[orderIndex] = order;
-  },
-  [REMOVE_ITEM_FROM_ORDER](state, orderIndex) {
-    const order = state.orders[orderIndex];
-    order.productQuantity -= 1;
-    order.totalValue = order.unitPrice * order.productQuantity;
-
-    state.orders[orderIndex] = order;
+  [REMOVE_ITEM_FROM_ORDER](state, { productOrder, quantity }) {
+    let order = state.order || new Order({});
+    order.removeProduct(productOrder, quantity);
+    if (order.products.length === 0) {
+      order = null;
+    }
+    state.order = order;
   },
 };
 
 const state = {
   orderStep: 0,
   order: null,
-  orders: [],
 };
 
 export default {

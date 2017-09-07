@@ -1,23 +1,23 @@
 <template>
-  <div class="checkout-container">
+  <div class="checkout-container" v-if="order">
     <NavigationBar type="checkout">Checkout</NavigationBar>
     <div class="order-items">
       <ul>
-        <li v-for="(order, index) in orders">
+        <li v-for="orderProduct in order.products">
           <span class="product-quantity">
-            {{order.productQuantity}} unid
+            {{orderProduct.productQuantity}} unid
           </span>
           <div>
-            <ProductInfo :product="order.product" :noSummary="true" :noRating="true" />
-            <span class="ingredient-item" v-for="ingredient in order.ingredients"> +{{ingredient.name}}</span>
-            <Counter :plusCallback="addProductIntoOrder.bind(null, index)"
-                     :minusCallback="removeProductIntoOrder.bind(null, index)" />
+            <ProductInfo :product="orderProduct.product" :noSummary="true" :noRating="true" />
+            <span class="ingredient-item" v-for="ingredient in orderProduct.ingredients"> +{{ingredient.name}}</span>
+            <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
+                     :minusCallback="removeProductIntoOrder.bind(null, orderProduct)" />
           </div>
         </li>
       </ul>
       <div class="order-total">
         <span class="desc">Total pedido</span>
-        <span class="price">R$ 56,90</span>
+        <span class="price">R$ {{order.totalValue | currency}}</span>
       </div>
 
       <ButtonComponent size="large">Enviar pedido para o chef</ButtonComponent>
@@ -31,6 +31,9 @@ import ProductInfo from '@/components/shared/ProductInfo';
 import Counter from '@/components/shared/Counter';
 import ButtonComponent from '@/components/shared/Button';
 
+import ProductOrder from '@/domain/ProductOrder';
+import Product from '@/domain/Product';
+
 import { mapGetters } from 'vuex';
 
 export default {
@@ -41,16 +44,32 @@ export default {
     ButtonComponent,
   },
   methods: {
-    addProductIntoOrder(orderIndex) {
-      this.$store.dispatch('duplicateItemOnOrder', orderIndex);
+    addProductToOrder(item) {
+      const productOrder = new ProductOrder({
+        product: item.product,
+        productOrderIngredients: item.ingredients,
+        productQuantity: 1,
+      });
+
+      this.$store.dispatch('addProductToOrder', productOrder);
     },
-    removeProductIntoOrder(orderIndex) {
-      this.$store.dispatch('remoteItemFromOrder', orderIndex);
+    removeProductIntoOrder(item) {
+      const productOrder = new ProductOrder({
+        product: new Product(item.product),
+        productOrderIngredients: item.ingredients,
+      });
+
+      this.$store.dispatch('removeProductFromOrder', { productOrder, quantity: 1 });
     },
+  },
+  updated() {
+    if (this.order === null) {
+      this.$router.push('/restaurantes/bar-do-ze');
+    }
   },
   computed: {
     ...mapGetters([
-      'orders',
+      'order',
     ]),
   },
 };
