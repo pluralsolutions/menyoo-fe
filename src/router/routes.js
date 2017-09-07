@@ -3,6 +3,8 @@ import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
 import Authentication from '@/components/Authentication';
 import ProductDetails from '@/components/ProductDetails';
+import AwaitingOrder from '@/components/AwaitingOrder';
+import Payment from '@/components/Payment';
 
 const routes = [
   {
@@ -30,12 +32,13 @@ const routes = [
   {
     name: 'awaiting-order',
     path: '/pedidos/acompanhar',
-    component: () => import('../components/AwaitingOrder'),
+    component: AwaitingOrder,
   },
   {
-    path: '/order/pay',
+    default: true,
+    path: '/pay',
     name: 'pay-order',
-    component: Menu,
+    component: Payment,
   },
   {
     path: '/perfil',
