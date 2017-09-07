@@ -30,10 +30,10 @@
       </form>
       <div class="profile-btn-container">
         <div class="profile-btn">
-          <Button type="secondary" :disabled="errors.any()" size="full" :onClick="saveProfile">Salvar</Button>
+          <ButtonComponent type="secondary" :disabled="errors.any()" size="full" :onClick="saveProfile">Salvar</ButtonComponent>
         </div>
         <div class="profile-btn">
-          <Button type="primary" size="full" :onClick="cancelProfile">Cancelar</Button>
+          <ButtonComponent type="primary" size="full" :onClick="cancelProfile">Cancelar</ButtonComponent>
         </div>
       </div>
     </div>
@@ -43,14 +43,14 @@
 <script>
 import PhotoCircle from '@/components/shared/PhotoCircle';
 import NavigationBar from '@/components/shared/NavigationBar';
-import Button from '@/components/shared/Button';
+import ButtonComponent from '@/components/shared/Button';
 
 export default {
   name: 'profile',
   components: {
     PhotoCircle,
     NavigationBar,
-    Button,
+    ButtonComponent,
   },
   data() {
     return {
