@@ -16,7 +16,7 @@
           :slider-style="{'background-color': '#3366cc', 'box-shadow': '-0.1px 2px 5px 1px rgba(0, 0, 0, 0.2'}"
           formatter="{value} %"
           ref="slider" v-model="gorjeta"></vue-slider>
-        <div class="currency">R$ {{(150*gorjeta/100)|currency}}</div>        
+        <div class="currency">R$ {{(total*gorjeta/100)|currency}}</div>        
       </div>
     </div>
     <div class="payment-slider">
@@ -29,8 +29,11 @@
     </div>
     <div>
       <label>Detalhes do cartão</label>
-      <div class="detailcard">
-        <PaymentCardDetail :card="selectedCard" />
+      <div class="paycard">
+        <div class="name">{{selectedCard.name}}</div>
+        <div class="number">{{selectedCard.number}}</div>
+        <div class="expireat">{{selectedCard.expireAt}}</div>
+        <div class="cvv">{{selectedCard.cvv}}</div>
       </div>
     </div>
     <div>
@@ -45,19 +48,11 @@ import PaymentCard from '@/domain/PaymentCard';
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 import vueSlider from 'vue-slider-component';
 
-const PaymentCardDetail = {
-  props: {
-    card: { type: PaymentCard },
-  },
-  template: '<div class="paycard"><div class="name">{{card.name}}</div><div class="number">{{card.number}}</div><div class="expireat">{{card.expireAt}}</div><div class="cvv">{{card.cvv}}</div></div>',
-};
-
 export default {
   components: {
     Carousel3d,
     Slide,
     vueSlider,
-    PaymentCardDetail,
     ButtonComponent,
   },
   data() {
