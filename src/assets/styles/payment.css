@@ -1,0 +1,64 @@
+.col{
+  display: flex;
+  flex-flow: column;
+}
+.row{
+  display: flex;
+  flex-flow: row;
+}
+.payment{
+  font-size: 16px;  
+}
+.payment-card{
+  background-color: #055885;
+}
+.label{
+  text-transform: uppercase;
+  padding: 5px 0;
+  font-weight: 600;
+}
+/* initial row */
+.payment-head{
+  padding: 20px 0;
+}
+.payment-head > div{
+  margin: auto;
+}
+/* second row*/
+.payment-slider{
+  padding: 0px;
+}
+.payment-slider .label{
+  padding-left: 25px;
+}
+/* third row */
+.payment-card-selected-detail .label{
+  padding-left: 25px;
+}
+.paycard div{
+  border-bottom: 1px solid red;
+  height: 40px;
+  margin: auto;
+  /* margin-right: 5px; */
+  padding-left: 40px;
+  width: 300px;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  background-position-y: center;
+}
+.paycard .name{
+  background-image: url('../images/user_icon.svg');
+}
+.paycard .number{
+  background-position-x: 4px;
+  background-size: 24px;
+  background-image: url('../images/profile/card_icon.svg');
+}
+.paycard .expireat{
+  background-size: 38px;
+  background-image: url('../images/calendar.svg');
+}
+/*forth row*/
+.paybutton {
+  display: flex;
+}

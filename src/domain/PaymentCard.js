@@ -16,13 +16,14 @@ export default class PaymentCard {
       name: '',
       number: '',
       expireAt: expire }));
-    // expire.setMonth(expire.getMonth() + 1);
+    expire.setMonth(expire.getMonth() + 1);
     for (let i = 1; i <= limit; i += 1) {
-      expire.setMonth(expire.getMonth() + (1 * i));
+      expire.setMonth(expire.getMonth() + i);
       r.push(new PaymentCard({
         id: i * (10 * Math.random()).toFixed(0),
         name: `Cartão ${i}`,
         number: 'xxxx xxxx xxxx 1234',
+        cvv: (i * (10000 * Math.random()).toFixed(0)) % 999,
         expireAt: expire }));
     }
     return r;
