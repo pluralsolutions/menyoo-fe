@@ -1,5 +1,5 @@
 <template>
-  <div class="checkout-container" v-if="order">
+  <div v-if="order">
     <NavigationBar type="checkout">Checkout</NavigationBar>
     <div class="order-items">
       <ul>
@@ -8,7 +8,7 @@
             {{orderProduct.productQuantity}} unid
           </span>
           <div>
-            <ProductInfo :product="orderProduct.product" :noSummary="true" :noRating="true" />
+            <ProductInfo :product="orderProduct.product" :summary="false" :rating="false" />
             <span class="ingredient-item" v-for="ingredient in orderProduct.ingredients"> +{{ingredient.name}}</span>
             <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
                      :minusCallback="removeProductIntoOrder.bind(null, orderProduct)" />
@@ -75,7 +75,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .order-items {
     margin-top: 30px;
     padding: 0 20px;
