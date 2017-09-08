@@ -31,7 +31,10 @@
       <div class="paycard">
         <div class="name">{{selectedCard.name}}</div>
         <div class="number">{{selectedCard.number}}</div>
-        <div class="expireat">{{selectedCard.expireAt}}</div>
+        <span class="row">
+        <div class="expireat">{{selectedCard.expireAt}}</div>&nbsp;
+        <div class="cvv">{{selectedCard.cvv}}</div>
+        </span>
       </div>
     </div>
     <div class="paybutton">
