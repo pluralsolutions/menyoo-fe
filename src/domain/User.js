@@ -18,6 +18,6 @@ export default class User {
 
   static sample(commingFrom) {
     const token = `${this.n(9999)}-${commingFrom}-${this.n(99999)}`;
-    return new User(token, 'Gabriel Lucas de Toledo Ribeiro', '/static/img/user.jpg', 'gltr@pluralsolutions.com.br', '(11) 98181-5555', '06/12/1984', '111.111.111-11');
+    return new User(token, 'Gabriel Lucas de Toledo Ribeiro', '/static/img/user.jpg', 'gltr@pluralsolutions.com.br', '(11) 98181-5555', '06/12/1984', '11111111111');
   }
 }
