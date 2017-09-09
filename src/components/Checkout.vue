@@ -20,7 +20,9 @@
           </span>
           <div>
             <ProductInfo :product="orderProduct.product" :summary="false" :rating="false" />
-            <span class="ingredient-item" v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
+            <div class="ingredients-item">
+              <span v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
+            </div>
             <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
                      :minusCallback="removeProductIntoOrder.bind(null, orderProduct)"
                      :showCounter="false"
@@ -107,6 +109,9 @@ export default {
     height: 208px;
     background: url('../assets/images/logo.svg');
     border-bottom: solid #f00 2px;
+  }
+  .ingredients-item {
+    margin-bottom: 10px;
   }
   .body-modal {
     text-transform: uppercase;
