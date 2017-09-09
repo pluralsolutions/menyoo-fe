@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar>Profile</NavigationBar>
+    <NavigationBar>Perfil</NavigationBar>
     <div class="profile">
       <div :class="{'erro': errors.has('urlPhoto')}">
         <PhotoCircle :size="128" v-bind:src="user.urlPhoto" v-on:src="a=>user.urlPhoto=a" :alt="user.name" :showChangeButton="true"></PhotoCircle>
@@ -24,7 +24,7 @@
           <span class="erro" v-show="errors.has('birth')">{{ errors.first('birth') }}</span>
         </div>
         <div :class="{'profile-controle cpf': true, 'erro': errors.has('cpf')}">
-          <input data-vv-as="CPF" placeholder="CPF" v-validate="'required|min:11|max:11'" v-model="user.cpf" id="cpf" name="cpf">
+          <input data-vv-as="CPF" placeholder="CPF" maxlength="11" v-validate="'required|min:11|max:11'" v-model="user.cpf" id="cpf" name="cpf">
           <span class="erro" v-show="errors.has('cpf')">{{ errors.first('cpf') }}</span>
         </div>
       </form>

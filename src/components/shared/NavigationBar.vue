@@ -2,7 +2,7 @@
   <div :class="$style['navigation-bar-content']">
      <div :class="$style['navigation-fixed']">
        <div @click="back" :class="$style.back">Voltar</div>
-       <div :class="$style.type_icon" v-if="type"><slot/></div>
+       <div :class="$style.type_icon"><slot/></div>
     </div>
   </div>
 </template>
