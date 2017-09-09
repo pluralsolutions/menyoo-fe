@@ -1,5 +1,5 @@
 <template>
-  <button :class="btnClass" @click="onClick" ><slot></slot></button>
+  <button :class="btnClass" @click="onClick"><slot></slot></button>
 </template>
 <script>
 export default {
@@ -39,7 +39,7 @@ export default {
     background-color: #4a79d1;
   }
   .danger{
-    background-color: #743;
+    background-color: #f00;
   }
   .secondary{
     background-color: #33cc66;
