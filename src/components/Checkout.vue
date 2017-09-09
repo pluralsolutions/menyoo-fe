@@ -1,5 +1,16 @@
 <template>
   <div v-if="order">
+    <modal v-if="showModal" @close="showModal = false">
+      <p class="logo-modal" slot="header"></p>
+      <p class="body-modal" slot="body">
+        <strong>Confirmar</strong> o <strong>envio do pedido</strong>
+        para o chefe?
+      </p>
+      <p class="footer-modal" slot="footer">
+        <ButtonComponent :onClick="confirmed" size="medium" type="secondary">Sim</ButtonComponent>
+        <ButtonComponent @click.native="showModal = false" size="medium" type="danger">Não</ButtonComponent>
+      </p>
+    </modal>    
     <NavigationBar type="checkout">Checkout</NavigationBar>
     <div class="order-items">
       <ul>
@@ -22,8 +33,7 @@
         <span class="desc">Total pedido</span>
         <span class="price">R$ {{order.totalValue | currency}}</span>
       </div>
-
-      <ButtonComponent size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
+      <ButtonComponent @click.native="showModal = true" size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
     </div>
   </div>
 </template>
@@ -45,6 +55,11 @@ export default {
     ProductInfo,
     Counter,
     ButtonComponent,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
   },
   methods: {
     addProductToOrder(item) {
@@ -69,6 +84,9 @@ export default {
         this.$router.push('/restaurantes/bar-do-ze');
       }
     },
+    confirmed() {
+      this.$router.push('/pedidos/acompanhar');
+    },
   },
   created() {
     this.redirectToRestaurant();
@@ -85,6 +103,24 @@ export default {
 </script>
 
 <style scoped>
+  .logo-modal {
+    height: 208px;
+    background: url('../assets/images/logo.svg');
+    border-bottom: solid #f00 2px;
+  }
+  .body-modal {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.4;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .footer-modal {
+    display: flex;
+  }
+
   .order-items {
     margin-top: 30px;
     padding: 0 20px;
