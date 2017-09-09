@@ -17,7 +17,9 @@
         <div class="total-value">
           <p>Total do pedido</p>
           <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
-          <router-link to="/checkout">Pagar</router-link>
+          <router-link to="/checkout">
+            <span @click="toogle">Pagar</span>
+          </router-link>
         </div>
       </div>
     </div>
