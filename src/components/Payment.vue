@@ -18,11 +18,19 @@
         <currency color="green" :value="(total*gorjeta/100)"/>
       </div>
     </div>
-    <div class="payment-slider">
+    <div class="payment-carousel">
       <div class="label">Cartões Cadastrados</div>
-      <carousel-3d :controls-visible="true" :display="3" @after-slide-change="afterchange">
-        <slide :style="{'background-color': '#6666FF'}" class="payment-card" v-for="(card, k, i) in cards" :key="card.id" :index="k">
-          Slide {{k}}-{{i}} Content {{card}}
+      <carousel-3d 
+        :controls-visible="true" 
+        width="290"
+        height="170"
+        display="3"
+        @after-slide-change="afterchange">
+        <slide
+          :class="[payment-card, `card-${card.cardFlag}`]"
+          v-for="(card, k, i) in cards" :key="card.id" :index="k">
+          <span>{{card.name}}</span>
+          <span>{{card.number}}</span>
         </slide>
       </carousel-3d>
     </div>
@@ -32,8 +40,8 @@
         <div class="name">{{selectedCard.name}}</div>
         <div class="number">{{selectedCard.number}}</div>
         <span class="row">
-        <div class="expireat">{{selectedCard.expireAt}}</div>&nbsp;
-        <div class="cvv">{{selectedCard.cvv}}</div>
+          <div class="expireat">{{fmt.date(selectedCard.expireAt)}}</div>&nbsp;
+          <div class="cvv">{{selectedCard.cvv}}</div>
         </span>
       </div>
     </div>
@@ -50,6 +58,13 @@ import PaymentCard from '@/domain/PaymentCard';
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 import vueSlider from 'vue-slider-component';
 
+const fmt = {};
+
+fmt.date = function date(data) {
+  const d = data.toLocaleString('pt-BR').split(' ')[0].split('/');
+  return `${d[1]}-${d[2]}`;
+};
+
 export default {
   components: {
     Carousel3d,
@@ -60,6 +75,7 @@ export default {
   },
   data() {
     return {
+      fmt,
       gorjeta: 10,
       total: 132.26,
       cards: PaymentCard.sample(5),

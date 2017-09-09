@@ -25,12 +25,54 @@
   margin: auto;
 }
 /* second row*/
-.payment-slider{
+.payment-carousel{
   padding: 0px;
+  /* width: 300px; */
+  /* margin: auto; */
 }
-.payment-slider .label{
+.carousel-3d-slide{
+  width: 200px;
+}
+.payment-carousel .label{
   padding-left: 25px;
 }
+.carousel-3d-slide{
+  /* background-color: whitesmok; */
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 102%;
+  border-radius: 10px;
+  border: 1px solid #999;
+  color: #fff;
+  background-position: center;
+  /* position: absolute; */
+}
+.carousel-3d-slide > span:nth-child(1) {
+  position: absolute;
+  left: 25px;
+  top: 140px;
+  text-transform: uppercase;
+}  
+.carousel-3d-slide > span:nth-child(2) {
+  position: absolute;
+  font-size: 25px;
+  left: 40px;
+  top: 80px;
+}  
+.card-new{
+  background-size: 102%;
+  background-image: url('../images/profile/card_icon.svg');  
+}
+.card-visa{
+  background-image: url('../images/profile/card_visa.svg');  
+}
+.card-master{
+  background-image: url('../images/profile/card_master.svg');  
+}
+.card-amex{
+  background-image: url('../images/profile/card_amex.svg');  
+}
+
 /* third row */
 .payment-card-selected-detail .label{
   padding-left: 25px;
@@ -41,9 +83,9 @@ width: 100%;
 .paycard div{
   border-bottom: 1px solid red;
   height: 40px;
-  margin: auto;
+  margin: auto auto;
   /* margin-right: 5px; */
-  padding-left: 40px;
+  padding: 0 40px;
   width: 300px;
   background-repeat: no-repeat;
   background-size: 32px;
@@ -60,12 +102,12 @@ width: 100%;
 .paycard .expireat{
   background-size: 38px;
   background-image: url('../images/calendar.svg');
-  width: 30%;
+  width: 20%;
 }
 .paycard .cvv{
   background-size: 38px;
-  background-image: url('../images/calendar.svg');
-  width: 20%;
+  background-image: url('../images/profile/cvv_icon.svg');
+  width: 15%;
 }
 /*forth row*/
 .paybutton {
