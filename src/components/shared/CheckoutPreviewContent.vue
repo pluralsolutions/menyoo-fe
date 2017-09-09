@@ -10,21 +10,7 @@
     </div>
     <div v-else class="has-orders">
       <span class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</span>
-      <ul class="order-items">
-        <li v-for="productOrder in order.products">
-          <span class="product-quantity">
-            {{productOrder.productQuantity}} unid
-          </span>
-          <div>
-            <ProductInfo :product="productOrder.product" :summary="false" :rating="false" />
-            <span
-                  class="ingredient-item"
-                  v-for="ingredient in productOrder.ingredients">
-                  +{{ingredient.name}}
-            </span>
-          </div>
-        </li>
-      </ul>
+      <PreviewSelectedProducts />
       <div class="total-value">
         <p>Total do pedido</p>
         <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
@@ -35,12 +21,17 @@
 </template>
 
 <script>
+import PreviewSelectedProducts from '@/components/shared/PreviewSelectedProducts';
+import ButtonComponent from '@/components/shared/Button';
+import ProductInfo from '@/components/shared/ProductInfo';
+
 import { mapGetters } from 'vuex';
 
 export default {
   components: {
-    ButtonComponent: () => import('@/components/shared/Button'),
-    ProductInfo: () => import('@/components/shared/ProductInfo'),
+    ButtonComponent,
+    ProductInfo,
+    PreviewSelectedProducts,
   },
   data() {
     return {
