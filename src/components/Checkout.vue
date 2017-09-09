@@ -3,15 +3,18 @@
     <NavigationBar type="checkout">Checkout</NavigationBar>
     <div class="order-items">
       <ul>
-        <li v-for="orderProduct in order.products">
+        <li v-for="orderProduct in order.products" :key="orderProduct.product.id">
           <span class="product-quantity">
             {{orderProduct.productQuantity}} unid
           </span>
           <div>
             <ProductInfo :product="orderProduct.product" :summary="false" :rating="false" />
-            <span class="ingredient-item" v-for="ingredient in orderProduct.ingredients"> +{{ingredient.name}}</span>
+            <span class="ingredient-item" v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
             <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
-                     :minusCallback="removeProductIntoOrder.bind(null, orderProduct)" />
+                     :minusCallback="removeProductIntoOrder.bind(null, orderProduct)"
+                     :showCounter="false"
+                     justifyContent="flex-end"
+                     />
           </div>
         </li>
       </ul>
@@ -20,7 +23,7 @@
         <span class="price">R$ {{order.totalValue | currency}}</span>
       </div>
 
-      <ButtonComponent size="large">Enviar pedido para o chef</ButtonComponent>
+      <ButtonComponent size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
     </div>
   </div>
 </template>
@@ -61,11 +64,17 @@ export default {
 
       this.$store.dispatch('removeProductFromOrder', { productOrder, quantity: 1 });
     },
+    redirectToRestaurant() {
+      if (this.order === null) {
+        this.$router.push('/restaurantes/bar-do-ze');
+      }
+    },
+  },
+  created() {
+    this.redirectToRestaurant();
   },
   updated() {
-    if (this.order === null) {
-      this.$router.push('/restaurantes/bar-do-ze');
-    }
+    this.redirectToRestaurant();
   },
   computed: {
     ...mapGetters([

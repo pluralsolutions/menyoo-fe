@@ -27,7 +27,6 @@ export default {
     filter: grayscale(60%) brightness(70%);
   }
   .button {
-    background-color: #4a79d1;
     padding: 14px;
     font-size: 16px;
     margin: 20px auto;
@@ -50,6 +49,9 @@ export default {
   }
   .large{
     width: 80%;
+  }
+  .full {
+    width: 100%;
   }
   .medium{
     width: 45%;
