@@ -1,20 +1,24 @@
 <template>
-  <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': !previewIsOpen}">
-    <div v-if="order === null" class="no-order">
-      <div class="negative-box">
-        Você ainda <strong>não possui</strong> itens no seu carrinho
+  <div>
+    <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': !previewIsOpen}" />
+
+    <div :class="{ 'nav-preview': true, 'hide': !previewIsOpen }">
+      <div v-if="order === null" class="no-order">
+        <div class="negative-box">
+          Você ainda <strong>não possui</strong> itens no seu carrinho
+        </div>
+        <router-link to="/restaurantes/bar-do-ze">
+          <ButtonComponent size="large" class="start-order" @click.native="toogle">Iniciar pedido</ButtonComponent>
+        </router-link>
       </div>
-      <router-link to="/restaurantes/bar-do-ze">
-        <ButtonComponent size="large" class="start-order" @click="toogle">Iniciar pedido</ButtonComponent>
-      </router-link>
-    </div>
-    <div v-else class="has-orders">
-      <span class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</span>
-      <PreviewSelectedProducts />
-      <div class="total-value">
-        <p>Total do pedido</p>
-        <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
-        <router-link to="/checkout">Pagar</router-link>
+      <div v-else class="has-orders">
+        <span class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</span>
+        <PreviewSelectedProducts />
+        <div class="total-value">
+          <p>Total do pedido</p>
+          <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
+          <router-link to="/checkout">Pagar</router-link>
+        </div>
       </div>
     </div>
   </div>
