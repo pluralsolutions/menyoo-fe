@@ -3,13 +3,13 @@
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
       <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
-      <ProductEvaluation v-if="!noRating" :evaluation="product.evaluation" :counter="false"/>
+      <ProductEvaluation v-if="rating" :evaluation="product.evaluation" :counter="false"/>
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
       <div class="product-desc">{{product.description}}</div>
     </div>
-    <div v-if="!noSummary" class="summary-items">
+    <div v-if="summary" class="summary-items">
       <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model:value="productQuantity"/>
       <div class="current-price">
         R$ {{ itemsPrice | currency }}
@@ -41,13 +41,13 @@ export default {
       type: Number,
       default: 0,
     },
-    noSummary: {
+    summary: {
       type: Boolean,
-      default: false,
+      default: true,
     },
-    noRating: {
+    rating: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   data() {

@@ -1,8 +1,8 @@
 <template>
-  <div class="counter-container">
-    <div class="plus" @click="plus"></div>
-    <div class="val">{{nValue}}</div>
-    <div class="minus" @click="minus"/></div>
+  <div :class="[this.$style.counterContainer, this.$style[this.justifyContent]]">
+    <div :class="this.$style.plus" @click="plus"></div>
+    <div v-if="showCounter">{{nValue}}</div>
+    <div :class="this.$style.minus" @click="minus"/></div>
   </div>
 </template>
 
@@ -27,6 +27,14 @@ export default {
     minusCallback: {
       type: Function,
     },
+    showCounter: {
+      type: Boolean,
+      default: true,
+    },
+    justifyContent: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -50,6 +58,30 @@ export default {
 };
 </script>
 
-<style>
-  @import '../../assets/styles/shared/counter.css';
+<style module>
+  .counter-container {
+    display: flex;
+  }
+
+  .flex-end {
+   justify-content: flex-end; 
+  }
+
+  .plus,
+  .minus {
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .plus {
+    background: url('@/assets/images/counter/plus.svg');
+    margin-right: 10px;
+  }
+
+  .minus {
+    background: url('@/assets/images/counter/minus.svg');
+    margin-left: 10px;
+  }
 </style>

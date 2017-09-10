@@ -5,6 +5,7 @@ import Authentication from '@/components/Authentication';
 import ProductDetails from '@/components/ProductDetails';
 import AwaitingOrder from '@/components/AwaitingOrder';
 import Payment from '@/components/Payment';
+import Checkout from '@/components/Checkout';
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     path: '/pay',
     name: 'pay-order',
     component: Payment,
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: Checkout,
   },
   {
     path: '/perfil',
