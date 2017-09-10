@@ -22,15 +22,15 @@
       <div class="label">Cartões Cadastrados</div>
       <carousel-3d 
         :controls-visible="true" 
-        width="290"
-        height="170"
+        :width="290/1.5"
+        :height="170/1.5"
         display="3"
         @after-slide-change="afterchange">
         <slide
           :class="[payment-card, `card-${card.cardFlag}`]"
           v-for="(card, k, i) in cards" :key="card.id" :index="k">
-          <span>{{card.name}}</span>
-          <span>{{card.number}}</span>
+          <span class="name">{{card.name}}</span>
+          <span class="number">{{card.number}}</span>
         </slide>
       </carousel-3d>
     </div>
@@ -40,7 +40,7 @@
         <div class="name">{{selectedCard.name}}</div>
         <div class="number">{{selectedCard.number}}</div>
         <span class="row">
-          <div class="expireat">{{fmt.date(selectedCard.expireAt)}}</div>&nbsp;
+          <div class="expireat">{{fmt.date(selectedCard.expireAt)}}</div>
           <div class="cvv">{{selectedCard.cvv}}</div>
         </span>
       </div>
