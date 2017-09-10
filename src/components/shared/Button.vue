@@ -1,5 +1,5 @@
 <template>
-  <button :class="btnClass" @click="onClick" ><slot></slot></button>
+  <button :class="btnClass" @click="onClick"><slot></slot></button>
 </template>
 <script>
 export default {
@@ -27,7 +27,6 @@ export default {
     filter: grayscale(60%) brightness(70%);
   }
   .button {
-    background-color: #4a79d1;
     padding: 14px;
     font-size: 16px;
     margin: 20px auto;
@@ -40,7 +39,7 @@ export default {
     background-color: #4a79d1;
   }
   .danger{
-    background-color: #743;
+    background-color: #f00;
   }
   .secondary{
     background-color: #33cc66;
@@ -50,6 +49,9 @@ export default {
   }
   .large{
     width: 80%;
+  }
+  .full {
+    width: 100%;
   }
   .medium{
     width: 45%;

@@ -1,6 +1,6 @@
 <template>
   <div @click="toogle" :class="{'checkout-preview-content-container': true, 'hide': !previewIsOpen}">
-    <div v-if="orders.length === 0" class="no-order">
+    <div v-if="order === null" class="no-order">
       <div class="negative-box">
         Você ainda <strong>não possui</strong> itens no seu carrinho
       </div>
@@ -9,21 +9,25 @@
       </router-link>
     </div>
     <div v-else class="has-orders">
-      <span class="title-items">Você tem <strong>{{orders.length}} itens</strong> no carrinho</span>
+      <span class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</span>
       <ul class="order-items">
-        <li v-for="order in orders">
+        <li v-for="productOrder in order.products">
           <span class="product-quantity">
-            {{order.productQuantity}} unid
+            {{productOrder.productQuantity}} unid
           </span>
           <div>
-            <ProductInfo :product="order.product" :noSummary="true" :noRating="true" />
-            <span class="ingredient-item" v-for="ingredient in order.ingredients"> +{{ingredient.name}}</span>
+            <ProductInfo :product="productOrder.product" :summary="false" :rating="false" />
+            <span
+                  class="ingredient-item"
+                  v-for="ingredient in productOrder.ingredients">
+                  +{{ingredient.name}}
+            </span>
           </div>
         </li>
       </ul>
       <div class="total-value">
         <p>Total do pedido</p>
-        <p>R$ <span class="price">{{totalOrdersValue | currency}}</span></p>
+        <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
         <router-link to="/checkout">Pagar</router-link>
       </div>
     </div>
@@ -61,16 +65,8 @@ export default {
     },
   },
   computed: {
-    totalOrdersValue: function totalOrdersValue() {
-      let total = 0;
-      for (let x = 0; x < this.orders.length; x += 1) {
-        total += this.orders[x].totalValue;
-      }
-
-      return total;
-    },
     ...mapGetters([
-      'orders',
+      'order',
     ]),
   },
 };
