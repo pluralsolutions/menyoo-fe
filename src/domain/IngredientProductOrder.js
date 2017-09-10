@@ -7,9 +7,9 @@ export default class IngredientProductOrder {
   sumAdditionalPrice() {
     let additionalPrice = 0;
 
-    this.ingredients.forEach(ingredient => (
-      additionalPrice += ingredient.additionalPrice
-    ));
+    this.ingredients.forEach((ingredient) => {
+      additionalPrice += ingredient.additionalPrice;
+    });
 
     return additionalPrice;
   }
