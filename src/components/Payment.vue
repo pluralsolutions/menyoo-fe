@@ -15,8 +15,8 @@
           tooltip="hover" :speed="0.2"
           :slider-style="{'background-color': '#3366cc', 'box-shadow': '-0.1px 2px 5px 1px rgba(0, 0, 0, 0.2'}"
           formatter="{value} %"
-          ref="slider" v-model="gorjeta" />
-        <currency color="green" :value="(total*gorjeta/100)"/>
+          ref="slider" v-model="tip" />
+        <currency color="green" :value="(total*tip/100)"/>
       </div>
     </div>
     <div class="payment-carousel">
@@ -77,7 +77,7 @@ export default {
   data() {
     return {
       fmt,
-      gorjeta: 10,
+      tip: 10,
       total: 132.26,
       cards: PaymentCard.sample(5),
       selectedIndex: 0,
