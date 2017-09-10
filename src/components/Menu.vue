@@ -1,6 +1,10 @@
 ﻿<template>
   <div>
     <RestaurantHero></RestaurantHero>
+    <TabsNavigation>
+      <Tab title="Tab 1">Tab 1</Tab>
+      <Tab title="Tab 2">Tab 2</Tab>
+    </TabsNavigation>
     <div :class="$style.search">
       <input v-model="query" name="filtro" :class="$style.search_field" type="text" autofocus="true"
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
@@ -14,12 +18,16 @@
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import ProductCard from '@/components/shared/ProductCard';
+import TabsNavigation from '@/components/shared/TabsNavigation';
+import Tab from '@/components/shared/Tab';
 import Product from '../domain/Product';
 
 export default {
   components: {
     RestaurantHero,
     ProductCard,
+    TabsNavigation,
+    Tab,
   },
   data() {
     return {

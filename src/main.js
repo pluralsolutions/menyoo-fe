@@ -69,7 +69,7 @@ Vue.component('modal', {
   template: '#modal-template',
 });
 
-/* eslint-disable no-new */
+// eslint-disable-next-line
 new Vue({
   el: '#app',
   store,
