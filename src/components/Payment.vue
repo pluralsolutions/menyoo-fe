@@ -10,6 +10,7 @@
         <div class="label">Adicionar serviço</div>
         <vue-slider 
           :dot-size="14"
+          max="30"
           height="2"
           tooltip="hover" :speed="0.2"
           :slider-style="{'background-color': '#3366cc', 'box-shadow': '-0.1px 2px 5px 1px rgba(0, 0, 0, 0.2'}"
@@ -24,7 +25,7 @@
         :controls-visible="true" 
         :width="290/1.5"
         :height="170/1.5"
-        display="3"
+        display="5"
         @after-slide-change="afterchange">
         <slide
           :class="[payment-card, `card-${card.cardFlag}`]"
