@@ -1,0 +1,120 @@
+.col{
+  display: flex;
+  flex-flow: column;
+}
+.row{
+  display: flex;
+  flex-flow: row;
+  margin: auto;
+  width: 300px;
+}
+.payment{
+  font-size: 16px;  
+}
+.payment-card{
+  background-color: #055885;
+}
+.label{
+  text-transform: uppercase;
+  padding: 5px 0;
+  font-weight: 600;
+}
+/* initial row */
+.payment-head{
+  padding: 20px 0;
+}
+.payment-head > div{
+  margin: auto;
+}
+/* second row*/
+.payment-carousel{
+  padding: 0px;
+  /* width: 300px; */
+  /* margin: auto; */
+}
+.carousel-3d-slide{
+  width: 200px;
+}
+.payment-carousel .label{
+  padding-left: 25px;
+}
+.carousel-3d-slide{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 102%;
+  border-radius: 10px;
+  border: 1px solid #999;
+  color: #fff;
+  background-position: center;
+}
+.carousel-3d-slide .name {
+  position: absolute;
+  font-size: 10px;
+  left: 25px;
+  top: 95px;
+  text-transform: uppercase;
+}
+.carousel-3d-slide .number {
+  position: absolute;
+  font-size: 16px;
+  left: 30px;
+  top: 50px;
+}
+.card-new{
+  background-size: 102%;
+  background-image: url('../images/profile/card_icon.svg');  
+}
+.card-visa{
+  background-image: url('../images/profile/card_visa.svg');  
+}
+.card-master{
+  background-image: url('../images/profile/card_master.svg');  
+}
+.card-amex{
+  background-image: url('../images/profile/card_amex.svg');  
+}
+
+/* third row */
+.payment-card-selected-detail {
+  /* width: 100%; */
+}
+.payment-card-selected-detail .label {
+    padding-left: 25px;
+}
+.paycard {
+/* width: 100%; */
+}
+.paycard div{
+  border-bottom: 1px solid #000000;
+  height: 15px;
+  margin: auto auto;
+  padding: 15px 40px;
+  width: 220px;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+.paycard .name{
+  background-size: 32px;
+  background-image: url('../images/user_icon.svg');
+}
+.paycard .number{
+  background-position-x: 4px;
+  background-size: 24px;
+  background-image: url('../images/profile/card_icon.svg');
+}
+.paycard .expireat{
+  background-size: 38px;
+  background-image: url('../images/calendar.svg');
+  width: 65px;
+  margin: 0 5px 0 0;
+}
+.paycard .cvv{
+  background-size: 32px;
+  background-image: url('../images/profile/cvv_icon.svg');
+  width: 65px;
+  margin: 0;
+}
+/*forth row*/
+.paybutton {
+  display: flex;
+}
