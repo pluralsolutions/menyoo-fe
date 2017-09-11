@@ -33,12 +33,23 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
+```
 
-# build for production with minification
+## Deploy
+
+```
+# You have to install firebase-tools via npm
+
+npm install -g firebase-tools
+# You must be logged on Firebase App
+firebase login
+
+# build app for production to generate files into dist folder
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# Deploy app into firebase
+
+firebase deploy
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
