@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     afterchange(idx) {
-      console.log(idx);
       this.selectedIndex = idx;
     },
   },
