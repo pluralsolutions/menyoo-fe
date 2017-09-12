@@ -64,10 +64,10 @@ router.beforeEach((to, from, next) => {
   } else if (haveIACookie && (to.path === '/entrar' || to.path === '/index.html')) {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
+  // eslint-disable-next-line
+  console.log('to.fullPath', to.fullPath, to.path);
+  // eslint-disable-next-line
   console.log('redirectTo', redirectTo);
-  console.log('to.fullPath', to.fullPath);
-  console.log('to.path', to.path);
-
   return next(redirectTo);
 });
 
