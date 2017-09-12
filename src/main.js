@@ -6,9 +6,11 @@ import VeeValidate from 'vee-validate';
 import VueCookie from 'vue-cookie';
 import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
+import VueAnalytics from 'vue-analytics';
 import store from './store';
 import router from './router';
 import App from './App';
+
 
 VeeValidate.Validator.addLocale(validadePtBR);
 VeeValidate.Validator.addLocale(validadeEn);
@@ -68,6 +70,15 @@ router.beforeEach((to, from, next) => {
 Vue.component('modal', {
   template: '#modal-template',
 });
+
+// Google analytics
+// the plugin will automatically detect the current route name, path and location
+//  just be sure to add the name property in your route object
+Vue.use(VueAnalytics, {
+  id: 'UA-106358510-1',
+  router,
+});
+
 
 /* eslint-disable no-new */
 new Vue({
