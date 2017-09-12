@@ -10,7 +10,7 @@
         <div class="label">Adicionar serviço</div>
         <vue-slider 
           :dot-size="14"
-          max="30"
+          :max="30"
           height="2"
           tooltip="hover" :speed="0.2"
           :slider-style="{'background-color': '#3366cc', 'box-shadow': '-0.1px 2px 5px 1px rgba(0, 0, 0, 0.2'}"
@@ -28,7 +28,7 @@
         display="5"
         @after-slide-change="afterchange">
         <slide
-          :class="[payment-card, `card-${card.cardFlag}`]"
+          :class="['payment-card', `card-${card.cardFlag}`]"
           v-for="(card, k, i) in cards" :key="card.id" :index="k">
           <span class="name">{{card.name}}</span>
           <span class="number">{{card.number}}</span>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="paybutton">
-      <ButtonComponent type="secondary">PAGAR</ButtonComponent>
+      <ButtonComponent type="secondary" @onClick="payBill">PAGAR</ButtonComponent>
     </div>
   </div>
 </template>
@@ -91,6 +91,10 @@ export default {
   methods: {
     afterchange(idx) {
       this.selectedIndex = idx;
+    },
+    payBill() {
+      // eslint-disable-next-line
+      alert('Pago!');
     },
   },
 };

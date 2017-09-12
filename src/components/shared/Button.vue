@@ -44,9 +44,6 @@ export default {
   .secondary{
     background-color: #33cc66;
   }
-  .full{
-    width: 100%;
-  }
   .large{
     width: 80%;
   }

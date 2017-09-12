@@ -52,6 +52,9 @@ export default {
       });
 
       this.$store.dispatch('addProductToOrder', productOrder);
+
+      // eslint-disable-next-line
+      alert('Item adicionado ao carrinho!');
     },
   },
   created() {
