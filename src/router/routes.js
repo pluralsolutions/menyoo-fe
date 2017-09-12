@@ -9,7 +9,7 @@ import Checkout from '@/components/Checkout';
 
 const routes = [
   {
-    path: '/',
+    path: '',
     name: 'index',
     component: Startup,
     meta: { noAuth: true },

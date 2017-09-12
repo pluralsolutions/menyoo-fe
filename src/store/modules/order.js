@@ -18,6 +18,10 @@ const actions = {
     newstep += step || 1;
     commit.commit(ORDER_STEP_CHANGE, { newstep });
   },
+  resetAwaiting(commit) {
+    const newstep = (0 - commit.getters.orderStep);
+    commit.commit(ORDER_STEP_CHANGE, { newstep });
+  },
   addProductToOrder(state, productOrder) {
     state.commit(ADD_PRODUCT_TO_ORDER, productOrder);
   },

@@ -10,7 +10,6 @@
       <ButtonComponent :onClick="pagar" size="large" v-if="step>=3">pagar</ButtonComponent>
     </div>
     <br/>
-    <div><button @click="mais">+++</button> {{ step }} <button @click="menos()">----</button> </div>
      <OrderEvaluationPush v-show="step>=5"/> 
   </div>
 </template>
@@ -49,6 +48,9 @@ export default {
     setTimeout(this.mais, 4000);
     setTimeout(this.mais, 5000);
     setTimeout(this.mais, 6000);
+  },
+  mounted() {
+    this.$store.dispatch('resetAwaiting');
   },
 };
 </script>
