@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import VueCookie from 'vue-cookie';
-import validadeEn from 'vee-validate/dist/locale/en';
+// import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import VueAnalytics from 'vue-analytics';
 import store from './store';
@@ -13,7 +13,7 @@ import App from './App';
 
 
 VeeValidate.Validator.addLocale(validadePtBR);
-VeeValidate.Validator.addLocale(validadeEn);
+// VeeValidate.Validator.addLocale(validadeEn);
 
 Vue.use(VueResource);
 Vue.use(VueCookie);
@@ -58,11 +58,15 @@ router.beforeEach((to, from, next) => {
     () => router.push('/entrar'));
   }
 
+
   if (requireAuth && !haveIACookie) {
     redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
-  } else if (haveIACookie && to.path === '/entrar') {
+  } else if (haveIACookie && (to.path === '/entrar' || to.path === '/index.html')) {
     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
   }
+  console.log('redirectTo', redirectTo);
+  console.log('to.fullPath', to.fullPath);
+  console.log('to.path', to.path);
 
   return next(redirectTo);
 });
@@ -88,3 +92,4 @@ new Vue({
   template: '<App/>',
   components: { App },
 });
+
