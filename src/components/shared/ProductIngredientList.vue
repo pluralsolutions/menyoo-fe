@@ -3,14 +3,14 @@
     <span class="title">Personalize seus ingredientes</span>
     <ul class="ingredients-list">
       <form v-on:submit.prevent="onSubmit">
-        <li v-for="group in product.ingredients">
+        <li v-for="group in product.ingredients" v-bind:key="group.name">
           <span @click="toogleOptions" :class="{'ingredientes-section': true, active: group.standard}"> {{group.title}}</span>
           <ul>
-            <li v-for="item in group.items">
+            <li v-for="item in group.items" v-bind:key="item.id"
+                @click="toogleIt" :data-price="item.additionalPrice">
               <input
                   type="checkbox" name="ingredients"
-                  :value="item.id" :checked="item.checked"
-                  @change="toogleIt" :data-price="item.additionalPrice">
+                  :value="item.id" :checked="item.checked">
               <span class="ingredient-name">{{item.name}}</span>
               <span class="additional-cost" v-if="item.additionalPrice">+R$ {{item.additionalPrice | currency}}</span>
             </li>
@@ -48,10 +48,15 @@ export default {
   },
   methods: {
     toogleIt: function toogleIt(event) {
-      const target = event.target;
+      const target = event.currentTarget;
       const additionalPrice = target.getAttribute('data-price');
+      const cb = target.getElementsByTagName('input')[0];
+      if (cb !== event.target) {
+        cb.checked = !cb.checked;
+      }
+
       if (additionalPrice) {
-        if (target.checked) {
+        if (cb.checked) {
           this.additionalPrice += parseFloat(additionalPrice);
         } else {
           this.additionalPrice -= parseFloat(additionalPrice);
@@ -67,5 +72,5 @@ export default {
 </script>
 
 <style>
-  @import '../../assets/styles/shared/product-ingredient-list.css'
+  @import '../../assets/styles/shared/product-ingredient-list.css';
 </style>
