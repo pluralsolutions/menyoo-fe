@@ -116,6 +116,11 @@
 
 .tracking-orders:before {
   background-image: url('../../images/tracking_order_icon.svg');
+  background-size: 52px;
+}
+.pay-order:before {
+  background-image: url('../../images/profile/card_icon.svg');
+  background-size: 32px;
 }
 .signout:before {
   background-image: url('../../images/signout_icon.svg');
