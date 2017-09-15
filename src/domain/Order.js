@@ -4,6 +4,23 @@ export default class Order {
     this.totalValue = totalValue;
   }
 
+  clear() {
+    if (this.products.length > 0) {
+      this.products.forEach(
+        p => this.$store.dispatch('removeProductFromOrder', { p, quantity: p.quantity }));
+    }
+  }
+
+  updateTotalValue() {
+    this.totalValue = 0;
+
+    this.products.forEach((product) => {
+      debugger;
+      this.totalValue += product.productQuantity *
+          (product.productOrderIngredients.sumAdditionalPrice() + product.product.unitPrice);
+    });
+  }
+
   addProduct(productOrder) {
     const productIndex = this.products.findIndex(p => productOrder.equalTo(p));
     if (productIndex >= 0) {
@@ -11,9 +28,7 @@ export default class Order {
     } else {
       this.products.push(productOrder);
     }
-
-    this.totalValue += productOrder.productOrderIngredients.sumAdditionalPrice() +
-                        (productOrder.productQuantity * productOrder.product.unitPrice);
+    this.updateTotalValue();
   }
 
   removeProduct(productOrder, quantity) {
@@ -22,14 +37,13 @@ export default class Order {
 
     if (productIndex < 0) return;
 
-    this.totalValue -= productOrder.productOrderIngredients.sumAdditionalPrice() +
-                        (quantity * productOrder.product.unitPrice);
-
     if (products[productIndex].productQuantity <= 1) {
       products.splice(productIndex);
       return;
     }
 
     products[productIndex].productQuantity -= quantity;
+
+    this.updateTotalValue();
   }
 }

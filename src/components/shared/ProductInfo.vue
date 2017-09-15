@@ -64,7 +64,7 @@ export default {
   methods: {
     updatePrice: function updatePrice() {
       this.$emit('input', this.productQuantity);
-      this.itemsPrice = (this.product.unitPrice * this.productQuantity) + this.additionalPrice;
+      this.itemsPrice = this.productQuantity * (this.product.unitPrice + this.additionalPrice);
     },
   },
   created() {
