@@ -73,6 +73,5 @@ export default {
 };
 </script>
 
-<style>
-  @import '../../assets/styles/shared/product-info.css';
+<style src='../../assets/styles/shared/product-info.css'>
 </style>
