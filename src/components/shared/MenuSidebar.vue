@@ -28,6 +28,9 @@
             <li class="menu-item tracking-orders">
               <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
             </li>
+            <li class="menu-item pay-order">
+              <router-link to="/pay">Pagar pedido</router-link>
+            </li>
           </ul>
 
           <ul class="menu-secondary">
@@ -69,6 +72,4 @@ export default {
   },
 };
 </script>
-<style>
-  @import '../../assets/styles/shared/menu-sidebar.css';
-</style>
+<style src="@/assets/styles/shared/menu-sidebar.css"/>
