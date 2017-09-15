@@ -43,6 +43,5 @@ export default {
 };
 </script>
 
-<style>
-  @import 'assets/styles/app.css'
+<style src='@/assets/styles/app.css'>
 </style>
