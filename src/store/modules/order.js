@@ -29,7 +29,6 @@ const actions = {
     state.commit(REMOVE_ITEM_FROM_ORDER, { productOrder, quantity });
   },
   clearProductOrder(state) {
-    debugger;
     state.order = new Order({});
   },
 };
