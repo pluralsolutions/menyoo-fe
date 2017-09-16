@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['product-evaluation-container']">
-    <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCount}} avaliações</span>
+    <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCountSimplified()}} avaliações</span>
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
       <span :class="$style['star-active']" :style="{width: evaluation.score + '%'}" />
