@@ -102,7 +102,6 @@ export default {
       'order',
     ]),
     total: function t() {
-      debugger;
       return (this.order) ? this.order.totalValue : 0;
     },
     selectedCard: function selectedCard() {

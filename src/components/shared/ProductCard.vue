@@ -3,7 +3,7 @@
     <div class="image">
       <img :src="product.image" :alt="product.title">
     </div>
-    <router-link tag="div" class="detail" :to="{ name: 'produtos', params: { id: product.id }}">
+    <router-link tag="div" class="detail" :to="{ name: 'produtos', params: { id: product.id }, meta: { p: product }}">
       <ProductEvaluation :evaluation="product.evaluation" />
       <div class="title">
         <h2>{{product.title}}</h2>

@@ -61,6 +61,7 @@
   cursor: pointer;
   position: fixed;
   bottom: 0;
+  left: 0;
   background: #fff;
   padding: 15px 0;
   width: 100%;
@@ -68,6 +69,6 @@
   text-align: center;
   color: #3366cc;
   box-shadow: none;
-  margin: 0;
+  margin: auto;
   border-top: 1px solid #3366cc;
 }

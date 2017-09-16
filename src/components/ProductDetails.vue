@@ -55,14 +55,17 @@ export default {
 
       // eslint-disable-next-line
       alert('Item adicionado ao carrinho!');
+      this.$router.back();
     },
   },
-  created() {
-    this.product = Product.sample()[0];
+  mounted() {
+    const ps = Product.sample();
+    const idx = ps.findIndex(p => p.id === this.$route.params.id);
+    if (idx < 0) this.$router.back();
+    this.product = ps[idx];
   },
 };
 </script>
 
-<style>
-  @import '../assets/styles/product-detail.css'
+<style src="@/assets/styles/product-detail.css">
 </style>

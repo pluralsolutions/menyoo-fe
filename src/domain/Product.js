@@ -79,12 +79,7 @@ export default class Product {
     return products;
   }
 
-  static sampleData = null;
-
-  static sample(limit = 1) {
-    if (this.sampleData !== null) {
-      return this.sampleData;
-    }
+  static sample(limit = 999) {
     const ingredientsPizza = [
       {
         standard: true,
@@ -189,7 +184,6 @@ export default class Product {
       }),
     }));
 
-    this.sampleData = products.slice(1, limit);
-    return this.sampleData;
+    return products.slice(0, Math.min(limit, products.length));
   }
 }

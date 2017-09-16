@@ -13,9 +13,7 @@ export default class Order {
 
   updateTotalValue() {
     this.totalValue = 0;
-
     this.products.forEach((product) => {
-      debugger;
       this.totalValue += product.productQuantity *
           (product.productOrderIngredients.sumAdditionalPrice() + product.product.unitPrice);
     });
