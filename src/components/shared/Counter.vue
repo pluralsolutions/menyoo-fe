@@ -1,8 +1,8 @@
 <template>
   <div :class="[this.$style.counterContainer, this.$style[this.justifyContent]]">
-    <div :class="this.$style.plus" @click="plus"></div>
+    <div :class="this.$style.minus" @click="minus"></div>
     <div v-if="showCounter">{{nValue}}</div>
-    <div :class="this.$style.minus" @click="minus"/></div>
+    <div :class="this.$style.plus" @click="plus"></div>
   </div>
 </template>
 
@@ -77,11 +77,11 @@ export default {
 
   .plus {
     background: url('@/assets/images/counter/plus.svg');
-    margin-right: 10px;
+    margin-left: 10px;
   }
 
   .minus {
     background: url('@/assets/images/counter/minus.svg');
-    margin-left: 10px;
+    margin-right: 10px;
   }
 </style>
