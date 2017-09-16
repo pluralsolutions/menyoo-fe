@@ -3,8 +3,8 @@
     <NavigationBar>Descrição do Produto</NavigationBar>
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
-      <ProductInfo :product="product" v-model:value="productQuantity" :additionalPrice="additionalPrice"/>
-      <ProductIngredientList :product="product" v-model:value="additionalPrice" :onSubmit="addOrder" />
+      <ProductInfo :product="product" v-model="productQuantity" :additionalPrice="additionalPrice"/>
+      <ProductIngredientList :product="product" v-model="additionalPrice" :onSubmit="addOrder" />
     </div>
   </div>
 </template>
