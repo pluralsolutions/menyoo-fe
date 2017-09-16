@@ -113,9 +113,10 @@ export default {
       this.selectedIndex = idx;
     },
     payBill() {
-      if (this.order) this.order.clear();
+      this.$store.dispatch('clearProductOrder');
       // eslint-disable-next-line
       alert('Pago! Obrigado por utilizar nossos serviços.');
+      this.$router.push({ name: 'menu' });
     },
   },
 };

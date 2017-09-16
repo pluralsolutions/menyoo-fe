@@ -4,13 +4,6 @@ export default class Order {
     this.totalValue = totalValue;
   }
 
-  clear() {
-    if (this.products.length > 0) {
-      this.products.forEach(
-        p => this.$store.dispatch('removeProductFromOrder', { p, quantity: p.quantity }));
-    }
-  }
-
   updateTotalValue() {
     this.totalValue = 0;
     this.products.forEach((product) => {
