@@ -4,7 +4,7 @@
     <ul class="ingredients-list">
       <form v-on:submit.prevent="onSubmit">
         <li v-for="group in product.ingredients" v-bind:key="group.name">
-          <span @click="toogleOptions" :class="{'ingredientes-section': true, active: group.standard}"> {{group.title}}</span>
+          <span @click="toogleOptions" class="ingredientes-section active"> {{group.title}}</span>
           <ul>
             <li v-for="item in group.items" v-bind:key="item.id"
                 @click="toogleIt" :data-price="item.additionalPrice">
