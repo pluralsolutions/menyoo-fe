@@ -20,10 +20,10 @@
 }
 .detail{
   width: 60%;
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .title a{
@@ -37,13 +37,4 @@
   font-size: 11px;
   color: #434343;
   text-transform: uppercase;
-}
-.unitPrice{
-  font-size: 11px;
-  padding-top: 6px;
-  padding-right: 16px;
-}
-.unitPrice span{
-  font-size: 19px;
-  font-weight: bold;
 }

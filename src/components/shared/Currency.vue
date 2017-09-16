@@ -1,8 +1,10 @@
 <template>
-  <div :style="`width: ${width}px`" :class="$style.currency">{{ symbol }}
-    <span :class="$style[color]">
-      {{ value | currency }}
-    </span>
+  <div>
+    <div :style="`width: ${width}px`" :class="$style.currency">{{ symbol }}
+      <span :class="$style[color]">
+        {{ value | currency }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -20,10 +22,16 @@ export default {
 
 <style module>
 .currency{
-  font-size: 15.5px;  
-  font-weight: 400;
-  padding: 5px 0;
+  font-size: 13px;  
+  font-weight: 500;
+  padding: 6px 6px 16px 0px;
 }
+
+.currency span{
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .black{
   color: #000;  
 }

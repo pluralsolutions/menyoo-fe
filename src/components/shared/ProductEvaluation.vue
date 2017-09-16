@@ -1,9 +1,11 @@
 <template>
   <div :class="$style['product-evaluation-container']">
-    <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCountSimplified()}} avaliações</span>
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
       <span :class="$style['star-active']" :style="{width: evaluation.score + '%'}" />
+    </div>
+    <div>
+      <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCountSimplified()}} avaliações</span>
     </div>
   </div>
 </template>
@@ -28,7 +30,8 @@ export default {
 <style module>
   .product-evaluation-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
   }
   .count {
     font-size: 11px;
@@ -39,16 +42,16 @@ export default {
   .stars {
     position: relative;
     width: calc(15px * 5);
-    height: 15px;
+    height: 18px;
   }
   .star-neutral,
   .star-active {
     position: absolute;
     left: 0;
     top: 0;
-    height: 15px;
+    height: 16px;
     background: url('@/assets/images/product-detail/star-active.svg');
-    background-size: 15px;
+    background-size: 18px;
   }
 
   .star-neutral {

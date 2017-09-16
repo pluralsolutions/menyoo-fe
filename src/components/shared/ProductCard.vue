@@ -3,17 +3,16 @@
     <div class="image">
       <img :src="product.image" :alt="product.title">
     </div>
-    <router-link tag="div" class="detail" :to="{ name: 'produtos', params: { id: product.id }, meta: { p: product }}">
-      <ProductEvaluation :evaluation="product.evaluation" />
+    <router-link class="detail" tag="div"
+        :to="{ name: 'produtos', params: { id: product.id }, meta: { p: product }}">
+      <div><ProductEvaluation :evaluation="product.evaluation" /></div>
       <div class="title">
         <h2>{{product.title}}</h2>
       </div>
       <div class="description">
         <p>{{product.description}}</p>
       </div>
-      <div class="unitPrice">
-        R$ <span>{{ product.unitPrice | currency }}</span>
-      </div>
+      <Currency :value="product.unitPrice"></Currency> 
     </router-link>
   </div>
 </template>
@@ -21,10 +20,12 @@
 <script>
 import Product from '@/domain/Product';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
+import Currency from '@/components/shared/Currency';
 
 export default {
   components: {
     ProductEvaluation,
+    Currency,
   },
   props: {
     product: {
@@ -34,6 +35,5 @@ export default {
 };
 
 </script>
-
-<style src="@/assets/styles/shared/product.css">
+<style scoped src="@/assets/styles/shared/product.css">
 </style>
