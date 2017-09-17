@@ -7,7 +7,7 @@
     </div>
     <div class="product-content">
       <div class="product-title">{{product.title}}</div>
-      <div class="product-desc">{{product.description}}</div>
+      <div class="product-desc" v-if="description">{{product.description}}</div>
     </div>
     <div v-if="summary" class="summary-items">
       <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model:value="productQuantity"/>
@@ -46,6 +46,10 @@ export default {
       default: true,
     },
     rating: {
+      type: Boolean,
+      default: true,
+    },
+    description: {
       type: Boolean,
       default: true,
     },

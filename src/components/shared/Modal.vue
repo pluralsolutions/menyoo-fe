@@ -3,15 +3,12 @@
     <div class="modal-mask" v-if="show">
       <div class="modal-wrapper">
         <div class="modal-container">
-
           <div class="modal-header">
             <slot name="header"></slot>
           </div>
-
           <div class="modal-body">
             <slot name="body"></slot>
           </div>
-
           <div class="modal-footer">
             <slot name="footer"></slot>
           </div>
@@ -21,6 +18,9 @@
   </transition>
 </template>
 <script>
+
+const noFnc = () => 0;
+
 export default {
   template: '#modal-template',
   props: {
@@ -28,47 +28,56 @@ export default {
       type: [Number, String],
       default: '',
     },
-    show: {
-      type: Boolean,
-      default: false,
+    onClose: {
+      type: Function,
+      default: noFnc,
     },
   },
-  // data() {
-  //   return {
-  //   };
-  // },
+  data() {
+    return {
+      show: false,
+      timeout: 0,
+      cbThen: noFnc,
+    };
+  },
   methods: {
-    close: function close() {
-      this.$emit('show', false);
+    hideModal({ autoClose }) {
+      this.show = false;
+      if (this.onClose !== noFnc) this.onClose(this, { autoClose: autoClose || false });
     },
-  },
-  mounted() {
-    // check autoClose
-    if (this.autoClose) {
-      let timeout = 0;
-      if (typeof this.autoClose === 'string') {
-        timeout = Number.parseInt(this.autoClose, 10);
-        if (Number.isNan(timeout)) {
-          switch (this.autoClose) {
-            case 'medium':
-              timeout = 3500;
-              break;
-            case 'long':
-              timeout = 5000;
-              break;
-            default:
-              timeout = 2000;
-              break;
+    showModal(args) {
+      this.show = true;
+      if (args && args.autoClose) {
+        this.$emit('autoClose', { autoClose: args.autoClose });
+        this.timeout = args.autoClose;
+      }
+      this.$nextTick().then(this.checkAutoClose());
+    },
+    checkAutoClose() {
+      // if autoClose is set up and no timeout was specified on showModal call
+      if (this.autoClose && !this.timeout) {
+        this.timeout = this.autoClose;
+        if (typeof this.autoClose === 'string') {
+          this.timeout = Number.parseInt(this.autoClose, 10);
+          if (Number.isNan(this.timeout)) {
+            switch (this.autoClose) {
+              case 'medium':
+                this.timeout = 3500;
+                break;
+              case 'long':
+                this.timeout = 5000;
+                break;
+              default:
+                this.timeout = 2000;
+                break;
+            }
           }
         }
-      } else {
-        timeout = this.autoClose;
       }
-      setTimeout(function a() {
-        this.close();
-      }, timeout);
-    }
-    // end autoClose
+      if (this.timeout > 0) {
+        setTimeout(this.hideModal.bind(this, { autoClose: true }), this.timeout);
+      }
+    },
   },
 };
 

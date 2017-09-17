@@ -5,7 +5,7 @@
         {{orderProduct.productQuantity}} unid
         </span>
         <div>
-          <ProductInfo :product="orderProduct.product" :summary="false" :rating="false" />
+          <ProductInfo :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
           <div class="ingredients-item">
             <span v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
           </div>

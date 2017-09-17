@@ -1,6 +1,6 @@
 <template>
   <div v-if="order">
-    <modal :show="showModal">
+    <modal ref="modal">
       <p class="logo-modal" slot="header"></p>
       <p class="body-modal" slot="body">
         <strong>Confirmar</strong> o <strong>envio do pedido</strong>
@@ -8,7 +8,7 @@
       </p>
       <p class="footer-modal" slot="footer">
         <ButtonComponent :onClick="confirmed" size="medium" type="secondary">Sim</ButtonComponent>
-        <ButtonComponent @click.native="showModal = false" size="medium" type="danger">Não</ButtonComponent>
+        <ButtonComponent @click.native="$refs.modal.hideModal" size="medium" type="danger">Não</ButtonComponent>
       </p>
     </modal>
     <NavigationBar type="checkout">Checkout</NavigationBar>
@@ -18,7 +18,7 @@
         <span class="desc">Total pedido</span>
         <span class="price">R$ {{order.totalValue | currency}}</span>
       </div>
-      <ButtonComponent @click.native="showModal = true" size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
+      <ButtonComponent @click.native="$refs.modal.showModal()" size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
     </div>
   </div>
 </template>
@@ -35,11 +35,6 @@ export default {
     NavigationBar,
     PreviewSelectedProducts,
     ButtonComponent,
-  },
-  data() {
-    return {
-      showModal: false,
-    };
   },
   methods: {
     redirectToRestaurant() {
