@@ -1,6 +1,6 @@
 <template>
   <div v-if="order">
-    <modal v-if="showModal" @close="showModal = false">
+    <modal :show="showModal">
       <p class="logo-modal" slot="header"></p>
       <p class="body-modal" slot="body">
         <strong>Confirmar</strong> o <strong>envio do pedido</strong>
@@ -67,9 +67,12 @@ export default {
 
 <style scoped>
   .logo-modal {
-    height: 208px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 10px;
     background: url('../assets/images/logo.svg');
-    border-bottom: solid #f00 2px;
+    border-bottom: solid #be1622 2px;
   }
 
   .body-modal {

@@ -69,6 +69,5 @@ export default {
 };
 </script>
 
-<style>
-  @import '../../assets/styles/shared/checkout-preview-content.css';
+<style src="@/assets/styles/shared/checkout-preview-content.css">
 </style>
