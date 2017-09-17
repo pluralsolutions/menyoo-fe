@@ -26,7 +26,6 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import PreviewSelectedProducts from '@/components/shared/PreviewSelectedProducts';
-import ButtonComponent from '@/components/shared/Button';
 
 import { mapGetters } from 'vuex';
 
@@ -34,7 +33,6 @@ export default {
   components: {
     NavigationBar,
     PreviewSelectedProducts,
-    ButtonComponent,
   },
   methods: {
     redirectToRestaurant() {

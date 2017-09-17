@@ -7,16 +7,14 @@
         <div class="negative-box">
           Você ainda <strong>não possui</strong> itens no seu carrinho
         </div>
-        <router-link to="/restaurantes/bar-do-ze">
-          <ButtonComponent size="large" class="start-order" @click.native="toogle">Iniciar pedido</ButtonComponent>
-        </router-link>
+        <ButtonComponent routerLinkTo="/restaurantes/bar-do-ze" size="large" class="start-order" @click.native="toogle">Iniciar pedido</ButtonComponent>
       </div>
       <div v-else class="has-orders">
         <span class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</span>
         <PreviewSelectedProducts />
         <div class="total-value">
           <p>Total do pedido</p>
-          <p>R$ <span class="price">{{order.totalValue | currency}}</span></p>
+          <Currency color="red" :value="order.totalValue"/>
           <router-link to="/checkout">
             <span @click="toogle">Finalizar pedido</span>
           </router-link>
@@ -28,16 +26,16 @@
 
 <script>
 import PreviewSelectedProducts from '@/components/shared/PreviewSelectedProducts';
-import ButtonComponent from '@/components/shared/Button';
 import ProductInfo from '@/components/shared/ProductInfo';
+import Currency from '@/components/shared/Currency';
 
 import { mapGetters } from 'vuex';
 
 export default {
   components: {
-    ButtonComponent,
     ProductInfo,
     PreviewSelectedProducts,
+    Currency,
   },
   data() {
     return {

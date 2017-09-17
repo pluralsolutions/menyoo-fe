@@ -43,14 +43,12 @@
 <script>
 import PhotoCircle from '@/components/shared/PhotoCircle';
 import NavigationBar from '@/components/shared/NavigationBar';
-import ButtonComponent from '@/components/shared/Button';
 
 export default {
   name: 'profile',
   components: {
     PhotoCircle,
     NavigationBar,
-    ButtonComponent,
   },
   data() {
     return {

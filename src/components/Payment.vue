@@ -67,7 +67,6 @@
 
 <script>
 import currency from '@/components/shared/Currency';
-import ButtonComponent from '@/components/shared/Button';
 import PaymentCard from '@/domain/PaymentCard';
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 import vueSlider from 'vue-slider-component';
@@ -87,7 +86,6 @@ export default {
     Slide,
     vueSlider,
     currency,
-    ButtonComponent,
   },
   data() {
     return {

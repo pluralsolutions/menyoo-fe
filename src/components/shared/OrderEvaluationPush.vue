@@ -16,9 +16,6 @@
 </template>
 <script>
 export default {
-  components: {
-    ButtonComponent: () => import('@/components/shared/Button'),
-  },
   data() {
     return {
       isshowing: true,

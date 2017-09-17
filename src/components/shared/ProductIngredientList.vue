@@ -23,12 +23,8 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/shared/Button';
 
 export default {
-  components: {
-    ButtonComponent,
-  },
   props: {
     value: {
       type: Number,

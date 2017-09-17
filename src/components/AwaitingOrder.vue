@@ -16,14 +16,12 @@
 
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
-import ButtonComponent from '@/components/shared/Button';
 import OrderEvaluationPush from '@/components/shared/OrderEvaluationPush';
 
 export default {
   name: 'AwaitingOrder',
   components: {
     NavigationBar,
-    ButtonComponent,
     OrderEvaluationPush,
   },
   methods: {

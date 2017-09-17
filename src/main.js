@@ -12,6 +12,10 @@ import router from './router';
 import App from './App';
 // components
 import Modal from './components/shared/Modal';
+import ButtonComponent from './components/shared/Button';
+
+Vue.component('modal', Modal);
+Vue.component('ButtonComponent', ButtonComponent);
 
 VeeValidate.Validator.addLocale(validadePtBR);
 // VeeValidate.Validator.addLocale(validadeEn);
@@ -71,8 +75,6 @@ router.beforeEach((to, from, next) => {
   console.log('redirectTo', redirectTo);
   return next(redirectTo);
 });
-
-Vue.component('modal', Modal);
 
 // Google analytics
 // the plugin will automatically detect the current route name, path and location

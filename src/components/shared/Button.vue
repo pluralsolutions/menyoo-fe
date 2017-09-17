@@ -1,5 +1,10 @@
 <template>
-  <button :class="btnClass" @click="onClick"><slot></slot></button>
+  <router-link tag="button" v-if="routerLinkTo" :to="routerLinkTo" :class="btnClass" @click="onClick">
+    <slot></slot>
+  </router-link>
+  <button v-else :class="btnClass" @click="onClick">
+    <slot></slot>
+  </button>
 </template>
 <script>
 export default {
@@ -8,6 +13,7 @@ export default {
     size: { type: String, default: 'medium' },
     additionalClass: { type: String, default: '' },
     onClick: { type: Function, default: () => null },
+    routerLinkTo: {},
   },
   computed: {
     btnClass: function btnClass() {
