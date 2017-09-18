@@ -2,19 +2,19 @@
   <ul class="order-items">
     <li v-for="orderProduct in order.products" :key="orderProduct.product.id">
       <span class="product-quantity">
-        {{orderProduct.productQuantity}} unid
-        </span>
-        <div>
-          <ProductInfo :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
-          <div class="ingredients-item">
-            <span v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
-          </div>
-          <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
-                      :minusCallback="removeProductIntoOrder.bind(null, orderProduct)"
-                      :showCounter="false"
-                      justifyContent="flex-end"
-          />
+        {{orderProduct.productQuantity}}<br/>unid
+      </span>
+      <div>
+        <ProductInfo :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
+        <div class="ingredients-item">
+          <span v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
         </div>
+        <Counter :plusCallback="addProductToOrder.bind(null, orderProduct)"
+                    :minusCallback="removeProductIntoOrder.bind(null, orderProduct)"
+                    :showCounter="false"
+                    justifyContent="flex-start"
+        />
+      </div>
     </li>
   </ul>
 </template>
@@ -76,7 +76,13 @@ export default {
     padding: 0 20px;
   }
 
-  .order-items li {
+  .order-items li{
+    display: flex;
+    margin-bottom: 40px;
     padding: 0;
+    width: 100%;
+  }
+  .product-quantity{
+    width: 35px;
   }
 </style>

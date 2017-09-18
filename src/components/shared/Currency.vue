@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :style="`width: ${width}px`" :class="$style.currency">{{ symbol }}
+    <div :class="$style.currency">{{ symbol }}
       <span :class="$style[color]">
         {{ value | currency }}
       </span>
@@ -14,7 +14,6 @@ export default {
   props: {
     value: { default: 0 },
     color: { default: 'black' },
-    width: { default: '80' },
     symbol: { default: 'R$' },
   },
 };
@@ -22,13 +21,13 @@ export default {
 
 <style module>
 .currency{
-  font-size: 13px;  
+  font-size: 14px;  
   font-weight: 500;
   padding: 6px 6px 16px 0px;
 }
 
 .currency span{
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold;
 }
 
@@ -37,5 +36,8 @@ export default {
 }
 .green{
   color: #029016;  
+}
+.red{
+  color: #be1622;
 }
 </style>
