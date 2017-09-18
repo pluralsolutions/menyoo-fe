@@ -17,27 +17,25 @@
               {{ user.name }}
             </div>
           </div>
-
-          <ul class="menu-nav">
-            <li class="menu-item home">
-              <router-link to="/restaurantes/bar-do-ze">Ver cardápio</router-link>
-            </li>
-            <li class="menu-item edit-profile">
-              <router-link to="/perfil">Editar perfil</router-link>
-            </li>
-            <li class="menu-item tracking-orders">
-              <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
-            </li>
-            <li class="menu-item pay-order">
-              <router-link to="/pay">Pagar pedido</router-link>
-            </li>
-          </ul>
-
-          <ul class="menu-secondary">
-            <li class="menu-item signout" @click="signOut">
-              <a>Sair</a>
-            </li>
-          </ul>
+          <div class="menu-scroll">
+            <ul class="menu-nav">
+              <li class="menu-item home">
+                <router-link to="/restaurantes/bar-do-ze">Ver cardápio</router-link>
+              </li>
+              <li class="menu-item edit-profile">
+                <router-link to="/perfil">Editar perfil</router-link>
+              </li>
+              <li class="menu-item tracking-orders">
+                <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
+              </li>
+              <li class="menu-item pay-order">
+                <router-link to="/pay">Pagar pedido</router-link>
+              </li>
+              <li class="menu-item signout" @click="signOut">
+                <a>Sair</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </transition>

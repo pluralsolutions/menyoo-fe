@@ -47,9 +47,14 @@
   background-color: #fff;
 }
 
+.menu-scroll {
+  overflow: scroll;
+  height: 80%;
+  position: relative;  
+}
 .menu-profile {
   display: flex;
-  height: 20%;
+  height: 90px;
 }
 
 .menu-profile div {
