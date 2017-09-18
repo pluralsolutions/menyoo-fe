@@ -1,4 +1,5 @@
 <template>
+<div>
   <transition name="modal">
     <div class="modal-mask" v-if="show">
       <div class="modal-wrapper">
@@ -16,6 +17,7 @@
       </div>
     </div>
   </transition>
+</div>
 </template>
 <script>
 
