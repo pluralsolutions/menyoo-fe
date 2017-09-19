@@ -71,7 +71,6 @@ export default {
   width: 27px;
   height: 27px;
   margin: 0px 5px;
-  /* border: 1px solid green; */
   opacity: 0.3;
   display: inline-flex;
 }
