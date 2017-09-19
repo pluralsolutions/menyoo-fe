@@ -12,6 +12,14 @@ export default class Order {
     });
   }
 
+  quantity() {
+    let quantity = 0;
+    this.products.forEach((product) => {
+      quantity += product.productQuantity;
+    });
+    return quantity;
+  }
+
   addProduct(productOrder) {
     const productIndex = this.products.findIndex(p => productOrder.equalTo(p));
     if (productIndex >= 0) {
