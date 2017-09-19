@@ -6,7 +6,7 @@
         <strong>Confirmar</strong> o <strong>envio do pedido</strong>
         para o chefe?
       </p>
-      <p class="footer-modal" slot="footer">
+      <p slot="footer">
         <ButtonComponent :onClick="confirmed" size="medium" type="secondary">Sim</ButtonComponent>
         <ButtonComponent @click.native="$refs.modal.hideModal" size="medium" type="danger">Não</ButtonComponent>
       </p>
@@ -18,7 +18,7 @@
         <span class="desc">Total pedido</span>
         <span class="price">R$ {{order.totalValue | currency}}</span>
       </div>
-      <ButtonComponent @click.native="$refs.modal.showModal()" size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
+      <ButtonComponent @click.native="$refs.modal.showModal({})" size="full" type="secondary">Enviar pedido para o chef</ButtonComponent>
     </div>
   </div>
 </template>
@@ -68,18 +68,6 @@ export default {
     border-bottom: solid #be1622 2px;
   }
 
-  .body-modal {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 22px;
-    line-height: 1.4;
-    width: 70%;
-    margin: 0 auto;
-  }
-
-  .footer-modal {
-    display: flex;
-  }
 
   .order-total {
     display: flex;

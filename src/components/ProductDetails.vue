@@ -5,6 +5,18 @@
     <div class="product-info">
       <ProductInfo :product="product" v-model="productQuantity" :additionalPrice="additionalPrice"/>
       <ProductIngredientList :product="product" v-model="additionalPrice" :onSubmit="addOrder" />
+      <modal ref="modal">
+        <div slot="body">
+          {{ msgModal }}<br><br><br>
+          <p v-if="order!=null" style="font-size: 14px">
+           Total de itens no carrinho: <strong>{{ order.quantity() }}</strong>.
+          </p>
+        </div>
+        <p slot="footer">
+          <ButtonComponent @click.native="$refs.modal.hideModal" size="medium" type="secondary">Ok</ButtonComponent>
+          <ButtonComponent @click.native="$refs.modal.hideModal" routerLinkTo="/checkout" size="medium" type="danger">Finalizar pedido</ButtonComponent>
+        </p>
+      </modal>
     </div>
   </div>
 </template>
@@ -17,6 +29,8 @@ import ProductIngredientList from '@/components/shared/ProductIngredientList';
 import Product from '@/domain/Product';
 import ProductOrder from '@/domain/ProductOrder';
 
+import { mapGetters } from 'vuex';
+
 export default {
   components: {
     NavigationBar,
@@ -28,7 +42,13 @@ export default {
       productQuantity: 0,
       product: null,
       additionalPrice: 0,
+      msgModal: '',
     };
+  },
+  computed: {
+    ...mapGetters([
+      'order',
+    ]),
   },
   methods: {
     addOrder: function addOrder(event) {
@@ -54,11 +74,11 @@ export default {
       this.$store.dispatch('addProductToOrder', productOrder);
 
       // eslint-disable-next-line
-      alert('Item adicionado ao carrinho!');
-      this.$router.back();
+      this.msgModal = 'Item adicionado ao carrinho!';
+      this.$refs.modal.showModal({ onClose: () => this.$router.back() });
     },
   },
-  mounted() {
+  created() {
     const ps = Product.sample();
     const idx = ps.findIndex(p => p.id === this.$route.params.id);
     if (idx < 0) this.$router.back();
