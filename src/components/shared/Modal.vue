@@ -30,28 +30,40 @@ export default {
       type: [Number, String],
       default: '',
     },
-    onClose: {
-      type: Function,
-      default: noFnc,
-    },
+    // onClose: {
+    //   type: Function,
+    //   default: noFnc,
+    // },
   },
   data() {
     return {
       show: false,
       timeout: 0,
-      cbThen: noFnc,
+      onCloseInternal: noFnc,
     };
   },
   methods: {
-    hideModal({ autoClose }) {
+    hideModal({ fromAutoClose }) {
       this.show = false;
-      if (this.onClose !== noFnc) this.onClose(this, { autoClose: autoClose || false });
+      // call onClose callback function
+      if (this.onCloseInternal !== noFnc) {
+        this.onCloseInternal(this, { fromAutoClose: fromAutoClose || false });
+      }
     },
-    showModal(args) {
+    showModal({ autoClose, onClose }) {
       this.show = true;
-      if (args && args.autoClose) {
-        this.$emit('autoClose', { autoClose: args.autoClose });
-        this.timeout = args.autoClose;
+      if (autoClose) {
+        this.$emit('autoClose', { autoClose });
+        this.timeout = autoClose;
+      }
+      // from props
+      // if (this.onClose && (typeof this.onClose === 'function')) {
+      //   this.onCloseInternal = this.onClose;
+      // }
+
+      // from param
+      if (onClose && (typeof onClose === 'function')) {
+        this.onCloseInternal = onClose;
       }
       this.$nextTick().then(this.checkAutoClose());
     },
@@ -119,9 +131,24 @@ export default {
 }
 
 .modal-body {
-  margin: 20px 0;
+  text-transform: uppercase;
+  margin: 20px 15px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.4;
+  width: 70%;
+  margin: 0 auto;
 }
 
+.modal-footer {
+  display: flex;
+  width: 100%;
+}
+.modal-footer div,
+.modal-footer p {
+  display: flex;
+  width: 100%;
+}
 .modal-default-button {
   float: right;
 }

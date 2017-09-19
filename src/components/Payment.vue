@@ -61,6 +61,14 @@
       <div class="paybutton">
         <ButtonComponent type="secondary" :onClick="payBill">PAGAR</ButtonComponent>
       </div>
+      <modal ref="modal">
+        <div slot="body">
+          {{ msgModal }}
+        </div>
+        <p slot="footer">
+          <ButtonComponent @click.native="$refs.modal.hideModal" size="medium" type="primary">Ok</ButtonComponent>
+        </p>
+      </modal>
     </div>
   </div>
 </template>
@@ -93,6 +101,7 @@ export default {
       tip: 10,
       cards: PaymentCard.sample(5),
       selectedIndex: 0,
+      msgModal: '',
     };
   },
   computed: {
@@ -113,8 +122,10 @@ export default {
     payBill() {
       this.$store.dispatch('clearProductOrder');
       // eslint-disable-next-line
-      alert('Pago! Obrigado por utilizar nossos serviços.');
-      this.$router.push({ name: 'menu' });
+      this.msgModal = 'Pago! Obrigado por utilizar nossos serviços.';
+      this.$refs.modal.showModal({
+        onClose: () => this.$router.push({ name: 'menu' }),
+      });
     },
   },
 };
