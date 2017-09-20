@@ -2,14 +2,14 @@
   align-content: center;
 }
 .awaitorder{
-    color: #393;
-  margin: 30px auto;
+  color: #393;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
 }
 .awaitorder img{
   width: 150px;
-  height: 150px;
+  height: calc(85vh/4);
 }
 .awaitorder span{
   width: 160px;
@@ -28,7 +28,7 @@
   -webkit-filter: none;
   filter: none;
 }
-@media (min-width: 600px){
+@media (min-width: 550px){
   .awaitorder div{
     flex-direction: column;
     padding: 5px;

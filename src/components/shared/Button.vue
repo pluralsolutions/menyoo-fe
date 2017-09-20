@@ -35,7 +35,7 @@ export default {
   .button {
     padding: 14px;
     font-size: 16px;
-    margin: 20px auto;
+    margin: 10px auto;
     border: none;
     color: #fff;
     text-transform: uppercase;
