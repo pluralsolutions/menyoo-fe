@@ -25,12 +25,6 @@
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
     <% }}} %>
-    <script type="text/javascript">
-      setTimeout(function(){var a=document.createElement("script");
-      var b=document.getElementsByTagName("script")[0];
-      a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0068/6935.js";
-      a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-    </script>
   </head>
   <body>
     <div id="app">
