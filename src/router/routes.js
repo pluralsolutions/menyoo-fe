@@ -1,3 +1,5 @@
+import Auth from '@/components/Auth';
+import AuthSuccess from '@/components/AuthSuccess';
 import Menu from '@/components/Menu';
 import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
@@ -8,8 +10,11 @@ import Payment from '@/components/Payment';
 import Checkout from '@/components/Checkout';
 
 const routes = [
+  { path: '/', component: Auth },
+  { path: '/auth', component: Auth },
+  { path: '/success', component: AuthSuccess },
   {
-    path: '',
+    path: '/start',
     name: 'index',
     component: Startup,
     meta: { noAuth: true },
@@ -36,7 +41,6 @@ const routes = [
     component: AwaitingOrder,
   },
   {
-    default: true,
     path: '/pay',
     name: 'pay-order',
     component: Payment,
