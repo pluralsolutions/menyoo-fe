@@ -90,19 +90,65 @@ Vue.use(VueAnalytics, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data() {
+    return {
+      auth: {},
+    };
+  },
   created() {
     // eslint-disable-next-line
     console.log('firebase init app');
     firebase.initializeApp(config);
     firebase.auth().onAuthStateChanged((user) => {
       // eslint-disable-next-line
-      console.log('onAuthStateChanged', user);
+      console.log('created.onAuthStateChanged', user);
       if (user) {
         this.$router.push(configMenyoo.successUrl);
       } else {
         this.$router.push(configMenyoo.authUrl);
       }
     });
+  },
+  computed: {
+    /**
+     * Determines if the user is authenticated
+     *
+     * @return boolean
+     */
+    isAuthenticated() {
+      // This function changes the auth.user state when
+      // the auth status of user changes.
+      firebase.auth().onAuthStateChanged((user) => {
+        // eslint-disable-next-line
+        console.log('computed.onAuthStateChanged', user);
+        if (user) {
+          this.auth.user = user;
+        } else {
+          this.auth.user = null;
+        }
+      });
+
+      return (this.auth.user !== null);
+    },
+  },
+  methods: {
+    /**
+     * Signout the currently logged-in user
+     */
+    signOut() {
+      // Signout the user using firebase
+      firebase.auth().signOut()
+        .then(() => {
+          this.auth.user = firebase.auth().currentUser;
+          this.auth.message = 'User signed out Successfully';
+          this.$router.push('/');
+        },
+        (er) => {
+          // eslint-disable-next-line          
+          console.log('Failed to signout user, try again later', er);
+          this.$router.push('/');
+        });
+    },
   },
   store,
   router,
