@@ -1,6 +1,7 @@
 ﻿<template>
   <div id="app">
     <HeaderApp></HeaderApp>
+    <div>MAIN: isAuthenticated: {{$root.isAuthenticated}}, auth:{{$root.auth}}.</div>
     <main>
       <transition name="main">
         <router-view></router-view>

@@ -1,7 +1,6 @@
 <template lang="html">
   <div>
-    <div>auth: <div v-if="auth"> autenticado</div><div v-if="!auth"> sem auth</div></div>
-    <!-- <div>currentUser:{{auth.currentUser}}</div> -->
+    <div>AUTH: <span v-if="$root.isAuthenticated"> autenticado</span><spanq v-if="!$root.isAuthenticated"> sem auth</spanq></div>
     <div id="firebaseui-auth-container"></div>
   </div>
 </template>
@@ -12,12 +11,6 @@ import { config } from '../auth/firebaseConfig';
 
 export default {
   name: 'auth',
-  computed: {
-    currentUser() {
-      const auth = firebase.auth();
-      return auth;
-    },
-  },
   mounted() {
     const uiConfig = {
       signInSuccessUrl: config.successUrl,
