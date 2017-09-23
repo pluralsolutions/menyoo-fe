@@ -7,6 +7,10 @@ import VueCookie from 'vue-cookie';
 // import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import VueAnalytics from 'vue-analytics';
+import firebase from 'firebase';
+// import firebaseui from 'firebaseui';
+import { config, configMenyoo } from './auth/firebaseConfig';
+
 import store from './store';
 import router from './router';
 import App from './App';
@@ -52,29 +56,27 @@ Vue.http.interceptors.push((req, next) => {
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
-  const requireAuth = !to.matched.some(record => record.meta.noAuth);
-  let redirectTo = { };
+// router.beforeEach((to, from, next) => {
+//   const requireAuth = !to.matched.some(record => record.meta.noAuth);
+//   let redirectTo = { };
+//   const haveIACookie = Vue.cookie.get('token');
+//   if (requireAuth && haveIACookie && !store.getters.isLoggedUser) {
+//     store.dispatch('fetchUser').then(() => { },
+//     // on error
+//     () => router.push('/entrar'));
+//   }
+//   if (requireAuth && !haveIACookie) {
+//     redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
+//   } else if (haveIACookie && (to.path === '/entrar' || to.path === '/index.html')) {
+//     redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
+//   }
+//   // eslint-disable-next-line
+//   console.log('to.fullPath', to.fullPath, to.path);
+//   // eslint-disable-next-line
+//   console.log('redirectTo', redirectTo);
+//   return next(redirectTo);
+// });
 
-  const haveIACookie = Vue.cookie.get('token');
-  if (requireAuth && haveIACookie && !store.getters.isLoggedUser) {
-    store.dispatch('fetchUser').then(() => { },
-    // on error
-    () => router.push('/entrar'));
-  }
-
-
-  if (requireAuth && !haveIACookie) {
-    redirectTo = { path: '/entrar', query: { redirect: to.fullPath } };
-  } else if (haveIACookie && (to.path === '/entrar' || to.path === '/index.html')) {
-    redirectTo = { path: to.query.redirect || '/restaurantes/bar-do-ze' };
-  }
-  // eslint-disable-next-line
-  console.log('to.fullPath', to.fullPath, to.path);
-  // eslint-disable-next-line
-  console.log('redirectTo', redirectTo);
-  return next(redirectTo);
-});
 
 // Google analytics
 // the plugin will automatically detect the current route name, path and location
@@ -88,9 +90,22 @@ Vue.use(VueAnalytics, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  created() {
+    // eslint-disable-next-line
+    console.log('firebase init app');
+    firebase.initializeApp(config);
+    firebase.auth().onAuthStateChanged((user) => {
+      // eslint-disable-next-line
+      console.log('onAuthStateChanged', user);
+      if (user) {
+        this.$router.push(configMenyoo.successUrl);
+      } else {
+        this.$router.push(configMenyoo.authUrl);
+      }
+    });
+  },
   store,
   router,
   template: '<App/>',
   components: { App },
 });
-
