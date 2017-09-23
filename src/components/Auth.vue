@@ -1,22 +1,20 @@
 <template lang="html">
   <div>
-    <div>AUTH: <span v-if="$root.isAuthenticated"> autenticado</span><spanq v-if="!$root.isAuthenticated"> sem auth</spanq></div>
     <div id="firebaseui-auth-container"></div>
   </div>
 </template>
 <script>
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
-import { config } from '../auth/firebaseConfig';
 
 export default {
   name: 'auth',
   mounted() {
     const uiConfig = {
-      signInSuccessUrl: config.successUrl,
+      signInSuccessUrl: '/success',
       signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
     };
