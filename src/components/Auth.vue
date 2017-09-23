@@ -1,6 +1,12 @@
 <template lang="html">
-  <div>
-    <div id="firebaseui-auth-container"></div>
+  <div class="authentication-container">
+    <div class="elements">
+      <div class="plate"></div>
+      <div class="authenticators">
+        <div id="firebaseui-auth-container"></div>
+      </div>
+      <div class="menyoo-slogan"></div>
+    </div>
   </div>
 </template>
 <script>
@@ -25,3 +31,6 @@ export default {
 </script>
 <style src="@/../node_modules/firebaseui/dist/firebaseui.css">
 </style>
+<style src="@/assets/styles/authentication.css">
+</style>
+
