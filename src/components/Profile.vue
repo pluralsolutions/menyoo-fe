@@ -2,8 +2,8 @@
   <div>
     <NavigationBar>Perfil</NavigationBar>
     <div class="profile">
-      <div :class="{'erro': errors.has('urlPhoto')}">
-        <PhotoCircle :size="128" v-bind:src="user.urlPhoto" v-on:src="a=>user.urlPhoto=a" :alt="user.name" :showChangeButton="true"></PhotoCircle>
+      <div :class="{'erro': errors.has('photoURL')}">
+        <PhotoCircle :size="128" v-bind:src="user.photoURL" v-on:src="a=>user.photoURL=a" :alt="user.name" :showChangeButton="true"></PhotoCircle>
       </div>
       <form class="profile-formulario" @submit.prevent="enviar">
         <div :class="{'profile-controle name': true, 'erro': errors.has('name')}">
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     cancelProfile() {
-      this.$store.dispatch('fetchUser');
+      // this.$store.dispatch('fetchUser');
     },
     saveProfile() {
       this.$validator.validateAll()
