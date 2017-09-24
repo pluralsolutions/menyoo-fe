@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Product from '@/domain/Product';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
 import Counter from '@/components/shared/Counter';
 
@@ -34,7 +33,7 @@ export default {
       default: 0,
     },
     product: {
-      type: Product,
+      type: Object,
       required: true,
     },
     additionalPrice: {

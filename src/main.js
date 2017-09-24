@@ -36,20 +36,6 @@ Vue.use(VeeValidate,
   },
 );
 
-// Vue.http.interceptors.push((req, next) => {
-//   // é possível colocar informações no header antes do envio da requisição
-//   req.headers.set('Authorization', 'informação de segurança aqui');
-//   // eslint-disable-next-line
-//   console.log('Lidando com o request');
-//   next((res) => {
-//     // eslint-disable-next-line
-//     console.log('Lidando com a resposta', res);
-//     // é possível acessar os dados da reposta e realizar transformações antes
-//     // eslint-disable-next-line
-//     console.log(res.body);
-//   });
-// });
-
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {

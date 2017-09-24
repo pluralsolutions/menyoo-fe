@@ -3,13 +3,13 @@ import Evaluation from './Evaluation';
 
 export default class Product {
 
-  constructor({ id, title, description, image, price_cents, evaluation, ingredients }) {
+  constructor({ id, title, description, image, price_cents, evaluation, ingredient_groups }) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
     this.unitPrice = price_cents;
-    this.ingredients = ingredients;
+    this.ingredients = ingredient_groups;
     this.evaluation = evaluation;
   }
 

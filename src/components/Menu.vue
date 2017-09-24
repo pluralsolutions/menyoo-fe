@@ -14,7 +14,8 @@
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import ProductCard from '@/components/shared/ProductCard';
-import Service from '../service/product_service';
+import Product from '@/domain/Product';
+import Service from '@/service/product_service';
 
 export default {
   components: {
@@ -32,7 +33,15 @@ export default {
       return this.$store.getters.getLoggedUser;
     },
     productsLoaded() {
-      return this.$store.getters.allProducts;
+      const products = this.$store.getters.allProducts;
+      const productList = [];
+      products.forEach((product) => {
+        productList.push(
+          new Product(product),
+        );
+      });
+
+      return productList;
     },
   },
   created() {
