@@ -13,7 +13,6 @@ const getters = {
 
 const actions = {
   a_updateUser({ commit }, user) {
-    console.log('a_updateUser', user);
     commit(UPDATE_CURRENT_USER, user);
   },
   /**
@@ -23,9 +22,11 @@ const actions = {
     // Signout the user using firebase
     firebase.auth().signOut()
       .then(() => {
+        // eslint-disable-next-line
         console.log('User signed out Successfully');
       },
       (er) => {
+        // eslint-disable-next-line
         console.log('Failed to signout user, try again later', er);
       });
   },
@@ -35,8 +36,6 @@ const actions = {
 const mutations = {
   [UPDATE_CURRENT_USER](state, user) {
     const usr = user ? new User(user) : null;
-    // console.log(UPDATE_CURRENT_USER, usr, user);
-    // usr.z = user;
     state.loggedIn = !!usr;
     state.loggedUser = usr;
   },

@@ -78,11 +78,10 @@ new Vue({
     // install the state observer on firebase auth()
     firebase.auth().onAuthStateChanged((user) => {
       const vm = this;
-      console.log('onAuthStateChanged', user);
-      vm.updateUser(user).then(() => {
-        if (user) {
+      vm.updateUser(user || false).then(() => {
+        if (user && this.$route.path === '/auth') {
           vm.$router.push('/restaurantes/bar-do-ze');
-        } else {
+        } else if (!user && this.$route.path !== '/auth') {
           vm.$router.push('/auth');
         }
       });
