@@ -3,16 +3,16 @@
     <span class="title">Personalize seus ingredientes</span>
     <ul class="ingredients-list">
       <form v-on:submit.prevent="onSubmit">
-        <li v-for="group in product.ingredients" v-bind:key="group.name">
+        <li v-for="group in product.ingredients" v-bind:key="group.title">
           <span @click="toogleOptions" class="ingredientes-section active"> {{group.title}}</span>
           <ul>
-            <li v-for="item in group.items" v-bind:key="item.id"
-                @click="toogleIt" :data-price="item.additionalPrice">
+            <li v-for="item in group.ingredients" v-bind:key="item.id"
+                @click="toogleIt" :data-price="item.price_cents">
               <input
                   type="checkbox" name="ingredients"
                   :value="item.id" :checked="item.checked">
               <span class="ingredient-name">{{item.name}}</span>
-              <span class="additional-cost" v-if="item.additionalPrice">+R$ {{item.additionalPrice | currency}}</span>
+              <span class="additional-cost" v-if="item.price_cents">+R$ {{item.price_cents | currency}}</span>
             </li>
           </ul>
         </li>
