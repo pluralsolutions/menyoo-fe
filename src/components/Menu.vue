@@ -6,7 +6,7 @@
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
     </div>
     <div :class="$style['product-list']">
-      <ProductCard :product="product" v-for="product in productsLoaded" :key="product.id" v-if="product.unitPrice > 0" />
+      <ProductCard :product="product" v-for="product in productsLoaded" :key="product.id" />
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import RestaurantHero from '@/components/shared/RestaurantHero';
 import ProductCard from '@/components/shared/ProductCard';
-import Product from '../domain/Product';
+import Service from '../service/product_service';
 
 export default {
   components: {
@@ -32,16 +32,11 @@ export default {
       return this.$store.getters.getLoggedUser;
     },
     productsLoaded() {
-      if (this.query === '') return this.products;
-
-      const exp = new RegExp(this.query.trim(), 'i');
-      const res = this.products.filter(p => (exp.test(p.title)));
-      res.push(this.products.filter(p => (exp.test(p.description))));
-      return res;
+      return this.$store.getters.allProducts;
     },
   },
   created() {
-    this.products = Product.sample(15);
+    Service.allProductsByRestaurant(this.$store.dispatch, { restaurantID: 1 });
   },
 };
 </script>

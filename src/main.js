@@ -25,7 +25,7 @@ Vue.use(VueCookie);
 Vue.http.options.root = process.env.API_URL ? process.env.API_URL : 'http://localhost:3000';
 
 Vue.filter('currency', (value) => {
-  const val = (value / 1).toFixed(2).replace('.', ',');
+  const val = (value / 100).toFixed(2).replace('.', ',');
   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 });
 
@@ -36,19 +36,19 @@ Vue.use(VeeValidate,
   },
 );
 
-Vue.http.interceptors.push((req, next) => {
-  // é possível colocar informações no header antes do envio da requisição
-  req.headers.set('Authorization', 'informação de segurança aqui');
-  // eslint-disable-next-line
-  console.log('Lidando com o request');
-  next((res) => {
-    // eslint-disable-next-line
-    console.log('Lidando com a resposta', res);
-    // é possível acessar os dados da reposta e realizar transformações antes
-    // eslint-disable-next-line
-    console.log(res.body);
-  });
-});
+// Vue.http.interceptors.push((req, next) => {
+//   // é possível colocar informações no header antes do envio da requisição
+//   req.headers.set('Authorization', 'informação de segurança aqui');
+//   // eslint-disable-next-line
+//   console.log('Lidando com o request');
+//   next((res) => {
+//     // eslint-disable-next-line
+//     console.log('Lidando com a resposta', res);
+//     // é possível acessar os dados da reposta e realizar transformações antes
+//     // eslint-disable-next-line
+//     console.log(res.body);
+//   });
+// });
 
 Vue.config.productionTip = false;
 
@@ -83,7 +83,6 @@ Vue.use(VueAnalytics, {
   id: 'UA-106358510-1',
   router,
 });
-
 
 /* eslint-disable no-new */
 new Vue({

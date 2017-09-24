@@ -1,13 +1,14 @@
+/* eslint-disable camelcase */
 import Evaluation from './Evaluation';
 
 export default class Product {
 
-  constructor({ id, title, description, image, unitPrice, evaluation, ingredients }) {
+  constructor({ id, title, description, image, price_cents, evaluation, ingredients }) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
-    this.unitPrice = unitPrice;
+    this.unitPrice = price_cents;
     this.ingredients = ingredients;
     this.evaluation = evaluation;
   }
