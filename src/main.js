@@ -7,6 +7,7 @@ import VueCookie from 'vue-cookie';
 // import validadeEn from 'vee-validate/dist/locale/en';
 import validadePtBR from 'vee-validate/dist/locale/pt_BR';
 import VueAnalytics from 'vue-analytics';
+import { mapGetters, mapActions } from 'vuex';
 import firebase from 'firebase';
 import { config } from './auth/firebaseConfig';
 
@@ -19,8 +20,6 @@ import ButtonComponent from './components/shared/Button';
 
 Vue.component('modal', Modal);
 Vue.component('ButtonComponent', ButtonComponent);
-
-firebase.initializeApp(config);
 
 VeeValidate.Validator.addLocale(validadePtBR);
 // VeeValidate.Validator.addLocale(validadeEn);
@@ -51,72 +50,39 @@ Vue.use(VueAnalytics, {
   router,
 });
 
+firebase.initializeApp(config);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   data() {
     return {
-      auth: {},
+      auth: { init: false },
     };
   },
   created() {
+    // install the state observer on firebase auth()
     firebase.auth().onAuthStateChanged((user) => {
-      // eslint-disable-next-line
-      console.log('created.onAuthStateChanged', user);
-      this.auth.user = user;
-      // console.log(configMenyoo);
-      if (!user) {
-        this.$router.push('/auth');
-      // } else {
-        // this.$router.push('/success');
-      }
+      const vm = this;
+      console.log('onAuthStateChanged', user);
+      vm.updateUser(user).then(() => {
+        if (user) {
+          vm.$router.push('/restaurantes/bar-do-ze');
+        } else {
+          vm.$router.push('/auth');
+        }
+      });
     });
   },
   computed: {
-    /**
-     * Determines if the user is authenticated
-     *
-     * @return boolean
-     */
-    isAuthenticated() {
-      // This function changes the auth.user state when
-      // the auth status of user changes.
-      // firebase.auth().onAuthStateChanged((user) => {
-      //   // eslint-disable-next-line
-      //   console.log('computed.onAuthStateChanged', user);
-      //   if (user) {
-      //     this.auth.user = user;
-      //   } else {
-      //     this.auth.user = null;
-      //   }
-      // });
-      console.log('computed.onAuthStateChanged return', this.auth);
-      return (this.auth.user !== null);
-    },
-    currentUser() {
-      return this.auth.user;
-    },
+    ...mapGetters({
+      user: 'user',
+    }),
   },
   methods: {
-    /**
-     * Signout the currently logged-in user
-     */
-    signOut() {
-      // Signout the user using firebase
-      firebase.auth().signOut()
-        .then(() => {
-          this.auth.user = firebase.auth().currentUser;
-          this.auth.message = 'User signed out Successfully';
-          // eslint-disable-next-line
-          console.log(this.auth.message);
-          this.$router.push('/');
-        },
-        (er) => {
-          // eslint-disable-next-line
-          console.log('Failed to signout user, try again later', er);
-          this.$router.push('/');
-        });
-    },
+    ...mapActions({
+      updateUser: 'a_updateUser',
+    }),
   },
   store,
   router,

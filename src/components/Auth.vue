@@ -17,7 +17,7 @@ export default {
   name: 'auth',
   mounted() {
     const uiConfig = {
-      signInSuccessUrl: '/success',
+      signInSuccessUrl: '/restaurantes/bar-do-ze',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.FacebookAuthProvider.PROVIDER_ID,
@@ -33,4 +33,3 @@ export default {
 </style>
 <style src="@/assets/styles/authentication.css">
 </style>
-

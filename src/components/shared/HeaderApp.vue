@@ -8,20 +8,22 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-  import MenuSidebar from '@/components/shared/MenuSidebar';
-  import CheckoutPreview from '@/components/shared/CheckoutPreview';
+import MenuSidebar from '@/components/shared/MenuSidebar';
+import CheckoutPreview from '@/components/shared/CheckoutPreview';
 
-  export default {
-    components: {
-      MenuSidebar,
-      CheckoutPreview,
-    },
-    computed: mapGetters([
+export default {
+  components: {
+    MenuSidebar,
+    CheckoutPreview,
+  },
+  computed: {
+    ...mapGetters([
       'isLoggedUser',
     ]),
-  };
+  },
+};
 </script>
 
 <style>
