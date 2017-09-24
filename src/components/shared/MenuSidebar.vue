@@ -11,10 +11,10 @@
         <div class="menu">
           <div class="menu-profile">
             <div class="user-img">
-              <PhotoCircle :src="user.urlPhoto" :alt="`${user.name}`" size="69"></PhotoCircle>
+              <PhotoCircle :src="loggedUser.photoURL" :alt="`${loggedUser.displayName}`" size="69"></PhotoCircle>
             </div>
             <div class="user-name">
-              {{ user.name }}
+              {{ loggedUser.name }}
             </div>
           </div>
           <div class="menu-scroll">
@@ -42,8 +42,8 @@
   </div>
 </template>
 <script>
-
 import PhotoCircle from '@/components/shared/PhotoCircle';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -55,18 +55,14 @@ export default {
     };
   },
   methods: {
-    routeToZero() {
-      this.$router.push('/');
-    },
-    signOut() {
-      this.$store.dispatch('signOut').then(
-        () => this.$nextTick(this.routeToZero));
-    },
+    ...mapActions({
+      signOut: 'a_signOut',
+    }),
   },
   computed: {
-    user: function u() {
-      return this.$store.getters.loggedUser;
-    },
+    ...mapGetters({
+      loggedUser: 'user',
+    }),
   },
 };
 </script>
