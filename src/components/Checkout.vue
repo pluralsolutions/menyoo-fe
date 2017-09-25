@@ -3,8 +3,8 @@
     <modal ref="modal">
       <p class="logo-modal" slot="header"></p>
       <p class="body-modal" slot="body">
-        <strong>Confirmar</strong> o <strong>envio do pedido</strong>
-        para o chefe?
+        <strong>Confirmar</strong> o <strong>envio <br>
+        do pedido</strong>para o chefe?
       </p>
       <p slot="footer">
         <ButtonComponent :onClick="confirmed" size="medium" type="secondary">Sim</ButtonComponent>
@@ -61,14 +61,15 @@ export default {
 <style scoped>
   .logo-modal {
     height: 200px;
+    background: url('../assets/images/logo.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10px 10px;
-    background: url('../assets/images/logo.svg');
+    /* background-size: 10px 10px; */
     border-bottom: solid #be1622 2px;
   }
-
-
+  .body-modal {
+    margin: 20px;
+  }
   .order-total {
     display: flex;
     justify-content: space-between;

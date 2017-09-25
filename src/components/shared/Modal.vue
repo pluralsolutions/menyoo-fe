@@ -132,11 +132,10 @@ export default {
 
 .modal-body {
   text-transform: uppercase;
-  margin: 20px 15px;
   text-align: center;
   font-size: 22px;
   line-height: 1.4;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
 }
 
