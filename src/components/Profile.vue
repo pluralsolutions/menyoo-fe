@@ -104,7 +104,11 @@ export default {
               birthDate: this.user.birthDate || null,
               cpf: this.user.cpf || null,
             };
-            firebase.database().ref(`users/${user.providerId}/uid${user.uid}/`).update(addInfo);
+            firebase.database().ref(`users/${user.providerId}/uid${user.uid}/`).update(addInfo)
+            .then(() => {
+              this.$store.commit('UPDATE_CURRENT_USER', user);
+              this.$router.back();
+            });
           });
         }
       },
