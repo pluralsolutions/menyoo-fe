@@ -1,7 +1,17 @@
+import ProductOrder from './ProductOrder';
+
 export default class Order {
-  constructor({ products = [], totalValue = 0 }) {
-    this.products = products;
-    this.totalValue = totalValue;
+  constructor({ products = [] }) {
+    const productList = [];
+
+    products.forEach((product) => {
+      productList.push(new ProductOrder(product));
+    });
+
+    console.log(productList);
+
+    this.products = productList;
+    this.totalValue = this.calculateTotalValue();
   }
 
   updateTotalValue() {
@@ -12,12 +22,16 @@ export default class Order {
     });
   }
 
-  quantity() {
-    let quantity = 0;
+  calculateTotalValue() {
+    let price = 0;
     this.products.forEach((product) => {
-      quantity += product.productQuantity;
+      price += product.totalPriceCents;
     });
-    return quantity;
+    return price;
+  }
+
+  quantity() {
+    return this.products.length;
   }
 
   addProduct(productOrder) {

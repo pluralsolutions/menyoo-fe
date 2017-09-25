@@ -1,10 +1,13 @@
+/* eslint-disable camelcase */
 import IngredientProductOrder from '@/domain/IngredientProductOrder';
+import Product from '@/domain/Product';
 
 export default class ProductOrder {
-  constructor({ product, productOrderIngredients, productQuantity }) {
-    this.product = product;
-    this.productQuantity = productQuantity;
-    this.ingredients = productOrderIngredients;
+  constructor({ product, ingredients, quantity, total_price_cents }) {
+    this.product = new Product(product);
+    this.quantity = quantity;
+    this.ingredients = ingredients;
+    this.totalPriceCents = total_price_cents;
   }
 
   get productOrderIngredients() {
