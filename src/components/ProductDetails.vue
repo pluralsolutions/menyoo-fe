@@ -77,11 +77,11 @@ export default {
 
       orderService.addProductToOrder(
         this.$store.dispatch, payload,
-      );
-
-      // eslint-disable-next-line
-      this.msgModal = 'Item adicionado ao carrinho!';
-      this.$refs.modal.showModal({ onClose: () => this.$router.back() });
+      ).then(() => {
+        // eslint-disable-next-line
+        this.msgModal = 'Item adicionado ao carrinho!';
+        this.$refs.modal.showModal({ onClose: () => this.$router.back() });
+      });
     },
   },
   created() {

@@ -4,6 +4,7 @@ import {
   ORDER_STEP_CHANGE,
   ADD_PRODUCT_TO_ORDER,
   REMOVE_ITEM_FROM_ORDER,
+  UPDATE_ORDER,
 } from '../mutation-types';
 
 const getters = {
@@ -31,6 +32,9 @@ const actions = {
   clearProductOrder(state) {
     state.order = new Order({});
   },
+  updateOrder(state, order) {
+    state.commit(UPDATE_ORDER, order);
+  },
 };
 
 const mutations = {
@@ -42,6 +46,9 @@ const mutations = {
     order.addProduct(productOrder);
 
     state.order = order;
+  },
+  [UPDATE_ORDER](state, order) {
+    state.order = new Order(order);
   },
   [REMOVE_ITEM_FROM_ORDER](state, { productOrder, quantity }) {
     let order = state.order || new Order({});

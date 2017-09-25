@@ -2,7 +2,7 @@
   <ul class="order-items">
     <li v-for="orderProduct in order.products" :key="orderProduct.product.id">
       <span class="product-quantity">
-        {{orderProduct.productQuantity}}<br/>unid
+        {{orderProduct.quantity}}<br/>unid
       </span>
       <div>
         <ProductInfo :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
