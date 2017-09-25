@@ -100,7 +100,7 @@ export default {
             phoneNumber: this.user.phoneNumber,
           }).then(() => {
             const addInfo = {
-              phoneNumber: this.user.phoneNumber,
+              phoneNumber: this.user.phoneNumber || null,
               birthDate: this.user.birthDate || null,
               cpf: this.user.cpf || null,
             };
