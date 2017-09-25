@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['product-evaluation-container']">
+  <div :class="$style['product-evaluation-container']" v-if="evaluation">
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
       <span :class="$style['star-active']" :style="{width: evaluation.score + '%'}" />
@@ -11,13 +11,12 @@
 </template>
 
 <script>
-import Evaluation from '@/domain/Evaluation';
 
 export default {
   props: {
     evaluation: {
-      type: Evaluation,
-      required: true,
+      type: Object,
+      required: false,
     },
     counter: {
       type: Boolean,

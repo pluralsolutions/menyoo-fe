@@ -1,5 +1,5 @@
 <template>
-  <div class="product-detail-container">
+  <div class="product-detail-container" v-if="product">
     <NavigationBar>Descrição do Produto</NavigationBar>
     <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
     <div class="product-info">
@@ -22,14 +22,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
 import ProductIngredientList from '@/components/shared/ProductIngredientList';
+import Service from '@/service/product_service';
 
 import Product from '@/domain/Product';
 import ProductOrder from '@/domain/ProductOrder';
-
-import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -40,7 +41,6 @@ export default {
   data() {
     return {
       productQuantity: 0,
-      product: null,
       additionalPrice: 0,
       msgModal: '',
     };
@@ -49,6 +49,11 @@ export default {
     ...mapGetters([
       'order',
     ]),
+    product() {
+      const product = this.$store.getters.currentProduct;
+      if (product === null) return null;
+      return new Product(product);
+    },
   },
   methods: {
     addOrder: function addOrder(event) {
@@ -79,10 +84,12 @@ export default {
     },
   },
   created() {
-    const ps = Product.sample();
-    const idx = ps.findIndex(p => p.id === this.$route.params.id);
-    if (idx < 0) this.$router.back();
-    this.product = ps[idx];
+    Service.productByRestaurant(
+      this.$store.dispatch, {
+        restaurantID: 1,
+        productID: this.$route.params.id,
+      },
+    );
   },
 };
 </script>

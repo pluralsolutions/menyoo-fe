@@ -5,14 +5,14 @@
     </div>
     <router-link class="detail" tag="div"
         :to="{ name: 'produtos', params: { id: product.id }, meta: { p: product }}">
-      <div><ProductEvaluation :evaluation="product.evaluation" /></div>
+      <div><ProductEvaluation :evaluation="product.evaluation" v-if="product.evaluation" /></div>
       <div class="title">
         <h2>{{product.title}}</h2>
       </div>
       <div class="description">
         <p>{{product.description}}</p>
       </div>
-      <Currency :value="product.unitPrice"></Currency> 
+      <Currency :value="product.unitPrice"></Currency>
     </router-link>
   </div>
 </template>
