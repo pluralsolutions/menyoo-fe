@@ -11,7 +11,13 @@
 <script>
   export default {
     mounted() {
-      setTimeout(() => { this.$router.push('/entrar'); }, 1600);
+      setTimeout(() => {
+        if (this.$root.user) {
+          this.$router.push('/restaurantes/bar-do-ze');
+        } else {
+          this.$router.push('/auth');
+        }
+      }, 1600);
     },
   };
 </script>

@@ -15,6 +15,9 @@ const actions = {
   a_updateUser({ commit }, user) {
     commit(UPDATE_CURRENT_USER, user);
   },
+  fetchUser({ dispatch }) {
+    dispatch('a_updateUser', firebase.auth().currentUser);
+  },
   /**
    * Signout the currently logged-in user
    */
