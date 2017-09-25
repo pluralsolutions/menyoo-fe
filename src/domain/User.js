@@ -1,18 +1,20 @@
 export default class User {
 
-  constructor({ token, name, displayName, photoURL,
-      email, phoneNumber, birthDate, cpf, uid }) {
-    this.token = token;
-    this.uid = uid;
-    this.name = name || displayName || email;
-    this.photoURL = photoURL || '/static/img/user.jpg';
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.birthDate = birthDate;
-    this.cpf = cpf;
+  constructor(user) {
+    this.token = user.token;
+    this.uid = user.uid;
+    this.name = user.name || user.displayName || user.email;
+    this.photoURL = user.photoURL || '/static/img/user_icon.svg';
+    this.email = user.email;
+    this.phoneNumber = user.phoneNumber;
+    this.birthDate = user.birthDate;
+    this.cpf = user.cpf;
+    this.providerId = user.providerId;
   }
 
-  clone = () => new User(this);
+  clone() {
+    return new User(this);
+  }
 
   static n(mod) {
     return Math.floor(Math.random() * 1984 * 12 * 6 * 4) % (mod);

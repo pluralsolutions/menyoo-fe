@@ -17,6 +17,7 @@ export default {
   name: 'auth',
   mounted() {
     const uiConfig = {
+      signInSuccess: () => false, // TODO: check uf exists query.redirect
       signInSuccessUrl: '/restaurantes/bar-do-ze',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

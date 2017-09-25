@@ -69,20 +69,24 @@ firebase.initializeApp(config);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data() {
-    return {
-      auth: { init: false },
-    };
-  },
   created() {
+    const vm = this;
+    router.beforeEach((to, from, next) => {
+      const requireAuth = !to.matched.some(record => record.meta.noAuth);
+      if (requireAuth && !vm.user) {
+        return next({ path: '/auth', query: { redirect: to.fullPath } });
+      } else if (vm.user && (to.path === '/auth' || to.path === '/index.html' || to.path === '/')) {
+        return next({ path: to.query.redirect || '/restaurantes/bar-do-ze' });
+      }
+      return next();
+    });
     // install the state observer on firebase auth()
     firebase.auth().onAuthStateChanged((user) => {
-      const vm = this;
       vm.updateUser(user || false).then(() => {
         if (user && this.$route.path === '/auth') {
-          vm.$router.push('/restaurantes/bar-do-ze');
+          this.$router.push({ path: this.$route.query.redirect || '/restaurantes/bar-do-ze' });
         } else if (!user && this.$route.path !== '/auth') {
-          vm.$router.push('/auth');
+          this.$router.replace({ path: '/auth', query: { redirect: this.$route.fullPath } });
         }
       });
     });
