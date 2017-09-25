@@ -4,7 +4,7 @@
       <p class="logo-modal" slot="header"></p>
       <p class="body-modal" slot="body">
         <strong>Confirmar</strong> o <strong>envio <br>
-        do pedido</strong>para o chefe?
+        do pedido</strong> para o chefe?
       </p>
       <p slot="footer">
         <ButtonComponent :onClick="confirmed" size="medium" type="secondary">Sim</ButtonComponent>
