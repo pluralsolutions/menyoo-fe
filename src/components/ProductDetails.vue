@@ -27,10 +27,10 @@ import { mapGetters } from 'vuex';
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductInfo from '@/components/shared/ProductInfo';
 import ProductIngredientList from '@/components/shared/ProductIngredientList';
-import Service from '@/service/product_service';
+import productService from '@/service/product_service';
+import orderService from '@/service/order_service';
 
 import Product from '@/domain/Product';
-import ProductOrder from '@/domain/ProductOrder';
 
 export default {
   components: {
@@ -59,24 +59,25 @@ export default {
     addOrder: function addOrder(event) {
       const checkboxs = event.target.querySelectorAll('input:checked');
       const productIngredients = [];
-      let additionalPrice = 0;
       for (let x = 0; x < checkboxs.length; x += 1) {
-        const ingredientElement = checkboxs[x].parentElement.getElementsByClassName('ingredient-name')[0];
-        const price = checkboxs[x].getAttribute('data-price');
-        if (price) additionalPrice = parseFloat(price);
-
         productIngredients.push(
-          { id: checkboxs[x].value, name: ingredientElement.innerText, additionalPrice },
+          { id: parseInt(checkboxs[x].value, 10) },
         );
       }
 
-      const productOrder = new ProductOrder({
-        product: this.product,
-        productOrderIngredients: productIngredients,
-        productQuantity: this.productQuantity,
-      });
+      const payload = {
+        user_id: 'lucasgomide',
+        restaurant_id: 1,
+        products: [{
+          product_id: this.product.id,
+          quantity: this.productQuantity,
+          ingredients: productIngredients,
+        }],
+      };
 
-      this.$store.dispatch('addProductToOrder', productOrder);
+      orderService.addProductToOrder(
+        this.$store.dispatch, payload,
+      );
 
       // eslint-disable-next-line
       this.msgModal = 'Item adicionado ao carrinho!';
@@ -84,7 +85,7 @@ export default {
     },
   },
   created() {
-    Service.productByRestaurant(
+    productService.productByRestaurant(
       this.$store.dispatch, {
         restaurantID: 1,
         productID: this.$route.params.id,
