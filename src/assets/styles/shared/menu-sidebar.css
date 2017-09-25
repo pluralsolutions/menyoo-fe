@@ -67,7 +67,7 @@
 
 .user-img {
   background-color: #626262;
-  width: 40%;
+  width: 90px;
 }
 .user-name {
   background-color: #d4d4d4;
@@ -75,7 +75,8 @@
   font-weight: bold;
   text-transform: uppercase;
   color: #1b1b1b;
-  width: 60%;
+  padding: 0 10px;
+  width: calc(100% - 90px);
 }
 
 .menu-nav {
