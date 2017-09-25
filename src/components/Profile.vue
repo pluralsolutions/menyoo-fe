@@ -62,7 +62,8 @@ export default {
   },
   methods: {
     cancelProfile() {
-      this.$store.dispatch('fetchUser');
+      this.$store.dispatch('fetchUser')
+      .then(this.getUser);
     },
     getUser() {
       const user = this.$store.getters.user;
