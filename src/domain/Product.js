@@ -10,7 +10,7 @@ export default class Product {
     this.image = image;
     this.unitPrice = price_cents;
     this.ingredients = ingredient_groups;
-    this.evaluation = evaluation;
+    this.evaluation = new Evaluation(evaluation);
   }
 
   static sampleRandom(limit = 1) {

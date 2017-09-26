@@ -1,7 +1,7 @@
 export default class Evaluation {
-  constructor({ score, evaluationCount }) {
+  constructor({ score, quantity }) {
     this.score = score;
-    this.evaluationCount = evaluationCount;
+    this.evaluationCount = quantity;
   }
 
   evaluationCountSimplified() {
