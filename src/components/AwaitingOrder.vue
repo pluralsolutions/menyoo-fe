@@ -10,7 +10,7 @@
       <ButtonComponent :onClick="pagar" size="large" v-if="step>=3">pagar</ButtonComponent>
     </div>
     <br/>
-     <OrderEvaluationPush v-show="step>=5"/>
+     <!-- <OrderEvaluationPush v-show="step>=5"/> -->
   </div>
 </template>
 
@@ -34,6 +34,13 @@ export default {
     pagar() {
       this.$router.push(`/pedidos/${this.order.id}/pagar`);
     },
+    perfom() {
+      setTimeout(this.mais, 2000);
+      setTimeout(this.mais, 3000);
+      setTimeout(this.mais, 4000);
+      setTimeout(this.mais, 5000);
+      setTimeout(this.mais, 6000);
+    },
   },
   computed: {
     step() {
@@ -43,15 +50,9 @@ export default {
       return this.$store.getters.order;
     },
   },
-  created() {
-    setTimeout(this.mais, 2000);
-    setTimeout(this.mais, 3000);
-    setTimeout(this.mais, 4000);
-    setTimeout(this.mais, 5000);
-    setTimeout(this.mais, 6000);
-  },
   mounted() {
     this.$store.dispatch('resetAwaiting');
+    this.perfom();
   },
 };
 </script>

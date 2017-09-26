@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar>Review</NavigationBar>
+    <NavigationBar>Review</NavigationBar><br>
     <div v-for="order in ordersLoaded" :key="order.id">
       <!-- <pre>-> {{order}}</pre> -->
       <div :class="$style['product-list']">
