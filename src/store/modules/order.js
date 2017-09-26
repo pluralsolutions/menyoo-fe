@@ -5,14 +5,14 @@ import {
   ADD_PRODUCT_TO_ORDER,
   REMOVE_ITEM_FROM_ORDER,
   UPDATE_ORDER,
-  ALL_EVALUATION_ORDER,
+  ALL_MY_PRODUCTS_RESTAURANT,
 } from '../mutation-types';
 
 const getters = {
   orderStep: state => (state.orderStep),
   orders: state => (state.orders),
   order: state => (state.order),
-  allEvaluationOrders: state => (state.allEvaluationOrders),
+  allMyProductsByRestaurant: state => (state.allMyProductsByRestaurant),
 };
 
 const actions = {
@@ -38,8 +38,8 @@ const actions = {
     const newOrder = order && order.products ? order : [];
     state.commit(UPDATE_ORDER, newOrder);
   },
-  allEvaluationOrderByRestaurant(commit, products) {
-    commit.commit(ALL_EVALUATION_ORDER, products);
+  allMyProductsByRestaurant(commit, products) {
+    commit.commit(ALL_MY_PRODUCTS_RESTAURANT, products);
   },
 };
 
@@ -64,15 +64,15 @@ const mutations = {
     }
     state.order = order;
   },
-  [ALL_EVALUATION_ORDER](state, orders) {
-    state.allEvaluationProducts = orders;
+  [ALL_MY_PRODUCTS_RESTAURANT](state, orders) {
+    state.allMyProductsByRestaurant = orders;
   },
 };
 
 const state = {
   orderStep: 0,
   order: null,
-  allEvaluationOrders: [],
+  allMyProductsByRestaurant: [],
 };
 
 export default {

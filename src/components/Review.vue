@@ -1,8 +1,10 @@
 <template>
   <div>
     <NavigationBar>Review</NavigationBar>
-    <div :class="$style['product-list']">
-      <ProductCard :review="true" :product="product" v-for="product in productsLoaded" :key="product.id" />
+    <div v-for="order in productsLoaded" :key="order.id">
+      <div :class="$style['product-list']"> 
+        <ProductCard :review="true" :product="product" v-for="product in order.products" :key="product.product_id" />
+      </div>
     </div>
   </div>
 </template>
@@ -10,8 +12,7 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductCard from '@/components/shared/ProductCard';
-// import Product from '@/domain/Product';
-import Service from '@/service/product_service';
+import OrderService from '@/service/order_service';
 
 export default {
   components: {
@@ -20,27 +21,21 @@ export default {
   },
   data() {
     return {
-      query: '',
-      products: [],
+      // query: '',
     };
   },
   computed: {
     productsLoaded() {
-      const orders = this.$store.getters.allEvaluationOrders;
-      // const orderList = [];
-      // debugger;
-      // if (orders && orders.length) {
-      //   orders.forEach((product) => {
-      //     orderList.push(
-      //       new Product(product),
-      //     );
-      //   });
-      // }
-      return orders;
+      let { products } = this.$store.getters.allMyProductsByRestaurant;
+      if (!products) {
+        products = [];
+      }
+      console.log('return', products);
+      return products;
     },
   },
-  created() {
-    Service.allProductsOrderByRestaurant(this.$store.dispatch,
+  mounted() {
+    OrderService.allProductsOrdersByRestaurant(this.$store.dispatch,
       { restaurantID: 1, userID: this.$store.getters.user.uid });
   },
 };
