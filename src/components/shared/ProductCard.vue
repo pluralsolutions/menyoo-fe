@@ -67,6 +67,7 @@ export default {
   },
   methods: {
     sendReview(index) {
+      if (this.evaluation.score > 0) return;
       this.score = (this.score === index) ? 0 : index;
       EvaluationService.updateEvaluationByRestaurantProduct(this.$store.dispatch, {
         userID: this.$store.getters.user.uid,
