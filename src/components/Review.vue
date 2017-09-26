@@ -2,7 +2,7 @@
   <div>
     <NavigationBar>Review</NavigationBar>
     <div v-for="order in ordersLoaded" :key="order.id">
-      <pre>-> {{order}}</pre>{{order.id}}
+      <!-- <pre>-> {{order}}</pre> -->
       <div :class="$style['product-list']"> 
         <ProductCard :review="true" :product="order.product" />
       </div>
@@ -31,11 +31,13 @@ export default {
       const { products } = this.$store.getters.allMyProductsByRestaurant;
       console.log('return allMyProductsByRestaurant: ', products);
       const list = [];
-      products.forEach((product) => {
-        list.push(
-          new ProductOrder(product),
-        );
-      });
+      if (products && products.length) {
+        products.forEach((product) => {
+          list.push(
+            new ProductOrder(product),
+          );
+        });
+      }
       return list;
     },
   },
