@@ -1,6 +1,6 @@
 <template>
   <div class="custom-ingredients">
-    <span class="title">Personalize seus ingredientes</span>
+    <span class="title"  v-if="product.ingredients.length > 0">Personalize seus ingredientes</span>
     <ul class="ingredients-list">
       <form v-on:submit.prevent="onSubmit">
         <li v-for="group in product.ingredients" v-bind:key="group.title">
@@ -10,7 +10,7 @@
                 @click="toogleIt" :data-price="item.price_cents">
               <input
                   type="checkbox" name="ingredients"
-                  :value="item.id" :checked="item.checked">
+                  :value="item.id" :checked="group.basic">
               <span class="ingredient-name">{{item.name}}</span>
               <span class="additional-cost" v-if="item.price_cents">+R$ {{item.price_cents | currency}}</span>
             </li>
