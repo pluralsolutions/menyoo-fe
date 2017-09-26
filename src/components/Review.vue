@@ -3,7 +3,7 @@
     <NavigationBar>Review</NavigationBar>
     <div v-for="order in ordersLoaded" :key="order.id">
       <!-- <pre>-> {{order}}</pre> -->
-      <div :class="$style['product-list']"> 
+      <div :class="$style['product-list']">
         <ProductCard :review="true" :product="order.product" />
       </div>
     </div>
@@ -15,6 +15,8 @@ import NavigationBar from '@/components/shared/NavigationBar';
 import ProductCard from '@/components/shared/ProductCard';
 import OrderService from '@/service/order_service';
 import ProductOrder from '@/domain/ProductOrder';
+
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -28,7 +30,7 @@ export default {
   },
   computed: {
     ordersLoaded() {
-      const { products } = this.$store.getters.allMyProductsByRestaurant;
+      const { products } = this.allMyProductsByRestaurant;
       console.log('return allMyProductsByRestaurant: ', products);
       const list = [];
       if (products && products.length) {
@@ -40,10 +42,16 @@ export default {
       }
       return list;
     },
+    ...mapGetters([
+      'user',
+      'allMyProductsByRestaurant',
+    ]),
   },
-  mounted() {
-    OrderService.allProductsOrdersByRestaurant(this.$store.dispatch,
-      { restaurantID: 1, userID: this.$store.getters.user.uid });
+  created() {
+    if (this.user) {
+      OrderService.allProductsOrdersByRestaurant(this.$store.dispatch,
+      { restaurantID: 1, userID: this.user.uid });
+    }
   },
 };
 </script>

@@ -46,7 +46,7 @@ const mutations = {
 
 const state = {
   loggedIn: false,
-  loggedUser: false,
+  loggedUser: null,
 };
 
 export default {

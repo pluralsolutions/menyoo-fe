@@ -69,6 +69,10 @@ export default {
       });
     },
   },
+  created() {
+    debugger;
+    this.score = this.product.evaluation.score;
+  },
 };
 
 </script>
