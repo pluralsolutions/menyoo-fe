@@ -22,6 +22,9 @@
               <li class="menu-item home">
                 <router-link to="/restaurantes/bar-do-ze">Ver cardápio</router-link>
               </li>
+              <li class="menu-item review">
+                <router-link to="/restaurantes/bar-do-ze/reviews">MInhas avaliações</router-link>
+              </li>
               <li class="menu-item edit-profile">
                 <router-link to="/perfil">Editar perfil</router-link>
               </li>
