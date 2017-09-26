@@ -1,9 +1,6 @@
 <template>
   <div>
-    <RestaurantHero></RestaurantHero>
-    <div :class="$style.search">
-      
-    </div>
+    <NavigationBar>Review</NavigationBar>
     <div :class="$style['product-list']">
       <ProductCard :review="true" :product="product" v-for="product in productsLoaded" :key="product.id" />
     </div>
@@ -11,14 +8,14 @@
 </template>
 
 <script>
-import RestaurantHero from '@/components/shared/RestaurantHero';
+import NavigationBar from '@/components/shared/NavigationBar';
 import ProductCard from '@/components/shared/ProductCard';
 import Product from '@/domain/Product';
 import Service from '@/service/product_service';
 
 export default {
   components: {
-    RestaurantHero,
+    NavigationBar,
     ProductCard,
   },
   data() {
@@ -31,12 +28,13 @@ export default {
     productsLoaded() {
       const products = this.$store.getters.allEvaluationProducts;
       const productList = [];
-      products.forEach((product) => {
-        productList.push(
-          new Product(product),
-        );
-      });
-
+      if (products) {
+        products.forEach((product) => {
+          productList.push(
+            new Product(product),
+          );
+        });
+      }
       return productList;
     },
   },
