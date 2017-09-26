@@ -26,7 +26,7 @@ const routes = [
     component: AwaitingOrder,
   },
   {
-    path: '/pay',
+    path: '/pedidos/:orderId/pagar',
     name: 'pay-order',
     component: Payment,
   },

@@ -10,7 +10,7 @@
       <ButtonComponent :onClick="pagar" size="large" v-if="step>=3">pagar</ButtonComponent>
     </div>
     <br/>
-     <OrderEvaluationPush v-show="step>=5"/> 
+     <OrderEvaluationPush v-show="step>=5"/>
   </div>
 </template>
 
