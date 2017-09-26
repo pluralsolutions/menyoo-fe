@@ -32,12 +32,15 @@ export default {
       this.$store.dispatch('updateStep', { step: -1 });
     },
     pagar() {
-      this.$router.push({ name: 'pay-order' });
+      this.$router.push(`/pedidos/${this.order.id}/pagar`);
     },
   },
   computed: {
     step() {
       return this.$store.getters.orderStep;
+    },
+    order() {
+      return this.$store.getters.order;
     },
   },
   created() {

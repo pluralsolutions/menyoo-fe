@@ -33,9 +33,8 @@ const actions = {
     state.order = new Order({});
   },
   updateOrder(state, order) {
-    if (order && order.products) {
-      state.commit(UPDATE_ORDER, order);
-    }
+    const newOrder = order && order.products ? order : [];
+    state.commit(UPDATE_ORDER, newOrder);
   },
 };
 

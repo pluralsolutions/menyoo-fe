@@ -31,8 +31,6 @@ import Currency from '@/components/shared/Currency';
 
 import { mapGetters } from 'vuex';
 
-import serviceOrder from '@/service/order_service';
-
 export default {
   components: {
     ProductInfo,
@@ -61,20 +59,9 @@ export default {
       this.$emit('toogle');
     },
   },
-  created() {
-    if (this.user) {
-      serviceOrder.currentOrder(
-        this.$store.dispatch, {
-          restaurantID: 1,
-          userID: this.user.uid,
-        },
-      );
-    }
-  },
   computed: {
     ...mapGetters([
       'order',
-      'user',
     ]),
   },
 };

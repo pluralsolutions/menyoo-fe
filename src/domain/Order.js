@@ -1,13 +1,14 @@
 import ProductOrder from './ProductOrder';
 
 export default class Order {
-  constructor({ products = [] }) {
+  constructor({ id, products = [] }) {
     const productList = [];
 
     products.forEach((product) => {
       productList.push(new ProductOrder(product));
     });
 
+    this.id = id;
     this.products = productList;
     this.totalValue = this.calculateTotalValue();
   }
