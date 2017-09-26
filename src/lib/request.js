@@ -9,6 +9,14 @@ const get = (url, headers = {}) => (
   })
 );
 
+const put = (url, data, headers = {}) => (
+  Vue.http.put(url, data, { headers }).then(response => (
+    Promise.resolve(response.body)
+  ), () => {
+    Promise.reject();
+  })
+);
+
 const post = (url, body) =>
     Vue.http.post(url, body).then(response => (
       Promise.resolve(response.body)
@@ -19,4 +27,5 @@ const post = (url, body) =>
 export default {
   get,
   post,
+  put,
 };

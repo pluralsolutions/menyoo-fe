@@ -17,8 +17,20 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
     ))
 );
 
+const updateProductOrderQuantity = (dispatch, { userID, restaurantID, item, quantity }) => (
+  request.put(
+    `restaurants/${restaurantID}/orders/${item.orderId}/products/${item.id}/quantity`,
+    { quantity },
+    { uid: userID },
+  )
+    .then(response => (
+      dispatch('updateOrder', response)
+    ))
+);
+
 
 export default {
   addProductToOrder,
   currentOrder,
+  updateProductOrderQuantity,
 };
