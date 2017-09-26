@@ -12,7 +12,7 @@
         <p>{{product.description}}</p>
       </div>
       <div class="row-star">
-        <div :class="['star', {'star-active': score>=i}]" v-for="i in 5" :key="i" :value="i" @click="sendReview(i)" />
+        <div :class="['star', {'star-active': evaluation.score >= i}]" v-for="i in 5" :key="i" :value="i" @click="sendReview(i)" />
       </div>
     </div>
     <!-- fim review -->
@@ -35,6 +35,7 @@
 
 <script>
 import Product from '@/domain/Product';
+import Evaluation from '@/domain/Evaluation';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
 import Currency from '@/components/shared/Currency';
 import EvaluationService from '@/service/evaluation_service';
@@ -57,6 +58,12 @@ export default {
     product: {
       type: Product,
     },
+    evaluation: {
+      type: Evaluation,
+    },
+    order: {
+      type: Object,
+    },
   },
   methods: {
     sendReview(index) {
@@ -64,14 +71,10 @@ export default {
       EvaluationService.updateEvaluationByRestaurantProduct(this.$store.dispatch, {
         userID: this.$store.getters.user.uid,
         restaurantID: 1,
-        productID: this.product.id,
+        productID: this.order.id,
         score: this.score,
       });
     },
-  },
-  created() {
-    debugger;
-    this.score = this.product.evaluation.score;
   },
 };
 

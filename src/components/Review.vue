@@ -4,7 +4,7 @@
     <div v-for="order in ordersLoaded" :key="order.id">
       <!-- <pre>-> {{order}}</pre> -->
       <div :class="$style['product-list']">
-        <ProductCard :review="true" :product="order.product" />
+        <ProductCard :review="true" :order="order" :product="order.product" :evaluation="order.evaluation" />
       </div>
     </div>
   </div>
@@ -30,8 +30,7 @@ export default {
   },
   computed: {
     ordersLoaded() {
-      const { products } = this.allMyProductsByRestaurant;
-      console.log('return allMyProductsByRestaurant: ', products);
+      const { products } = this.$store.getters.allMyProductsByRestaurant;
       const list = [];
       if (products && products.length) {
         products.forEach((product) => {

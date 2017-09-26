@@ -1,4 +1,5 @@
 import request from '../lib/request';
+import orderService from './order_service';
 
 const updateEvaluationByRestaurantProduct = (dispatch,
   { userID, restaurantID, productID, score }) => (
@@ -7,16 +8,10 @@ const updateEvaluationByRestaurantProduct = (dispatch,
     { score },
     { uid: userID },
   ).then(
-    (evaluation) => {
-      dispatch('updateScoreProductOrderEvalution', { evaluation });
-    },
-    (err) => {
-      if (err.status === 400) {
-        // log msg de erro
-        console.error(err.body.error);
-      }
-      console.log(err);
-    })
+    () => (
+      orderService.allProductsOrdersByRestaurant(dispatch, { userID, restaurantID })
+    ),
+  )
 );
 
 export default {
