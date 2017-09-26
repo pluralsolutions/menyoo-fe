@@ -2,7 +2,7 @@
   <div :class="$style['product-evaluation-container']" v-if="evaluation">
     <div :class="$style.stars">
       <span :class="$style['star-neutral']"></span>
-      <span :class="$style['star-active']" :style="{width: evaluation.score + '%'}" />
+      <span :class="$style['star-active']" :style="{width: evaluation.score * 18 + 'px'}" />
     </div>
     <div>
       <span :class="$style['count']" v-if="evaluation.evaluationCount && counter">{{evaluation.evaluationCountSimplified()}} avaliações</span>
@@ -40,7 +40,7 @@ export default {
   }
   .stars {
     position: relative;
-    width: calc(15px * 5);
+    width: calc(18px * 5);
     height: 18px;
   }
   .star-neutral,
