@@ -33,7 +33,9 @@ const actions = {
     state.order = new Order({});
   },
   updateOrder(state, order) {
-    state.commit(UPDATE_ORDER, order);
+    if (order && order.products && order.products.length > 0) {
+      state.commit(UPDATE_ORDER, order);
+    }
   },
 };
 

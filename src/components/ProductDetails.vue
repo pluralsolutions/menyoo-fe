@@ -48,6 +48,7 @@ export default {
   computed: {
     ...mapGetters([
       'order',
+      'user',
     ]),
     product() {
       const product = this.$store.getters.currentProduct;
@@ -66,7 +67,7 @@ export default {
       }
 
       const payload = {
-        user_id: 'lucasgomide',
+        user_id: this.user.uid,
         restaurant_id: 1,
         products: [{
           product_id: this.product.id,
