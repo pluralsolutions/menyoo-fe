@@ -1,5 +1,6 @@
 import Auth from '@/components/Auth';
 import Menu from '@/components/Menu';
+import Review from '@/components/Review';
 import Profile from '@/components/Profile';
 import Startup from '@/components/Startup';
 import ProductDetails from '@/components/ProductDetails';
@@ -14,6 +15,11 @@ const routes = [
     path: '/restaurantes/:name',
     name: 'menu',
     component: Menu,
+  },
+  {
+    path: '/restaurantes/:name/reviews',
+    name: 'reviews',
+    component: Review,
   },
   {
     name: 'produtos',
