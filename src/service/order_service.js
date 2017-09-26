@@ -9,7 +9,7 @@ const addProductToOrder = (dispatch, payload) => (
 
 const currentOrder = (dispatch, { userID, restaurantID }) => (
   request.get(
-    `users/me/restaurants/${restaurantID}/products`,
+    `users/me/restaurants/${restaurantID}/current_order`,
     { uid: userID },
   )
     .then(response => (
@@ -28,9 +28,21 @@ const updateProductOrderQuantity = (dispatch, { userID, restaurantID, item, quan
     ))
 );
 
+const place = (dispatch, { restaurantId, orderId, userId }) => (
+  request.post(
+    `users/me/restaurants/${restaurantId}/orders/${orderId}/place`,
+    {},
+    { uid: userId },
+  )
+  .then(response => (
+    dispatch('updateOrder', response)
+  ))
+);
+
 
 export default {
   addProductToOrder,
   currentOrder,
   updateProductOrderQuantity,
+  place,
 };

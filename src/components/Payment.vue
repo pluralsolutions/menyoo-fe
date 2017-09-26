@@ -19,7 +19,7 @@
         </div>
         <div class="add-services">
           <div class="label">Adicionar serviço</div>
-          <vue-slider 
+          <vue-slider
             :dot-size="18"
             :max="40"
             height="8"
@@ -33,8 +33,8 @@
       </div>
       <div class="payment-carousel">
         <div class="label">Cartões Cadastrados</div>
-        <carousel-3d 
-          :controls-visible="true" 
+        <carousel-3d
+          :controls-visible="true"
           :width="290/1.5"
           :height="170/1.5"
           display="5"
@@ -81,6 +81,8 @@ import vueSlider from 'vue-slider-component';
 
 import { mapGetters } from 'vuex';
 
+import serviceOrder from '@/service/order_service';
+
 const fmt = {};
 
 fmt.date = function date(data) {
@@ -107,6 +109,7 @@ export default {
   computed: {
     ...mapGetters([
       'order',
+      'user',
     ]),
     total: function t() {
       return (this.order) ? this.order.totalValue : 0;
@@ -120,11 +123,19 @@ export default {
       this.selectedIndex = idx;
     },
     payBill() {
-      this.$store.dispatch('clearProductOrder');
-      // eslint-disable-next-line
-      this.msgModal = 'Pago! Obrigado por utilizar nossos serviços.';
-      this.$refs.modal.showModal({
-        onClose: () => this.$router.push({ name: 'menu' }),
+      serviceOrder.place(
+        this.$store.dispatch,
+        { restaurantId: 1, orderId: this.$route.params.orderId, userId: this.user.uid },
+      ).then(() => {
+        this.msgModal = 'Pago! Obrigado por utilizar nossos serviços.';
+        this.$refs.modal.showModal({
+          onClose: () => this.$router.push({ name: 'menu' }),
+        });
+      }).catch(() => {
+        this.msgModal = 'Não conseguimos processar seu pagamento';
+        this.$refs.modal.showModal({
+          onClose: () => null,
+        });
       });
     },
   },
