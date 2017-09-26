@@ -25,11 +25,12 @@
               <li class="menu-item edit-profile">
                 <router-link to="/perfil">Editar perfil</router-link>
               </li>
-              <li class="menu-item tracking-orders">
+
+              <li class="menu-item tracking-orders" v-if="order">
                 <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
               </li>
-              <li class="menu-item pay-order">
-                <router-link to="/pay">Pagar pedido</router-link>
+              <li class="menu-item pay-order" v-if="order">
+                <router-link :to="{path: `/pedidos/${order.id}/pagar`}">Pagar pedido</router-link>
               </li>
               <li class="menu-item signout" @click="signOut">
                 <a>Sair</a>
@@ -62,6 +63,7 @@ export default {
   computed: {
     ...mapGetters({
       loggedUser: 'user',
+      order: 'order',
     }),
   },
 };
