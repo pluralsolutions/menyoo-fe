@@ -6,7 +6,7 @@
         autocomplete="true" placeholder="Busque seu prato preferido pelo nome ou descrição" />
     </div>
     <div :class="$style['product-list']">
-      <ProductCard :product="product" v-for="product in productsLoaded" :key="product.id" />
+      <ProductCard :review="true" :product="product" v-for="product in productsLoaded" :key="product.id" />
     </div>
   </div>
 </template>
