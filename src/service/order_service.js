@@ -5,9 +5,6 @@ const addProductToOrder = (dispatch, payload) => (
     .then(response => (
       dispatch('updateOrder', response)
     ))
-    .catch((err) => {
-      console.log(err);
-    })
 );
 
 const currentOrder = (dispatch, { userID, restaurantID }) => (
@@ -17,9 +14,7 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
   )
     .then(response => (
       dispatch('updateOrder', response)
-    )).catch((err) => {
-      console.log(err);
-    })
+    ))
 );
 
 
