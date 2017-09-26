@@ -11,6 +11,7 @@ export default class Order {
     this.id = id;
     this.products = productList;
     this.totalValue = this.calculateTotalValue();
+    this.inserted_at = Date.now;
   }
 
   updateTotalValue() {

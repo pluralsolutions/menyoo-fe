@@ -17,6 +17,15 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
     ))
 );
 
+const allProductsOrderByRestaurant = (dispatch, { userID, restaurantID }) => {
+  request.get(
+    `users/me/restaurants/${restaurantID}/products`,
+    { uid: userID })
+  .then((product) => {
+    dispatch('allEvaluationOrderByRestaurant', product);
+  });
+};
+
 const updateProductOrderQuantity = (dispatch, { userID, restaurantID, item, quantity }) => (
   request.put(
     `restaurants/${restaurantID}/orders/${item.orderId}/products/${item.id}/quantity`,
@@ -45,4 +54,5 @@ export default {
   currentOrder,
   updateProductOrderQuantity,
   place,
+  allProductsOrderByRestaurant,
 };

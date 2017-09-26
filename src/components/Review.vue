@@ -10,7 +10,7 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductCard from '@/components/shared/ProductCard';
-import Product from '@/domain/Product';
+// import Product from '@/domain/Product';
 import Service from '@/service/product_service';
 
 export default {
@@ -26,20 +26,21 @@ export default {
   },
   computed: {
     productsLoaded() {
-      const products = this.$store.getters.allEvaluationProducts;
-      const productList = [];
-      if (products) {
-        products.forEach((product) => {
-          productList.push(
-            new Product(product),
-          );
-        });
-      }
-      return productList;
+      const orders = this.$store.getters.allEvaluationOrders;
+      // const orderList = [];
+      // debugger;
+      // if (orders && orders.length) {
+      //   orders.forEach((product) => {
+      //     orderList.push(
+      //       new Product(product),
+      //     );
+      //   });
+      // }
+      return orders;
     },
   },
   created() {
-    Service.allEvaluationProductsByRestaurant(this.$store.dispatch,
+    Service.allProductsOrderByRestaurant(this.$store.dispatch,
       { restaurantID: 1, userID: this.$store.getters.user.uid });
   },
 };

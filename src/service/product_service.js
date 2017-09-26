@@ -14,15 +14,7 @@ const productByRestaurant = (dispatch, { restaurantID, productID }) => {
   });
 };
 
-const allEvaluationProductsByRestaurant = (dispatch, { restaurantID, userID }) => {
-  request.get(`/users/me/restaurants/${restaurantID}/products`, { uid: userID })
-  .then((product) => {
-    dispatch('allEvaluationProducts', product);
-  });
-};
-
 export default {
   allProductsByRestaurant,
-  allEvaluationProductsByRestaurant,
   productByRestaurant,
 };
