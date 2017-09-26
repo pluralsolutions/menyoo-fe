@@ -19,8 +19,6 @@ import App from './App';
 import Modal from './components/shared/Modal';
 import ButtonComponent from './components/shared/Button';
 
-import serviceOrder from './service/order_service';
-
 Vue.component('modal', Modal);
 Vue.component('ButtonComponent', ButtonComponent);
 
@@ -66,14 +64,6 @@ new Vue({
         return next({ path: '/auth', query: { redirect: to.fullPath } });
       } else if (vm.user && (to.path === '/auth' || to.path === '/index.html' || to.path === '/')) {
         return next({ path: to.query.redirect || '/restaurantes/bar-do-ze' });
-      }
-      if (this.user) {
-        serviceOrder.currentOrder(
-          this.$store.dispatch, {
-            restaurantID: 1,
-            userID: this.user.uid,
-          },
-        );
       }
       return next();
     });
