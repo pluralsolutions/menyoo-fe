@@ -1,12 +1,13 @@
 import Vue from 'vue';
 
 
-const get = url =>
-    Vue.http.get(url).then(response => (
-      response.json()
-    ), () => {
-      Promise.reject();
-    });
+const get = (url, headers = {}) => (
+  Vue.http.get(url, { headers }).then(response => (
+    response.json()
+  ), () => {
+    Promise.reject();
+  })
+);
 
 const post = (url, body) =>
     Vue.http.post(url, body).then(response => (

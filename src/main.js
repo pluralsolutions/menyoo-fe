@@ -14,6 +14,7 @@ import { config } from './auth/firebaseConfig';
 import store from './store';
 import router from './router';
 import App from './App';
+
 // components
 import Modal from './components/shared/Modal';
 import ButtonComponent from './components/shared/Button';

@@ -8,8 +8,6 @@ export default class Order {
       productList.push(new ProductOrder(product));
     });
 
-    console.log(productList);
-
     this.products = productList;
     this.totalValue = this.calculateTotalValue();
   }
