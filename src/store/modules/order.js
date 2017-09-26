@@ -41,6 +41,18 @@ const actions = {
   allMyProductsByRestaurant(commit, products) {
     commit.commit(ALL_MY_PRODUCTS_RESTAURANT, products);
   },
+  updateScoreProductOrderEvalution({ commit, getter }, { evaluation }) {
+    const myProducts = getter.allMyProductsByRestaurant;
+    if (myProducts && myProducts.length) {
+      myProducts.forEach((product) => {
+        debugger;
+        if (product.evaluation.product_order_id === evaluation.product_order_id) {
+          product.evaluation.score = evaluation.score;
+        }
+      });
+      commit(ALL_MY_PRODUCTS_RESTAURANT, myProducts);
+    }
+  },
 };
 
 const mutations = {

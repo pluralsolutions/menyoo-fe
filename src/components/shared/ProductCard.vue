@@ -37,7 +37,7 @@
 import Product from '@/domain/Product';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
 import Currency from '@/components/shared/Currency';
-import evaluationService from '@/service/evaluation_service';
+import EvaluationService from '@/service/evaluation_service';
 
 export default {
   components: {
@@ -61,7 +61,7 @@ export default {
   methods: {
     sendReview(index) {
       this.score = (this.score === index) ? 0 : index;
-      evaluationService.updateEvaluationByRestaurantProduct({
+      EvaluationService.updateEvaluationByRestaurantProduct(this.$store.dispatch, {
         userID: this.$store.getters.user.uid,
         restaurantID: 1,
         productID: this.product.id,
