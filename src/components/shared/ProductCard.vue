@@ -37,23 +37,17 @@
 import Product from '@/domain/Product';
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
 import Currency from '@/components/shared/Currency';
+import evaluationService from '@/service/evaluation_service';
 
 export default {
-  data() {
-    return {
-      score: 0,
-    };
-  },
   components: {
     ProductEvaluation,
     Currency,
   },
-  methods: {
-    sendReview(index) {
-      this.score = (this.score === index) ? 0 : index;
-      // TODO make request to API to update
-      // “/users/me/restaurants/{restaurant_id}/products/{product_id}/evaluations”
-    },
+  data() {
+    return {
+      score: 0,
+    };
   },
   props: {
     review: {
@@ -62,6 +56,17 @@ export default {
     },
     product: {
       type: Product,
+    },
+  },
+  methods: {
+    sendReview(index) {
+      this.score = (this.score === index) ? 0 : index;
+      evaluationService.updateEvaluationByRestaurantProduct({
+        userID: this.$store.getters.user.uid,
+        restaurantID: 1,
+        productID: this.product.id,
+        score: this.score,
+      });
     },
   },
 };

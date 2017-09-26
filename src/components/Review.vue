@@ -28,11 +28,8 @@ export default {
     };
   },
   computed: {
-    loggedUser() {
-      return this.$store.getters.getLoggedUser;
-    },
     productsLoaded() {
-      const products = this.$store.getters.allProducts;
+      const products = this.$store.getters.allEvaluationProducts;
       const productList = [];
       products.forEach((product) => {
         productList.push(
@@ -44,7 +41,8 @@ export default {
     },
   },
   created() {
-    Service.allProductsByRestaurant(this.$store.dispatch, { restaurantID: 1 });
+    Service.allEvaluationProductsByRestaurant(this.$store.dispatch,
+      { restaurantID: 1, userID: this.$store.getters.user.uid });
   },
 };
 </script>
