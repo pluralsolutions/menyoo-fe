@@ -1,9 +1,10 @@
 <template>
   <div>
     <NavigationBar>Review</NavigationBar>
-    <div v-for="order in productsLoaded" :key="order.id">
+    <div v-for="order in ordersLoaded" :key="order.id">
+      <pre>-> {{order}}</pre>{{order.id}}
       <div :class="$style['product-list']"> 
-        <ProductCard :review="true" :product="product" v-for="product in order.products" :key="product.product_id" />
+        <ProductCard :review="true" :product="order.product" />
       </div>
     </div>
   </div>
@@ -13,6 +14,7 @@
 import NavigationBar from '@/components/shared/NavigationBar';
 import ProductCard from '@/components/shared/ProductCard';
 import OrderService from '@/service/order_service';
+import ProductOrder from '@/domain/ProductOrder';
 
 export default {
   components: {
@@ -25,13 +27,16 @@ export default {
     };
   },
   computed: {
-    productsLoaded() {
-      let { products } = this.$store.getters.allMyProductsByRestaurant;
-      if (!products) {
-        products = [];
-      }
-      console.log('return', products);
-      return products;
+    ordersLoaded() {
+      const { products } = this.$store.getters.allMyProductsByRestaurant;
+      console.log('return allMyProductsByRestaurant: ', products);
+      const list = [];
+      products.forEach((product) => {
+        list.push(
+          new ProductOrder(product),
+        );
+      });
+      return list;
     },
   },
   mounted() {
