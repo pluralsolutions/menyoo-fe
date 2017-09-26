@@ -26,10 +26,10 @@
                 <router-link to="/perfil">Editar perfil</router-link>
               </li>
 
-              <li class="menu-item tracking-orders" v-if="order">
+              <li class="menu-item tracking-orders" v-if="hasProductsIntoOrder()">
                 <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
               </li>
-              <li class="menu-item pay-order" v-if="order">
+              <li class="menu-item pay-order" v-if="hasProductsIntoOrder()">
                 <router-link :to="{path: `/pedidos/${order.id}/pagar`}">Pagar pedido</router-link>
               </li>
               <li class="menu-item signout" @click="signOut">
@@ -59,6 +59,9 @@ export default {
     ...mapActions({
       signOut: 'a_signOut',
     }),
+    hasProductsIntoOrder: function hasProductsIntoOrder() {
+      return this.order && this.order.products && this.order.products.length > 0;
+    },
   },
   computed: {
     ...mapGetters({
