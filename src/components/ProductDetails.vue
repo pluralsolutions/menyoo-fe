@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      productQuantity: 0,
+      productQuantity: 1,
       additionalPrice: 0,
       msgModal: '',
     };

@@ -3,7 +3,9 @@ import IngredientProductOrder from '@/domain/IngredientProductOrder';
 import Product from '@/domain/Product';
 
 export default class ProductOrder {
-  constructor({ product, ingredients, quantity, total_price_cents }) {
+  constructor({ id, product, ingredients, quantity, total_price_cents, order_id }) {
+    this.id = id;
+    this.orderId = order_id;
     this.product = new Product(product);
     this.quantity = quantity;
     this.ingredients = ingredients;

@@ -21,6 +21,7 @@
 <script>
 import ProductEvaluation from '@/components/shared/ProductEvaluation';
 import Counter from '@/components/shared/Counter';
+import serviceOrder from '@/service/order_service';
 
 export default {
   components: {
@@ -35,6 +36,12 @@ export default {
     product: {
       type: Object,
       required: true,
+    },
+    productOrderID: {
+      type: Number,
+    },
+    orderID: {
+      type: Number,
     },
     additionalPrice: {
       type: Number,
@@ -67,6 +74,12 @@ export default {
   methods: {
     updatePrice: function updatePrice() {
       this.$emit('input', this.productQuantity);
+      if (this.orderID && this.productOrderID) {
+        serviceOrder.updateProductOrderQuantity(
+          this.$store.dispatch,
+          { restaurantID: 1, orderID: this.orderID, productID: this.productOrderID },
+        );
+      }
       this.itemsPrice = this.productQuantity * (this.product.unitPrice + this.additionalPrice);
     },
   },

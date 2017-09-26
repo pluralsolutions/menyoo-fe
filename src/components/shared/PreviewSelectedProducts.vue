@@ -5,7 +5,7 @@
         {{orderProduct.quantity}}<br/>unid
       </span>
       <div>
-        <ProductInfo :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
+        <ProductInfo :orderID="orderProduct.orderId" :productOrderID="orderProduct.Id" :product="orderProduct.product" :summary="false" :description="false" :rating="false" />
         <div class="ingredients-item">
           <span v-for="ingredient in orderProduct.ingredients" :key="ingredient.name"> +{{ingredient.name}}</span>
         </div>
@@ -23,10 +23,9 @@
 import ProductInfo from '@/components/shared/ProductInfo';
 import Counter from '@/components/shared/Counter';
 
-import ProductOrder from '@/domain/ProductOrder';
-import Product from '@/domain/Product';
-
 import { mapGetters } from 'vuex';
+
+import serviceOrder from '@/service/order_service';
 
 export default {
   components: {
@@ -35,26 +34,22 @@ export default {
   },
   methods: {
     addProductToOrder(item) {
-      const productOrder = new ProductOrder({
-        product: item.product,
-        productOrderIngredients: item.ingredients,
-        productQuantity: 1,
-      });
-
-      this.$store.dispatch('addProductToOrder', productOrder);
+      serviceOrder.updateProductOrderQuantity(
+        this.$store.dispatch,
+        { userID: this.user.uid, restaurantID: 1, item, quantity: item.quantity + 1 },
+      );
     },
     removeProductIntoOrder(item) {
-      const productOrder = new ProductOrder({
-        product: new Product(item.product),
-        productOrderIngredients: item.ingredients,
-      });
-
-      this.$store.dispatch('removeProductFromOrder', { productOrder, quantity: 1 });
+      serviceOrder.updateProductOrderQuantity(
+        this.$store.dispatch,
+        { userID: this.user.uid, restaurantID: 1, item, quantity: item.quantity - 1 },
+      );
     },
   },
   computed: {
     ...mapGetters([
       'order',
+      'user',
     ]),
   },
 };

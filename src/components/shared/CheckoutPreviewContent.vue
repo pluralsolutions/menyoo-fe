@@ -3,13 +3,7 @@
     <div @click="toogle" class="checkout-preview-content-container" />
     <div class="nav-preview">
       <div class="gradient-top"/>
-      <div v-if="order === null" class="no-order" @click="toogle">
-        <div class="negative-box">
-          Você ainda <strong>não possui</strong> itens no seu carrinho
-        </div>
-        <ButtonComponent routerLinkTo="/restaurantes/bar-do-ze" size="large" class="start-order">Iniciar pedido</ButtonComponent>
-      </div>
-      <div v-else class="has-orders" @click.native="toogle">
+      <div v-if="order && order.products && order.products.length > 0" class="has-orders" @click.native="toogle">
         <div class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</div>
         <div class="scrollable-items">
           <PreviewSelectedProducts />
@@ -19,6 +13,12 @@
           <Currency color="red" :value="order.totalValue"/>
           <ButtonComponent @click.native="toogle" routerLinkTo="/checkout" size="full" type="secondary">Finalizar Pedido</ButtonComponent>
         </div>
+      </div>
+      <div v-else class="no-order" @click="toogle">
+        <div class="negative-box">
+          Você ainda <strong>não possui</strong> itens no seu carrinho
+        </div>
+        <ButtonComponent routerLinkTo="/restaurantes/bar-do-ze" size="large" class="start-order">Iniciar pedido</ButtonComponent>
       </div>
     </div>
   </div>
