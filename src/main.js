@@ -82,6 +82,10 @@ new Vue({
     ...mapGetters({
       user: 'user',
     }),
+    allowed() {
+      const requireAuth = !this.$route.matched.some(record => record.meta.noAuth);
+      return !requireAuth || (this.user && this.user.uid);
+    },
   },
   methods: {
     ...mapActions({
@@ -90,6 +94,6 @@ new Vue({
   },
   store,
   router,
-  template: '<App/>',
+  template: '<App v-if="allowed"/>',
   components: { App },
 });
