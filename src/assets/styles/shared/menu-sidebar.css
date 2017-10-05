@@ -49,7 +49,7 @@
 
 .menu-scroll {
   overflow: scroll;
-  height: 80%;
+  height: 74%;
   position: relative;  
 }
 .menu-profile {
@@ -85,8 +85,8 @@
   flex-wrap: wrap;
   align-items: center;
   align-content: flex-start;
-  height: 60%;
-  margin-top: 50px;
+  height: 70%;
+  margin: 30px 00px;
 }
 
 .menu-secondary {
@@ -103,9 +103,9 @@
   font-weight: bold;
   text-align: left;
   text-decoration: none;
-  margin: 12px auto;
+  margin: 15px auto;
   width: 70%;
-  padding: 10px 0px 10px 50px;
+  padding: 10px 10px 10px 50px;
   display: block;
   text-transform: uppercase;
   cursor: pointer;
@@ -118,10 +118,12 @@
   position: absolute;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 36px;
+  background-size: 32px;
   margin: -15px -50px;
 }
-
+.router-link-active {
+  color: #393;
+}
 .home:before {
   background-image: url('../../images/home_icon.svg');
 }

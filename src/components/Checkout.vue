@@ -41,7 +41,7 @@ export default {
       }
     },
     confirmed() {
-      this.$router.push('/pedidos/acompanhar');
+      this.$router.push(`/pedidos/${this.order.id}/acompanhar`);
     },
   },
   created() {

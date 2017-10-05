@@ -28,8 +28,10 @@ const routes = [
   },
   {
     name: 'awaiting-order',
-    path: '/pedidos/acompanhar',
+    path: '/pedidos/:orderId?/acompanhar',
     component: AwaitingOrder,
+    props: true, // inject all params to props on component
+    // props: (route) => ({ orderId: route.params.orderId })
   },
   {
     path: '/pedidos/:orderId/pagar',
