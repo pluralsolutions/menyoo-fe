@@ -10,7 +10,7 @@
       <div class="product-desc" v-if="description">{{product.description}}</div>
     </div>
     <div v-if="summary" class="summary-items">
-      <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model:value="productQuantity"/>
+      <Counter :plusCallback="updatePrice" :minusCallback="updatePrice" v-model="productQuantity"/>
       <div class="current-price">
         R$ {{ itemsPrice | currency }}
       </div>

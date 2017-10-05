@@ -2,10 +2,13 @@
   position: relative;
   padding-bottom: 50px;
 }
-.product-galery {
+.product-galery{
+  display: flex;
+}
+.product-galery img {
   height: 160px;
-  width: 100%;
-  background-color: #000;
+  margin: auto;
+  /* width: 100%; */
 }
 .product-info {
   padding: 19px 25px;

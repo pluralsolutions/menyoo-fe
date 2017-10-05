@@ -1,7 +1,9 @@
 <template>
   <div class="product-detail-container" v-if="product">
     <NavigationBar>Descrição do Produto</NavigationBar>
-    <img :src="product.image" class="product-galery" />  <!-- Should be a Galery Component-->
+    <div class="product-galery">
+      <img :src="product.image"/>  <!-- Should be a Galery Component-->
+    </div>
     <div class="product-info">
       <ProductInfo :product="product" v-model="productQuantity" :additionalPrice="additionalPrice"/>
       <ProductIngredientList :product="product" v-model="additionalPrice" :onSubmit="addOrder" />
