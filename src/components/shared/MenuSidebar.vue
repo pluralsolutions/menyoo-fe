@@ -19,24 +19,13 @@
           </div>
           <div class="menu-scroll">
             <ul class="menu-nav">
-              <li class="menu-item home">
-                <router-link to="/restaurantes/bar-do-ze">Ver cardápio</router-link>
-              </li>
-              <li class="menu-item review">
-                <router-link to="/restaurantes/bar-do-ze/reviews">Minhas avaliações</router-link>
-              </li>
-              <li class="menu-item edit-profile">
-                <router-link to="/perfil">Editar perfil</router-link>
-              </li>
-
-              <li class="menu-item tracking-orders" v-if="hasProductsIntoOrder()">
-                <router-link :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
-              </li>
-              <li class="menu-item pay-order" v-if="hasProductsIntoOrder()">
-                <router-link :to="{path: `/pedidos/${order.id}/pagar`}">Pagar pedido</router-link>
-              </li>
+              <router-link tag="li" class="menu-item home" to="/restaurantes/bar-do-ze">Cardápio</router-link>              
+              <router-link tag="li" class="menu-item review" to="/restaurantes/bar-do-ze/reviews">Minhas avaliações</router-link>
+              <router-link tag="li" class="menu-item edit-profile" to="/perfil">Editar perfil</router-link>
+              <router-link tag="li" class="menu-item tracking-orders" v-if="hasProductsIntoOrder()" :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
+              <router-link tag="li" class="menu-item pay-order" v-if="hasProductsIntoOrder()" :to="{path: `/pedidos/${order.id}/pagar`}">Pagar pedido</router-link>
               <li class="menu-item signout" @click="signOut">
-                <a>Sair</a>
+                Sair
               </li>
             </ul>
           </div>

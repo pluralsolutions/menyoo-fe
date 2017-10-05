@@ -71,7 +71,7 @@
 }
 .user-name {
   background-color: #d4d4d4;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   text-transform: uppercase;
   color: #1b1b1b;
@@ -98,8 +98,17 @@
 }
 
 .menu-item {
-  margin: 0 30px 40px;
-  width: 50%;
+  font-size: 17px;
+  color: #4a79d1;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none;
+  margin: 12px auto;
+  width: 70%;
+  padding: 10px 0px 10px 50px;
+  display: block;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .menu-item:before {
@@ -109,7 +118,8 @@
   position: absolute;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 40px;
+  background-size: 36px;
+  margin: -15px -50px;
 }
 
 .home:before {
@@ -134,18 +144,6 @@
 }
 .signout:before {
   background-image: url('../../images/signout_icon.svg');
-}
-
-.menu-item a {
-  font-size: 17px;
-  color: #4a79d1;
-  font-weight: bold;
-  text-align: left;
-  text-decoration: none;
-  padding: 7px 0 12px 50px;
-  display: block;
-  text-transform: uppercase;
-  cursor: pointer;
 }
 
 .close {
