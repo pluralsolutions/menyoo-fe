@@ -39,7 +39,13 @@ export default {
     border: none;
     color: #fff;
     text-transform: uppercase;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.38), inset 0 0 6.8px 3.2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.38), inset 0 0 3.8px 3.2px rgba(0, 0, 0, 0.03);
+  }
+
+  .button:active,
+  .button:focus {
+    color: #000;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.58), inset 0 0 3.8px 3.2px rgba(0, 0, 0, 0.2);
   }
   .primary{
     background-color: #4a79d1;

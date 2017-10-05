@@ -51,11 +51,11 @@ export default {
     ...mapGetters([
       'order',
       'user',
+      'currentProduct',
     ]),
     product() {
-      const product = this.$store.getters.currentProduct;
-      if (product === null) return null;
-      return new Product(product);
+      if (this.currentProduct === null) return null;
+      return new Product(this.currentProduct);
     },
   },
   methods: {

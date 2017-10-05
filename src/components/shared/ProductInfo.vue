@@ -2,7 +2,7 @@
   <div class="product-info-container">
     <div class="product-header">
       <span class="product-price-unit">Preço unitário</span>
-      <span class="product-price">R$ {{ this.product.unitPrice | currency }}</span>
+      <span class="product-price">R$ {{ product.unitPrice | currency }}</span>
       <ProductEvaluation v-if="rating" :evaluation="product.evaluation" :counter="false"/>
     </div>
     <div class="product-content">
@@ -70,6 +70,9 @@ export default {
     additionalPrice: function additionalPrice() {
       this.updatePrice();
     },
+    product: function product() {
+      this.updatePrice();
+    },
   },
   methods: {
     updatePrice: function updatePrice() {
@@ -83,7 +86,7 @@ export default {
       this.itemsPrice = this.productQuantity * (this.product.unitPrice + this.additionalPrice);
     },
   },
-  created() {
+  mounted() {
     this.updatePrice();
   },
 };

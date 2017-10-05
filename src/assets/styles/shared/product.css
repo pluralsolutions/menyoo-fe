@@ -25,15 +25,15 @@
   /* justify-content: space-between; */
 }
 
-.title a{
-  font-size: 13.6px;
+.title{
+  padding-top: 2px;
+  font-size: 18px;
   font-weight: bold;
-  color: #000000;
   text-transform: uppercase;
-  text-decoration: none;
 }
 .description {
-  font-size: 11px;
+  padding-top: 6px;
+  font-size: 12px;
   color: #434343;
   text-transform: uppercase;
 }
