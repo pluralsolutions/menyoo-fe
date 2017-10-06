@@ -17,6 +17,13 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
     ))
 );
 
+const allOrders = (dispatch, { userID, restaurantID }) => (
+  request.get(
+    `users/me/restaurants/${restaurantID}/allorders`,
+    { uid: userID },
+  )
+);
+
 const allProductsOrdersByRestaurant = (dispatch, { userID, restaurantID }) => {
   request.get(
     `users/me/restaurants/${restaurantID}/products`,
@@ -57,4 +64,5 @@ export default {
   updateProductOrderQuantity,
   place,
   allProductsOrdersByRestaurant,
+  allOrders,
 };
