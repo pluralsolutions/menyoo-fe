@@ -15,10 +15,18 @@ import firebaseui from 'firebaseui';
 
 export default {
   name: 'auth',
-  mounted() {
+  created() {
     const uiConfig = {
-      signInSuccess: () => false, // TODO: check uf exists query.redirect
+      callbacks: {
+        signInSuccess: () => false, // (currentUser, credential, redirectUrl) => {
+        //   // TODO: check if exists query.redirect
+        //   console.log('signInSuccess', currentUser, credential, redirectUrl);
+        //   return false;
+        // },
+      },
       signInSuccessUrl: '/restaurantes/bar-do-ze',
+      // signInFlow: 'popup',
+      credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.FacebookAuthProvider.PROVIDER_ID,
