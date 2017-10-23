@@ -4,7 +4,7 @@
       <div class="awaitorder-select" v-if="orders.length>0">
         <select name="order" v-model="orderIdSelected" @change="trocaURL">
           <option value="0"> - Selecione uma ordem - </option>
-          <option :selected="orderIdSelected===ord.id" v-for="ord in orders" :key="ord.id" :value="ord.id">{{ord.id}} - {{ord.orderDate}} - R$ {{ord.totalValue|currency}}</option>
+          <option :selected="orderIdSelected===ord.id" v-for="ord in orders" :key="ord.id" :value="ord.id">{{ord.selectName()}}</option>
         </select>
       </div>
     </NavigationBar>
@@ -15,7 +15,7 @@
         <div :class="{active: step>=3}"><img src="../assets/images/step3.svg"/><span>SEU PEDIDO ESTÁ A CAMINHO DA SUA MESA</span></div>
       </div>
       <div class="awaitorder-paybtn">
-        <ButtonComponent :onClick="pagar" size="large" v-if="step>=3">pagar</ButtonComponent>
+        <ButtonComponent :onClick="pagar" size="large" v-if="step>=3" :disabled="step==4">pagar</ButtonComponent>
       </div>
     </div>
     <div v-else>
@@ -50,51 +50,54 @@ export default {
   },
   props: ['orderId'],
   methods: {
-    mais(a) {
-      if (a === this.orderIdSelected) this.$store.dispatch('updateStep', { step: 1 });
-    },
-    menos() {
-      this.$store.dispatch('updateStep', { step: -1 });
-    },
     pagar() {
       this.$router.push(`/pedidos/${this.orderIdSelected}/pagar`);
     },
-    perform() {
-      console.log('performing');
-      this.$store.dispatch('resetAwaiting').then(() => {
-        setTimeout(this.mais.bind(this, this.orderIdSelected), 2000);
-        setTimeout(this.mais.bind(this, this.orderIdSelected), 3000);
-        setTimeout(this.mais.bind(this, this.orderIdSelected), 4000);
-        setTimeout(this.mais.bind(this, this.orderIdSelected), 5000);
-        setTimeout(this.mais.bind(this, this.orderIdSelected), 6000);
-      });
-    },
     trocaURL() {
       this.$router.replace(`/pedidos/${this.orderIdSelected}/acompanhar`);
-      this.perform();
+      this.getAllOrders();
     },
     getAllOrders() {
+      if (this.timeoutAll) clearTimeout(this.timeoutAll);
       OrderService.getAllOrders(this.$store.dispatch, {
         userID: this.$store.getters.user.uid,
         restaurantID: 1,
       }).then(() => {
         // get all again in 20 seconds
-        this.timeoutAll = setTimeout(this.getAllOrders, 20000);
+        this.timeoutAll = setTimeout(this.getAllOrders, 10000);
       });
     },
   },
   computed: {
     ...mapGetters({
-      step: 'orderStep',
       orders: 'allorders',
     }),
+    step() {
+      if (this.orders) {
+        const o = this.orders.find(
+          ord => ord.id.toString() === this.orderIdSelected.toString(), this);
+        return (o) ? o.step() : 0;
+      }
+      return 0;
+    },
   },
+  // watch: {
+  //   orderIdSelected: {
+  //     handler: () => {
+  //       debugger;
+  //       if (this.orders) {
+  //         const o = this.orders.find(ord => ord.id === newv, this);
+  //         this.step = o.step();
+  //       }
+  //       return newv;
+  //     },
+  //   },
+  // },
   destroyed() {
     if (this.timeoutAll) clearTimeout(this.timeoutAll);
   },
   mounted() {
     this.getAllOrders();
-    this.perform();
   },
 };
 </script>

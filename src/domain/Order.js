@@ -16,6 +16,11 @@ export default class Order {
     this.insertedAt = insertedAt;
   }
 
+  selectName() {
+    // TODO: fix this to show a better name to select into awaiting order
+    return `${this.id} - ${this.status}`;
+  }
+
   step() {
     switch (this.status) {
       case 'requested':
