@@ -1,17 +1,36 @@
 import ProductOrder from './ProductOrder';
 
 export default class Order {
-  constructor({ id, products = [] }) {
+  constructor({ id, products = [], status, insertedAt }) {
     const productList = [];
-
-    products.forEach((product) => {
-      productList.push(new ProductOrder(product));
-    });
+    if (products) {
+      products.forEach((product) => {
+        productList.push(new ProductOrder(product));
+      });
+    }
 
     this.id = id;
     this.products = productList;
     this.totalValue = this.calculateTotalValue();
-    this.inserted_at = Date.now;
+    this.status = status;
+    this.insertedAt = insertedAt;
+  }
+
+  step() {
+    switch (this.status) {
+      case 'requested':
+        return 0;
+      case 'accepted':
+        return 1;
+      case 'producing':
+        return 2;
+      case 'sent':
+        return 3;
+      case 'paid':
+        return 4;
+      default:
+        return 0;
+    }
   }
 
   updateTotalValue() {
