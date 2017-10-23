@@ -42,8 +42,8 @@ const actions = {
   allMyProductsByRestaurant(commit, products) {
     commit.commit(ALL_MY_PRODUCTS_RESTAURANT, products);
   },
-  allOrders(commit, orders) {
-    commit.commit(ALL_ORDERS, orders);
+  setAllOrders(commit, allorders) {
+    commit.commit(ALL_ORDERS, { allorders });
   },
 };
 

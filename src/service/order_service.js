@@ -17,11 +17,24 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
     ))
 );
 
-const allOrders = (dispatch, { userID, restaurantID }) => (
-  request.get(
-    `users/me/restaurants/${restaurantID}/allorders`,
-    { uid: userID },
-  )
+const getAllOrders = (dispatch, { userID, restaurantID }, i = 0) => (
+  new Promise((res, reject) => {
+    request.get(
+      `users/me/restaurants/${restaurantID}/allorders`,
+      { uid: userID },
+    )
+    .then(
+      (response) => {
+        dispatch('setAllOrders', response).then(() => res(response));
+      },
+      (err) => {
+        if (i < 30) {
+          setTimeout(() => getAllOrders(dispatch, { userID, restaurantID }, i + 1), 2000);
+        }
+        if (reject) reject(err);
+      },
+    );
+  })
 );
 
 const allProductsOrdersByRestaurant = (dispatch, { userID, restaurantID }) => {
@@ -64,5 +77,5 @@ export default {
   updateProductOrderQuantity,
   place,
   allProductsOrdersByRestaurant,
-  allOrders,
+  getAllOrders,
 };

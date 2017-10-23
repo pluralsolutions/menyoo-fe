@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       orderIdSelected: this.orderId || 0,
+      timeoutAll: false,
     };
   },
   props: ['orderId'],
@@ -72,20 +73,27 @@ export default {
       this.$router.replace(`/pedidos/${this.orderIdSelected}/acompanhar`);
       this.perform();
     },
+    getAllOrders() {
+      OrderService.getAllOrders(this.$store.dispatch, {
+        userID: this.$store.getters.user.uid,
+        restaurantID: 1,
+      }).then(() => {
+        // get all again in 20 seconds
+        this.timeoutAll = setTimeout(this.getAllOrders, 20000);
+      });
+    },
   },
   computed: {
     ...mapGetters({
       step: 'orderStep',
-      allorders: 'allorders',
+      orders: 'allorders',
     }),
-    orders() {
-      // TODO get OPEN/NOT-DELIVERED orders from current user
-      return [this.allorders];
-    },
+  },
+  destroyed() {
+    if (this.timeoutAll) clearTimeout(this.timeoutAll);
   },
   mounted() {
-    OrderService.allorders()
-      .then(ao => this.dispatch('allOrders', ao));
+    this.getAllOrders();
     this.perform();
   },
 };
