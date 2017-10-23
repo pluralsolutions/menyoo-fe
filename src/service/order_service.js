@@ -17,7 +17,7 @@ const currentOrder = (dispatch, { userID, restaurantID }) => (
     ))
 );
 
-const getAllOrders = (dispatch, { userID, restaurantID }, i = 0) => (
+const getAllOrders = (dispatch, { userID, restaurantID }) => (
   new Promise((res, reject) => {
     request.get(
       `users/me/restaurants/${restaurantID}/allorders`,
@@ -28,9 +28,6 @@ const getAllOrders = (dispatch, { userID, restaurantID }, i = 0) => (
         dispatch('setAllOrders', response).then(() => res(response));
       },
       (err) => {
-        if (i < 30) {
-          setTimeout(() => getAllOrders(dispatch, { userID, restaurantID }, i + 1), 2000);
-        }
         if (reject) reject(err);
       },
     );
