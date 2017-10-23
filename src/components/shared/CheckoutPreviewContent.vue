@@ -4,7 +4,7 @@
     <div class="nav-preview">
       <div class="gradient-top"/>
       <div v-if="order && order.products && order.products.length > 0" class="has-orders" @click.native="toogle">
-        <div class="title-items">Você tem <strong>{{order.products.length}} itens</strong> no carrinho</div>
+        <div class="title-items">Você tem <strong>{{order.quantity()}} itens</strong> no carrinho</div>
         <div class="scrollable-items">
           <PreviewSelectedProducts />
         </div>

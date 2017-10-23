@@ -41,7 +41,7 @@ export default class Order {
   updateTotalValue() {
     this.totalValue = 0;
     this.products.forEach((product) => {
-      this.totalValue += product.productQuantity *
+      this.totalValue += (!isNaN(product.quantity)) ? 1 : product.quantity *
           (product.productOrderIngredients.sumAdditionalPrice() + product.product.unitPrice);
     });
   }
@@ -55,13 +55,17 @@ export default class Order {
   }
 
   quantity() {
-    return this.products.length;
+    let qq = 0;
+    this.products.forEach((product) => {
+      qq += (!isNaN(product.quantity)) ? 1 : product.quantity;
+    });
+    return qq;
   }
 
   addProduct(productOrder) {
     const productIndex = this.products.findIndex(p => productOrder.equalTo(p));
     if (productIndex >= 0) {
-      this.products[productIndex].productQuantity += productOrder.productQuantity;
+      this.products[productIndex].quantity += productOrder.quantity;
     } else {
       this.products.push(productOrder);
     }
@@ -74,12 +78,12 @@ export default class Order {
 
     if (productIndex < 0) return;
 
-    if (products[productIndex].productQuantity <= 1) {
+    if (products[productIndex].quantity <= 1) {
       products.splice(productIndex);
       return;
     }
 
-    products[productIndex].productQuantity -= quantity;
+    products[productIndex].quantity -= quantity;
 
     this.updateTotalValue();
   }

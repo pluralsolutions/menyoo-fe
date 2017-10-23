@@ -8,3 +8,21 @@
 	cursor: pointer;
   background-size: 34px;
 }
+.cart-icon-text {
+  display: flex;
+  font-size: 16px;
+  position: relative;
+  top: 24px;
+  right: 10px;
+  text-align: right;
+  color: #be1622;
+}
+.cart-icon-circle {
+  border-radius: 50%;
+  background-color: #be1622;
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 15px;
+  left: 35px;
+}

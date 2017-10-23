@@ -22,7 +22,7 @@
               <router-link tag="li" class="menu-item home" to="/restaurantes/bar-do-ze">Cardápio</router-link>              
               <router-link tag="li" class="menu-item review" to="/restaurantes/bar-do-ze/reviews">Minhas avaliações</router-link>
               <router-link tag="li" class="menu-item edit-profile" to="/perfil">Editar perfil</router-link>
-              <router-link tag="li" class="menu-item tracking-orders" v-if="hasProductsIntoOrder()" :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
+              <router-link tag="li" class="menu-item tracking-orders" :to="{name: 'awaiting-order'}">Acompanhar pedido</router-link>
               <router-link tag="li" class="menu-item pay-order" v-if="hasProductsIntoOrder()" :to="{path: `/pedidos/${order.id}/pagar`}">Pagar pedido</router-link>
               <li class="menu-item signout" @click="signOut">
                 Sair
