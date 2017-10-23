@@ -6,11 +6,12 @@ import {
   REMOVE_ITEM_FROM_ORDER,
   UPDATE_ORDER,
   ALL_MY_PRODUCTS_RESTAURANT,
+  ALL_ORDERS,
 } from '../mutation-types';
 
 const getters = {
   orderStep: state => (state.orderStep),
-  orders: state => (state.orders),
+  allorders: state => (state.allorders),
   order: state => (state.order),
   allMyProductsByRestaurant: state => (state.allMyProductsByRestaurant),
 };
@@ -41,6 +42,9 @@ const actions = {
   allMyProductsByRestaurant(commit, products) {
     commit.commit(ALL_MY_PRODUCTS_RESTAURANT, products);
   },
+  allOrders(commit, orders) {
+    commit.commit(ALL_ORDERS, orders);
+  },
 };
 
 const mutations = {
@@ -67,11 +71,15 @@ const mutations = {
   [ALL_MY_PRODUCTS_RESTAURANT](state, orders) {
     state.allMyProductsByRestaurant = orders;
   },
+  [ALL_ORDERS](state, { allorders }) {
+    state.allorders = allorders;
+  },
 };
 
 const state = {
   orderStep: 0,
   order: null,
+  allorders: [],
   allMyProductsByRestaurant: [],
 };
 

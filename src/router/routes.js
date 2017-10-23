@@ -47,6 +47,7 @@ const routes = [
     path: '/perfil',
     component: Profile,
   },
+  { path: '*', component: Startup, meta: { noAuth: true } },
 ];
 
 export default routes;

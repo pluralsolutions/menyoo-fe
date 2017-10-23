@@ -33,6 +33,7 @@
 <script>
 import NavigationBar from '@/components/shared/NavigationBar';
 import OrderEvaluationPush from '@/components/shared/OrderEvaluationPush';
+import OrderService from '@/service/order_service';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -75,14 +76,16 @@ export default {
   computed: {
     ...mapGetters({
       step: 'orderStep',
-      order: 'order',
+      allorders: 'allorders',
     }),
     orders() {
       // TODO get OPEN/NOT-DELIVERED orders from current user
-      return [this.order];
+      return [this.allorders];
     },
   },
   mounted() {
+    OrderService.allorders()
+      .then(ao => this.dispatch('allOrders', ao));
     this.perform();
   },
 };
