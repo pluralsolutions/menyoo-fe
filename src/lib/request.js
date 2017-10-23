@@ -4,16 +4,16 @@ import Vue from 'vue';
 const get = (url, headers = {}) => (
   Vue.http.get(url, { headers }).then(response => (
     response.json()
-  ), () => (
-    Promise.reject()
+  ), err => (
+    Promise.reject(err)
   ))
 );
 
 const put = (url, data, headers = {}) => (
   Vue.http.put(url, data, { headers }).then(response => (
     Promise.resolve(response.body)
-  ), () => (
-    Promise.reject()
+  ), err => (
+    Promise.reject(err)
   ))
 );
 
