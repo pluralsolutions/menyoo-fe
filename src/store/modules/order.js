@@ -1,7 +1,6 @@
 import Order from '@/domain/Order';
 
 import {
-  ORDER_STEP_CHANGE,
   ADD_PRODUCT_TO_ORDER,
   REMOVE_ITEM_FROM_ORDER,
   UPDATE_ORDER,
@@ -10,22 +9,12 @@ import {
 } from '../mutation-types';
 
 const getters = {
-  orderStep: state => (state.orderStep),
   allorders: state => (state.allorders),
   order: state => (state.order),
   allMyProductsByRestaurant: state => (state.allMyProductsByRestaurant),
 };
 
 const actions = {
-  updateStep(commit, { step }) {
-    let newstep = commit.getters.orderStep || 0;
-    newstep += step || 1;
-    commit.commit(ORDER_STEP_CHANGE, { newstep });
-  },
-  resetAwaiting(commit) {
-    const newstep = (0 - commit.getters.orderStep);
-    commit.commit(ORDER_STEP_CHANGE, { newstep });
-  },
   addProductToOrder(state, productOrder) {
     state.commit(ADD_PRODUCT_TO_ORDER, productOrder);
   },
@@ -43,14 +32,13 @@ const actions = {
     commit.commit(ALL_MY_PRODUCTS_RESTAURANT, products);
   },
   setAllOrders(commit, allorders) {
-    commit.commit(ALL_ORDERS, { allorders });
+    const orders = [];
+    allorders.forEach(order => orders.push(new Order(order)));
+    commit.commit(ALL_ORDERS, { allorders: orders });
   },
 };
 
 const mutations = {
-  [ORDER_STEP_CHANGE](state, { newstep }) {
-    state.orderStep = newstep;
-  },
   [ADD_PRODUCT_TO_ORDER](state, productOrder) {
     const order = state.order || new Order({});
     order.addProduct(productOrder);
@@ -77,7 +65,6 @@ const mutations = {
 };
 
 const state = {
-  orderStep: 0,
   order: null,
   allorders: [],
   allMyProductsByRestaurant: [],
